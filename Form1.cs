@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace CS_GridGame_Team5
 {
-    public partial class Form1 : Form
+    public partial class Form_Game : Form
     {
-        public Form1()
+        public Form_Game()
         {
             InitializeComponent();
+        }
+
+        private void Form_Game_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
