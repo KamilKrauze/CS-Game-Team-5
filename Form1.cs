@@ -15,6 +15,12 @@ namespace CS_GridGame_Team5
         public Form_Game()
         {
             InitializeComponent();
+            String name = "Spitfire MK2";
+            PlaneType type = PlaneType.fighter;
+            uint altitude = 1;
+            AmmoType ammo = AmmoType.light;
+            Plane spitFireMK2 = new Plane(ref name, ref type, ref altitude, ref ammo);
+            Console.WriteLine(spitFireMK2.Name);
         }
 
         private void Form_Game_Load(object sender, EventArgs e)
