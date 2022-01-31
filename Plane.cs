@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CS_GridGame_Team5
 {
@@ -10,7 +6,7 @@ namespace CS_GridGame_Team5
     {
         private String name;
         private PlaneType type;
-        private uint altitude;
+        private int altitude;
         private AmmoType ammoType;
 
         public Plane()
@@ -21,7 +17,7 @@ namespace CS_GridGame_Team5
             this.ammoType = AmmoType.light;
         }
 
-        public Plane(ref String name, ref PlaneType type, ref uint altitude, ref AmmoType ammoType)
+        public Plane(ref String name, ref PlaneType type, ref int altitude, ref AmmoType ammoType)
         {
             this.name = name;
             this.type = type;
@@ -32,7 +28,7 @@ namespace CS_GridGame_Team5
         }
 
         public string Name { get => name; set => name = value; }
-        public uint Altitude { get => altitude; set => altitude = value; }
+        public int Altitude { get => altitude; set => altitude = value; }
         internal PlaneType Type { get => type; set => type = value; }
         internal AmmoType AmmoType { get => ammoType; set => ammoType = value; }
     }

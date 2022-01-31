@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS-GridGame-Team5", "CS-GridGame-Team5.csproj", "{2AE8B4D0-B594-4085-83E8-2EFCB8692672}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CalculateDamage", "DLL Workspace\CalculateDamage\CalculateDamage.vcxproj", "{06AD2FEA-700B-48C4-BE8B-97F81AE18DD6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculateDamageDLL", "DLL Workspace\CalculateDamageDLL\CalculateDamageDLL.csproj", "{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,16 +29,18 @@ Global
 		{2AE8B4D0-B594-4085-83E8-2EFCB8692672}.Release|x64.Build.0 = Release|Any CPU
 		{2AE8B4D0-B594-4085-83E8-2EFCB8692672}.Release|x86.ActiveCfg = Release|Any CPU
 		{2AE8B4D0-B594-4085-83E8-2EFCB8692672}.Release|x86.Build.0 = Release|Any CPU
-		{06AD2FEA-700B-48C4-BE8B-97F81AE18DD6}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{06AD2FEA-700B-48C4-BE8B-97F81AE18DD6}.Debug|x64.ActiveCfg = Debug|x64
-		{06AD2FEA-700B-48C4-BE8B-97F81AE18DD6}.Debug|x64.Build.0 = Debug|x64
-		{06AD2FEA-700B-48C4-BE8B-97F81AE18DD6}.Debug|x86.ActiveCfg = Debug|Win32
-		{06AD2FEA-700B-48C4-BE8B-97F81AE18DD6}.Debug|x86.Build.0 = Debug|Win32
-		{06AD2FEA-700B-48C4-BE8B-97F81AE18DD6}.Release|Any CPU.ActiveCfg = Release|Win32
-		{06AD2FEA-700B-48C4-BE8B-97F81AE18DD6}.Release|x64.ActiveCfg = Release|x64
-		{06AD2FEA-700B-48C4-BE8B-97F81AE18DD6}.Release|x64.Build.0 = Release|x64
-		{06AD2FEA-700B-48C4-BE8B-97F81AE18DD6}.Release|x86.ActiveCfg = Release|Win32
-		{06AD2FEA-700B-48C4-BE8B-97F81AE18DD6}.Release|x86.Build.0 = Release|Win32
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Debug|x64.Build.0 = Debug|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Debug|x86.Build.0 = Debug|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Release|x64.ActiveCfg = Release|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Release|x64.Build.0 = Release|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Release|x86.ActiveCfg = Release|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
