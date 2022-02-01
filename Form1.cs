@@ -24,7 +24,7 @@ namespace CS_GridGame_Team5
             AmmoType ammo = AmmoType.light;
             Plane spitFireMK2 = new Plane(ref name, ref type, ref altitude, ref ammo);
             Console.WriteLine(spitFireMK2.Name);
-            Console.WriteLine(Compute.damageOutput(spitFireMK2.Altitude, 1, (byte)spitFireMK2.AmmoType));
+            Console.WriteLine(Compute.damageOutput(spitFireMK2.Altitude, 3, (byte)spitFireMK2.AmmoType));
         }
 
         private void Form_Game_Load(object sender, EventArgs e)
