@@ -10,7 +10,7 @@ namespace Calculate
             int ammoTypeModifier = 1;
 
             if (ammoType == 0) { ammoTypeModifier = 1; }
-            else if (ammoType == 0) { ammoTypeModifier = 2; }
+            else if (ammoType == 1) { ammoTypeModifier = 2; }
 
             if (ownAltitude > targetAltitude || ownAltitude < targetAltitude)
             {

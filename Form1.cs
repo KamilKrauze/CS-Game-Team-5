@@ -25,7 +25,7 @@ namespace CS_GridGame_Team5
             AmmoType ammo = AmmoType.light;
             Plane spitFireMK2 = new Plane(ref name, ref health, ref type, ref altitude, ref ammo); // Use this for every instance of the plane being used on board
             Console.WriteLine(spitFireMK2.Name);
-            Console.WriteLine(Compute.damageOutput(spitFireMK2.Altitude, 3, (byte)spitFireMK2.AmmoType));
+            Console.WriteLine(Compute.damageOutput(spitFireMK2.Altitude, 3, (byte)spitFireMK2.AmmoType)); // Damage output dll test - Convert to byte type.
         }
 
         private void Form_Game_Load(object sender, EventArgs e)
