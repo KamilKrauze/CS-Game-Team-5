@@ -56,6 +56,9 @@
     <Reference Include="CalculateDamageDLL">
       <HintPath>DLL Workspace\CalculateDamageDLL\bin\Debug\CalculateDamageDLL.dll</HintPath>
     </Reference>
+    <Reference Include="SFX_DLL">
+      <HintPath>DLL Workspace\SFX_DLL\bin\Debug\SFX_DLL.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
