@@ -4,17 +4,60 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS-GridGame-Team5", "CS-GridGame-Team5.csproj", "{2AE8B4D0-B594-4085-83E8-2EFCB8692672}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5} = {8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculateDamageDLL", "DLL Workspace\CalculateDamageDLL\CalculateDamageDLL.csproj", "{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFX_DLL", "DLL Workspace\SFX_DLL\SFX_DLL.csproj", "{B8D1C5BC-73AF-4202-BA59-64599CDE1309}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{2AE8B4D0-B594-4085-83E8-2EFCB8692672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2AE8B4D0-B594-4085-83E8-2EFCB8692672}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AE8B4D0-B594-4085-83E8-2EFCB8692672}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2AE8B4D0-B594-4085-83E8-2EFCB8692672}.Debug|x64.Build.0 = Debug|Any CPU
+		{2AE8B4D0-B594-4085-83E8-2EFCB8692672}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2AE8B4D0-B594-4085-83E8-2EFCB8692672}.Debug|x86.Build.0 = Debug|Any CPU
 		{2AE8B4D0-B594-4085-83E8-2EFCB8692672}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AE8B4D0-B594-4085-83E8-2EFCB8692672}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AE8B4D0-B594-4085-83E8-2EFCB8692672}.Release|x64.ActiveCfg = Release|Any CPU
+		{2AE8B4D0-B594-4085-83E8-2EFCB8692672}.Release|x64.Build.0 = Release|Any CPU
+		{2AE8B4D0-B594-4085-83E8-2EFCB8692672}.Release|x86.ActiveCfg = Release|Any CPU
+		{2AE8B4D0-B594-4085-83E8-2EFCB8692672}.Release|x86.Build.0 = Release|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Debug|x64.Build.0 = Debug|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Debug|x86.Build.0 = Debug|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Release|x64.ActiveCfg = Release|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Release|x64.Build.0 = Release|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Release|x86.ActiveCfg = Release|Any CPU
+		{8EA9131E-3667-4E99-A26E-67BBD1A3ACD5}.Release|x86.Build.0 = Release|Any CPU
+		{B8D1C5BC-73AF-4202-BA59-64599CDE1309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8D1C5BC-73AF-4202-BA59-64599CDE1309}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8D1C5BC-73AF-4202-BA59-64599CDE1309}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B8D1C5BC-73AF-4202-BA59-64599CDE1309}.Debug|x64.Build.0 = Debug|Any CPU
+		{B8D1C5BC-73AF-4202-BA59-64599CDE1309}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B8D1C5BC-73AF-4202-BA59-64599CDE1309}.Debug|x86.Build.0 = Debug|Any CPU
+		{B8D1C5BC-73AF-4202-BA59-64599CDE1309}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8D1C5BC-73AF-4202-BA59-64599CDE1309}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8D1C5BC-73AF-4202-BA59-64599CDE1309}.Release|x64.ActiveCfg = Release|Any CPU
+		{B8D1C5BC-73AF-4202-BA59-64599CDE1309}.Release|x64.Build.0 = Release|Any CPU
+		{B8D1C5BC-73AF-4202-BA59-64599CDE1309}.Release|x86.ActiveCfg = Release|Any CPU
+		{B8D1C5BC-73AF-4202-BA59-64599CDE1309}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
