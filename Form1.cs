@@ -139,7 +139,7 @@ namespace CS_GridGame_Team5
                 */
 
                 //Reads all the lines in file and stores them in string array lines.
-                string[] lines = System.IO.File.ReadAllLines("../../Assets/Text Files/rules.txt");
+                string[] lines = System.IO.File.ReadAllLines(@"..\..\Assets\Text Files\rules.txt");
 
 
 
