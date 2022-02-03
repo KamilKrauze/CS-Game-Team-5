@@ -21,7 +21,7 @@ namespace CS_GridGame_Team5
             this.ammoType = AmmoType.Light;
         }
 
-        public Plane(ref String name, ref uint health, ref uint moves, ref PlaneType type, ref int altitude, ref AmmoType ammoType)
+        public Plane(in String name, in uint health, in uint moves, in PlaneType type, in int altitude, in AmmoType ammoType)
         {
             this.name = name;
             this.health = health;
