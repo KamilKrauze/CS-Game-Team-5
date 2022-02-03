@@ -33,6 +33,9 @@ namespace CS_GridGame_Team5
             Console.WriteLine(this.name + ", " + this.health + ", " + this.moves + ", "  + this.type + ", " + this.altitude + ", " + this.ammoType); // Debug data
         }
 
+        // Short hand method of writing getter and setter functions
+        // Example: plane.Name = "Spitfire MK2" would set the value of the class member
+        // Example: string name = plane.Name would act as a setter
         public string Name { get => name; set => name = value; }
         public uint Health { get => health; set => health = value; }
         public uint Moves { get => moves; set => moves = value; }
