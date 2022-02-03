@@ -55,13 +55,9 @@ namespace CS_GridGame_Team5
                 }
             }
 
-
-
             //AutoSizes container & rulesPanel
             container.AutoSize = true;
             rulesPanel.AutoSize = true;
-
-
 
             //Docks container to the Bottom
             container.Dock = DockStyle.Fill;
@@ -113,15 +109,9 @@ namespace CS_GridGame_Team5
          */
         private void onRulesClick(object sender, EventArgs e)
         {
-
-
-
-
             //Tries opening the file
             try
-
             {
-
                 //Creates textBox
                 RichTextBox textBox = new RichTextBox();
 
@@ -141,8 +131,6 @@ namespace CS_GridGame_Team5
                 //Reads all the lines in file and stores them in string array lines.
                 string[] lines = System.IO.File.ReadAllLines(@"..\..\Assets\Text Files\rules.txt");
 
-
-
                 //For every line in string array lines
                 foreach (string line in lines)
                 {
@@ -152,9 +140,6 @@ namespace CS_GridGame_Team5
 
                     //writes line to text box.
                     textBox.AppendText(line);
-
-
-
                 }
 
                 //Adapted code ends here.
@@ -163,19 +148,13 @@ namespace CS_GridGame_Team5
 
                 //Toggles visibility of rulesPanel
                 rulesPanel.Visible = !rulesPanel.Visible;
-
-
             }
 
             catch (Exception)
             {
-
                 //Shows error if file is missing/any other error.
                 MessageBox.Show("Error when opening rules file. Is it no longer located in Assets/TextFiles?", "Error!");
             }
-
-
-
         }
 
         private void Form_Game_Load(object sender, EventArgs e)
