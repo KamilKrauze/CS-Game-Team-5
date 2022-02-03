@@ -1,0 +1,4 @@
+This is test data because I am too lazy and uncaffeinated to write the rules out.
+This also stops me from having to have a really long variable to contain these rules.
+And generally makes things neater which is more then I can say for 90% of my code.
+Remember to edit this before the final submission.
