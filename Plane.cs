@@ -14,9 +14,9 @@ namespace CS_GridGame_Team5
         {
             this.name = "";
             this.health = 0;
-            this.type = PlaneType.fighter;
+            this.type = PlaneType.Fighter;
             this.altitude = 1;
-            this.ammoType = AmmoType.light;
+            this.ammoType = AmmoType.Light;
         }
 
         public Plane(ref String name, ref uint health, ref PlaneType type, ref int altitude, ref AmmoType ammoType)

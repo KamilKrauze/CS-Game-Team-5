@@ -21,9 +21,9 @@ namespace CS_GridGame_Team5
             InitializeComponent();
             String name = "Spitfire MK2";
             uint health = 3;
-            PlaneType type = PlaneType.fighter;
+            PlaneType type = PlaneType.Fighter;
             int altitude = 3;
-            AmmoType ammo = AmmoType.light;
+            AmmoType ammo = AmmoType.Light;
             Plane spitFireMK2 = new Plane(ref name, ref health, ref type, ref altitude, ref ammo); // Use this for every instance of the plane being used on board
             Console.WriteLine(spitFireMK2.Name);
             Console.WriteLine(Compute.damageOutput(spitFireMK2.Altitude, 3, (byte)spitFireMK2.AmmoType)); // Damage output dll test - Convert to byte type.
