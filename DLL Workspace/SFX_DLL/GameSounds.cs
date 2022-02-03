@@ -11,7 +11,7 @@ namespace GameSound
         public static void playSound(string soundFileName)
         {
             // Play sound from filepath - https://stackoverflow.com/questions/3502311/how-to-play-a-sound-in-c-net - 02/02/2022
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"..\..\..\Assets\SFX\Plane\"+soundFileName);
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"..\..\Assets\SFX\Plane\"+soundFileName);
             player.Play();
         }
     }
