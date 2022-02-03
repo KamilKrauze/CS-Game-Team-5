@@ -19,12 +19,12 @@ namespace CS_GridGame_Team5
         public Form_Game()
         {
             InitializeComponent();
-            String name = "Spitfire MK2";
+            string name = "Spitfire MK2";
             uint health = 3;
             PlaneType type = PlaneType.Fighter;
             int altitude = 3;
             AmmoType ammo = AmmoType.Light;
-            Plane spitFireMK2 = new Plane(ref name, ref health, ref type, ref altitude, ref ammo); // Use this for every instance of the plane being used on board
+            Plane spitFireMK2 = new Plane(name, 3, health, type, altitude, ammo); // Use this for every instance of the plane being used on board
             Console.WriteLine(spitFireMK2.Name);
             Console.WriteLine(Compute.damageOutput(spitFireMK2.Altitude, 3, (byte)spitFireMK2.AmmoType)); // Damage output dll test - Convert to byte type.
             SFX.playSound("FlyBy.wav"); // Just write in the sound file name with extension. - MUST BE WAV FORMAT
