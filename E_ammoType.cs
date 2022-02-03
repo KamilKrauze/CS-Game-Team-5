@@ -2,6 +2,6 @@
 
 enum AmmoType
 {   
-    light,
-    heavy,
+    Light,
+    Heavy,
 }

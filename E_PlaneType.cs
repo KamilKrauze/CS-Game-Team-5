@@ -2,7 +2,6 @@
 
 enum PlaneType
 {
-    fighter,
-    bomber,
-    transport,
+    Fighter,
+    Bomber,
 }
