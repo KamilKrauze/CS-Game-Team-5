@@ -16,10 +16,7 @@ namespace CS_GridGame_Team5
 {
     public partial class Form_Game : Form
     {
-        //InitializeComponent();
-
-
-        Tile[,] tile = new Tile[5,5]; //2D array to hold tile.
+        Tile[,] tiles = new Tile[5,5]; //2D array to hold tile.
         Panel container = new Panel(); //container panel for tiles
         Panel rulesPanel = new Panel(); //container panel for game rules
         Panel displaytile = new Panel(); //container panel for tile data.
@@ -30,34 +27,22 @@ namespace CS_GridGame_Team5
 
             int i = 50;
 
-
-            for (int x = 0; x < tile.GetLength(1); x++)
+            for (int x = 0; x < tiles.GetLength(1); x++)
             {
-                for (int y = 0; y < tile.GetLength(1); y++)
+                for (int y = 0; y < tiles.GetLength(1); y++)
                 {
-                    container = new Panel();
-                    container.SetBounds(x + (x * i), y + (y * i), i, i); // Dynamic bounds scaling based on the 'i' factor
+                    tiles[x, y] = new Tile();
+                    tiles[x, y].panel.SetBounds(x + (x * i), y + (y * i), i, i);
+                    tiles[x, y].panel.BorderStyle = BorderStyle.None;
+                    tiles[x, y].panel.BackColor = Color.Transparent;
+                    tiles[x, y].panel.BackgroundImage = Properties.Resources.SpitfireMK2;
+                    tiles[x, y].panel.BackgroundImageLayout = ImageLayout.Stretch;
 
-                    container.BorderStyle = BorderStyle.None; // Disable border
-
-                    container.BackColor = Color.Transparent; // Helps with the transparency of the image
-
-
-                    container.BackgroundImage = Properties.Resources.SpitfireMK2; // The image name accessed from the resources section
-                    container.BackgroundImageLayout = ImageLayout.Stretch; // Proper image scaling proportional to the object size.
-
-                    //Sets the attributes of tile at [x,y]
-                    tile[x, y].Altitude = 3;
-                    tile[x,y].AmmoType = AmmoType.Light;
-                    tile[x,y].Health = 3;
-                    tile[x,y].Name = "Spitfire MK2";
-                    tile[x,y].Type = ObjectType.Fighter;
-                    tile[x,y].Moves = 3;
-
-                    //container.Controls.Add(tile[x,y]); this doesn't work, throws a unable to convert error.
-                    
+                    container.Controls.Add(tiles[x, y].panel);
                 }
             }
+
+            this.Controls.Add(container);
 
             MenuStrip();
         }
@@ -146,7 +131,6 @@ namespace CS_GridGame_Team5
 
 
             //adds container to form
-            this.Controls.Add(container);
             this.Controls.Add(rulesPanel);
 
             //Creates new menu strip
