@@ -125,5 +125,11 @@
   <ItemGroup>
     <None Include="Assets\Textures\SpitfireMK2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Textures\MeBF109_512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Textures\SpitfireMK2_512.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

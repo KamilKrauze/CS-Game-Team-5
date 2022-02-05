@@ -25,6 +25,12 @@ namespace CS_GridGame_Team5
         {
             InitializeComponent();
 
+            container.AutoSize = true;
+            
+            //Docks container to the Bottom
+            container.Dock = DockStyle.Fill;
+
+
             int i = 50;
 
             for (int x = 0; x < tiles.GetLength(1); x++)
@@ -35,14 +41,13 @@ namespace CS_GridGame_Team5
                     tiles[x, y].panel.SetBounds(x + (x * i), y + (y * i), i, i);
                     tiles[x, y].panel.BorderStyle = BorderStyle.None;
                     tiles[x, y].panel.BackColor = Color.Transparent;
-                    tiles[x, y].panel.BackgroundImage = Properties.Resources.SpitfireMK2;
+                    tiles[x, y].panel.BackgroundImage = Properties.Resources.SpitfireMK2_512;
                     tiles[x, y].panel.BackgroundImageLayout = ImageLayout.Stretch;
 
                     container.Controls.Add(tiles[x, y].panel);
                 }
             }
             this.Controls.Add(container);
-
             MenuStrip();
         }
 
@@ -51,12 +56,8 @@ namespace CS_GridGame_Team5
          * */
         private void MenuStrip()
         {
-            //AutoSizes container & rulesPanel
-            container.AutoSize = true;
+            //AutoSizes rulesPanel
             rulesPanel.AutoSize = true;
-
-            //Docks container to the Bottom
-            container.Dock = DockStyle.Fill;
 
             //Docks rulesPanel to the right
             rulesPanel.Dock = DockStyle.Right;
