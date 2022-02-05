@@ -1,7 +1,9 @@
 ﻿using System;
 
-enum PlaneType
+public enum ObjectType
 {
+    Empty,
+    AA,
     Fighter,
     Bomber,
 }

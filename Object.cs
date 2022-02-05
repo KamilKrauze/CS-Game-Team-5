@@ -2,26 +2,27 @@
 
 namespace CS_GridGame_Team5
 {
-    class Plane
+    public class Object
     {
         private String name;
         private uint health;
         private uint moves;
-        private PlaneType type;
+        private ObjectType type;
         private int altitude;
         private AmmoType ammoType;
 
-        public Plane()
+        public Object()
         {
             this.name = "";
             this.health = 0;
             this.moves = 0;
-            this.type = PlaneType.Fighter;
+            this.type = ObjectType.Fighter;
             this.altitude = 1;
             this.ammoType = AmmoType.Light;
         }
 
-        public Plane(in string name, in uint health, in uint moves, in PlaneType type, in int altitude, in AmmoType ammoType)
+        // 'in' keyword. Makes parameter passed in read only - https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/in-parameter-modifier - 05/02/2022
+        public Object(in string name, in uint health, in uint moves, in ObjectType type, in int altitude, in AmmoType ammoType)
         {
             this.name = name;
             this.health = health;
@@ -40,7 +41,7 @@ namespace CS_GridGame_Team5
         public uint Health { get => health; set => health = value; }
         public uint Moves { get => moves; set => moves = value; }
         public int Altitude { get => altitude; set => altitude = value; }
-        internal PlaneType Type { get => type; set => type = value; }
+        internal ObjectType Type { get => type; set => type = value; }
         internal AmmoType AmmoType { get => ammoType; set => ammoType = value; }
     }
 }

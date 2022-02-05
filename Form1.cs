@@ -19,7 +19,7 @@ namespace CS_GridGame_Team5
         //InitializeComponent();
 
 
-        Plane[,] plane = new Plane[5,5]; //2D array to hold plane.
+        Object[,] plane = new Object[5,5]; //2D array to hold plane.
         Panel container = new Panel(); //container panel for planes
         Panel rulesPanel = new Panel(); //container panel for game rules
         Panel displayPlane = new Panel(); //container panel for plane data.
@@ -51,7 +51,7 @@ namespace CS_GridGame_Team5
                     plane[x,y].AmmoType = AmmoType.Light;
                     plane[x,y].Health = 3;
                     plane[x,y].Name = "Spitfire MK2";
-                    plane[x,y].Type = PlaneType.Fighter;
+                    plane[x,y].Type = ObjectType.Fighter;
                     plane[x,y].Moves = 3;
 
                     //container.Controls.Add(plane[x,y]); this doesn't work, throws a unable to convert error.
