@@ -41,7 +41,6 @@ namespace CS_GridGame_Team5
                     container.Controls.Add(tiles[x, y].panel);
                 }
             }
-
             this.Controls.Add(container);
 
             MenuStrip();
@@ -110,7 +109,6 @@ namespace CS_GridGame_Team5
          */
         private void onRulesClick(object sender, EventArgs e)
         {
-
             //Tries opening the file
             try
             {
