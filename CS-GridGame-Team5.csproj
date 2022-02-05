@@ -73,7 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="E_AmmoType.cs" />
-    <Compile Include="E_PlaneType.cs" />
+    <Compile Include="E_ObjectType.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +130,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Textures\SpitfireMK2_512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Textures\NightClouds-2048x2048.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -16,7 +16,7 @@ namespace CS_GridGame_Team5
 {
     public partial class Form_Game : Form
     {
-        Tile[,] tiles = new Tile[5,5]; //2D array to hold tile.
+        Tile[,] tiles = new Tile[15,15]; //2D array to hold tile.
         Panel container = new Panel(); //container panel for tiles
         Panel rulesPanel = new Panel(); //container panel for game rules
         Panel displaytile = new Panel(); //container panel for tile data.
@@ -25,8 +25,10 @@ namespace CS_GridGame_Team5
         {
             InitializeComponent();
 
-            container.AutoSize = true;
-            
+            this.BackgroundImage = Properties.Resources.NightClouds_2048x2048;
+            this.BackgroundImageLayout = ImageLayout.Stretch;
+            container.BackColor = Color.Transparent;
+            container.AutoSize = true;            
             //Docks container to the Bottom
             container.Dock = DockStyle.Fill;
 

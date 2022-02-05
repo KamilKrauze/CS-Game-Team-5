@@ -124,6 +124,9 @@
   <data name="MeBF109_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Textures\MeBF109_512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="NightClouds_2048x2048" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\NightClouds-2048x2048.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="SpitfireMK2_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Textures\SpitfireMK2_512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
