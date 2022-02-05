@@ -17,19 +17,12 @@ namespace CS_GridGame_Team5
     public partial class Form_Game : Form
     {
         //InitializeComponent();
-        //string name = "Spitfire MK2";
-        //uint health = 3;
-        //PlaneType type = PlaneType.Fighter;
-        //int altitude = 3;
-        //AmmoType ammo = AmmoType.Light;
-        //Plane spitFireMK2 = new Plane(name, 3, health, type, altitude, ammo); // Use this for every instance of the plane being used on board
-        //Console.WriteLine(spitFireMK2.Name);
-        //Console.WriteLine(Compute.damageOutput(spitFireMK2.Altitude, 3, (byte)spitFireMK2.AmmoType)); // Damage output dll test - Convert to byte type.
-        //SFX.playSound("FlyBy.wav"); // Just write in the sound file name with extension. - MUST BE WAV FORMAT
 
-        Panel[,] plane = new Panel[5, 5];
+
+        Plane[,] plane = new Plane[5,5]; //2D array to hold plane.
         Panel container = new Panel(); //container panel for planes
         Panel rulesPanel = new Panel(); //container panel for game rules
+        Panel displayPlane = new Panel(); //container panel for plane data.
 
         public Form_Game()
         {
@@ -37,31 +30,40 @@ namespace CS_GridGame_Team5
 
             int i = 50;
 
+
             for (int x = 0; x < plane.GetLength(1); x++)
             {
                 for (int y = 0; y < plane.GetLength(1); y++)
                 {
-                    plane[x, y] = new Panel();
-                    plane[x, y].SetBounds(x + (x * i), y + (y * i), i, i); // Dynamic bounds scaling based on the 'i' factor
+                    container = new Panel();
+                    container.SetBounds(x + (x * i), y + (y * i), i, i); // Dynamic bounds scaling based on the 'i' factor
 
-                    plane[x, y].BorderStyle = BorderStyle.None; // Disable border
+                    container.BorderStyle = BorderStyle.None; // Disable border
 
-                    plane[x, y].BackColor = Color.Transparent; // Helps with the transparency of the image
+                    container.BackColor = Color.Transparent; // Helps with the transparency of the image
 
-                    plane[x, y].BackgroundImage = Properties.Resources.SpitfireMK2; // The image name accessed from the resources section
-                    plane[x, y].BackgroundImageLayout = ImageLayout.Stretch; // Proper image scaling proportional to the object size.
 
-                    container.Controls.Add(plane[x, y]);
+                    container.BackgroundImage = Properties.Resources.SpitfireMK2; // The image name accessed from the resources section
+                    container.BackgroundImageLayout = ImageLayout.Stretch; // Proper image scaling proportional to the object size.
+
+        
+     s
+                    //Sets the attributes of plane at [x,y]
+                    plane[x,y].Altitude = 3;
+                    plane[x,y].AmmoType = AmmoType.Light;
+                    plane[x,y].Health = 3;
+                    plane[x,y].Name = "Spitfire MK2";
+                    plane[x,y].Type = PlaneType.Fighter;
+                    plane[x,y].Moves = 3;
+
+                    //container.Controls.Add(plane[x,y]); this doesn't work, throws a unable to convert error.
+                    
                 }
             }
-
-
 
             //AutoSizes container & rulesPanel
             container.AutoSize = true;
             rulesPanel.AutoSize = true;
-
-
 
             //Docks container to the Bottom
             container.Dock = DockStyle.Fill;
@@ -69,6 +71,11 @@ namespace CS_GridGame_Team5
             //Docks rulesPanel to the right
             rulesPanel.Dock = DockStyle.Right;
             rulesPanel.Visible = false;
+
+            //Docks planePanel to the right;
+            displayPlane.Dock = DockStyle.Right;
+            displayPlane.Visible = false;
+
 
             //adds container to form
             this.Controls.Add(container);
@@ -113,9 +120,6 @@ namespace CS_GridGame_Team5
          */
         private void onRulesClick(object sender, EventArgs e)
         {
-
-
-
 
             //Tries opening the file
             try
@@ -177,6 +181,12 @@ namespace CS_GridGame_Team5
 
 
         }
+
+        //private void displayPlaneData()
+        //{
+
+
+        //}
 
         private void Form_Game_Load(object sender, EventArgs e)
         {
