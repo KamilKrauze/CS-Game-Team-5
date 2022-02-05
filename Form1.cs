@@ -25,6 +25,8 @@ namespace CS_GridGame_Team5
         {
             InitializeComponent();
 
+            resizeForm();
+
             this.BackgroundImage = Properties.Resources.NightClouds_2048x2048;
             this.BackgroundImageLayout = ImageLayout.Stretch;
             container.BackColor = Color.Transparent;
@@ -163,6 +165,12 @@ namespace CS_GridGame_Team5
         private void Form_Game_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void resizeForm()
+        {
+            this.Height = 825;
+            this.Width = 1200;
         }
     }
 }
