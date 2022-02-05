@@ -16,20 +16,10 @@ namespace CS_GridGame_Team5
 {
     public partial class Form_Game : Form
     {
-        //InitializeComponent();
-        //string name = "Spitfire MK2";
-        //uint health = 3;
-        //PlaneType type = PlaneType.Fighter;
-        //int altitude = 3;
-        //AmmoType ammo = AmmoType.Light;
-        //Plane spitFireMK2 = new Plane(name, 3, health, type, altitude, ammo); // Use this for every instance of the plane being used on board
-        //Console.WriteLine(spitFireMK2.Name);
-        //Console.WriteLine(Compute.damageOutput(spitFireMK2.Altitude, 3, (byte)spitFireMK2.AmmoType)); // Damage output dll test - Convert to byte type.
-        //SFX.playSound("FlyBy.wav"); // Just write in the sound file name with extension. - MUST BE WAV FORMAT
-
-        Panel[,] plane = new Panel[5, 5];
-        Panel container = new Panel(); //container panel for planes
+        Tile[,] tiles = new Tile[5,5]; //2D array to hold tile.
+        Panel container = new Panel(); //container panel for tiles
         Panel rulesPanel = new Panel(); //container panel for game rules
+        Panel displaytile = new Panel(); //container panel for tile data.
 
         public Form_Game()
         {
@@ -37,24 +27,30 @@ namespace CS_GridGame_Team5
 
             int i = 50;
 
-            for (int x = 0; x < plane.GetLength(1); x++)
+            for (int x = 0; x < tiles.GetLength(1); x++)
             {
-                for (int y = 0; y < plane.GetLength(1); y++)
+                for (int y = 0; y < tiles.GetLength(1); y++)
                 {
-                    plane[x, y] = new Panel();
-                    plane[x, y].SetBounds(x + (x * i), y + (y * i), i, i); // Dynamic bounds scaling based on the 'i' factor
+                    tiles[x, y] = new Tile();
+                    tiles[x, y].panel.SetBounds(x + (x * i), y + (y * i), i, i);
+                    tiles[x, y].panel.BorderStyle = BorderStyle.None;
+                    tiles[x, y].panel.BackColor = Color.Transparent;
+                    tiles[x, y].panel.BackgroundImage = Properties.Resources.SpitfireMK2;
+                    tiles[x, y].panel.BackgroundImageLayout = ImageLayout.Stretch;
 
-                    plane[x, y].BorderStyle = BorderStyle.None; // Disable border
-
-                    plane[x, y].BackColor = Color.Transparent; // Helps with the transparency of the image
-
-                    plane[x, y].BackgroundImage = Properties.Resources.SpitfireMK2; // The image name accessed from the resources section
-                    plane[x, y].BackgroundImageLayout = ImageLayout.Stretch; // Proper image scaling proportional to the object size.
-
-                    container.Controls.Add(plane[x, y]);
+                    container.Controls.Add(tiles[x, y].panel);
                 }
             }
+            this.Controls.Add(container);
 
+            MenuStrip();
+        }
+
+        /**
+         *All of then menu strip code packaged in one spot
+         * */
+        private void MenuStrip()
+        {
             //AutoSizes container & rulesPanel
             container.AutoSize = true;
             rulesPanel.AutoSize = true;
@@ -66,8 +62,12 @@ namespace CS_GridGame_Team5
             rulesPanel.Dock = DockStyle.Right;
             rulesPanel.Visible = false;
 
+            //Docks tilePanel to the right;
+            displaytile.Dock = DockStyle.Right;
+            displaytile.Visible = false;
+
+
             //adds container to form
-            this.Controls.Add(container);
             this.Controls.Add(rulesPanel);
 
             //Creates new menu strip
