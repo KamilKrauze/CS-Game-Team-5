@@ -46,9 +46,6 @@ namespace CS_GridGame_Team5
                     container.BackgroundImage = Properties.Resources.SpitfireMK2; // The image name accessed from the resources section
                     container.BackgroundImageLayout = ImageLayout.Stretch; // Proper image scaling proportional to the object size.
 
-
-        
-     s
                     //Sets the attributes of plane at [x,y]
                     plane[x,y].Altitude = 3;
                     plane[x,y].AmmoType = AmmoType.Light;
