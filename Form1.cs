@@ -46,6 +46,7 @@ namespace CS_GridGame_Team5
                     container.BackgroundImage = Properties.Resources.SpitfireMK2; // The image name accessed from the resources section
                     container.BackgroundImageLayout = ImageLayout.Stretch; // Proper image scaling proportional to the object size.
 
+
         
      s
                     //Sets the attributes of plane at [x,y]
@@ -123,9 +124,7 @@ namespace CS_GridGame_Team5
 
             //Tries opening the file
             try
-
             {
-
                 //Creates textBox
                 RichTextBox textBox = new RichTextBox();
 
@@ -143,9 +142,7 @@ namespace CS_GridGame_Team5
                 */
 
                 //Reads all the lines in file and stores them in string array lines.
-                string[] lines = System.IO.File.ReadAllLines("../../Assets/Text Files/rules.txt");
-
-
+                string[] lines = System.IO.File.ReadAllLines(@"..\..\Assets\Text Files\rules.txt");
 
                 //For every line in string array lines
                 foreach (string line in lines)
@@ -156,9 +153,6 @@ namespace CS_GridGame_Team5
 
                     //writes line to text box.
                     textBox.AppendText(line);
-
-
-
                 }
 
                 //Adapted code ends here.
@@ -167,19 +161,13 @@ namespace CS_GridGame_Team5
 
                 //Toggles visibility of rulesPanel
                 rulesPanel.Visible = !rulesPanel.Visible;
-
-
             }
 
             catch (Exception)
             {
-
                 //Shows error if file is missing/any other error.
                 MessageBox.Show("Error when opening rules file. Is it no longer located in Assets/TextFiles?", "Error!");
             }
-
-
-
         }
 
         //private void displayPlaneData()
