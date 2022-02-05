@@ -19,10 +19,10 @@ namespace CS_GridGame_Team5
         //InitializeComponent();
 
 
-        Object[,] plane = new Object[5,5]; //2D array to hold plane.
-        Panel container = new Panel(); //container panel for planes
+        Tile[,] tile = new Tile[5,5]; //2D array to hold tile.
+        Panel container = new Panel(); //container panel for tiles
         Panel rulesPanel = new Panel(); //container panel for game rules
-        Panel displayPlane = new Panel(); //container panel for plane data.
+        Panel displaytile = new Panel(); //container panel for tile data.
 
         public Form_Game()
         {
@@ -31,9 +31,9 @@ namespace CS_GridGame_Team5
             int i = 50;
 
 
-            for (int x = 0; x < plane.GetLength(1); x++)
+            for (int x = 0; x < tile.GetLength(1); x++)
             {
-                for (int y = 0; y < plane.GetLength(1); y++)
+                for (int y = 0; y < tile.GetLength(1); y++)
                 {
                     container = new Panel();
                     container.SetBounds(x + (x * i), y + (y * i), i, i); // Dynamic bounds scaling based on the 'i' factor
@@ -46,60 +46,20 @@ namespace CS_GridGame_Team5
                     container.BackgroundImage = Properties.Resources.SpitfireMK2; // The image name accessed from the resources section
                     container.BackgroundImageLayout = ImageLayout.Stretch; // Proper image scaling proportional to the object size.
 
-                    //Sets the attributes of plane at [x,y]
-                    plane[x,y].Altitude = 3;
-                    plane[x,y].AmmoType = AmmoType.Light;
-                    plane[x,y].Health = 3;
-                    plane[x,y].Name = "Spitfire MK2";
-                    plane[x,y].Type = ObjectType.Fighter;
-                    plane[x,y].Moves = 3;
+                    //Sets the attributes of tile at [x,y]
+                    tile[x, y].Altitude = 3;
+                    tile[x,y].AmmoType = AmmoType.Light;
+                    tile[x,y].Health = 3;
+                    tile[x,y].Name = "Spitfire MK2";
+                    tile[x,y].Type = ObjectType.Fighter;
+                    tile[x,y].Moves = 3;
 
-                    //container.Controls.Add(plane[x,y]); this doesn't work, throws a unable to convert error.
+                    //container.Controls.Add(tile[x,y]); this doesn't work, throws a unable to convert error.
                     
                 }
             }
 
-            //AutoSizes container & rulesPanel
-            container.AutoSize = true;
-            rulesPanel.AutoSize = true;
-
-            //Docks container to the Bottom
-            container.Dock = DockStyle.Fill;
-
-            //Docks rulesPanel to the right
-            rulesPanel.Dock = DockStyle.Right;
-            rulesPanel.Visible = false;
-
-            //Docks planePanel to the right;
-            displayPlane.Dock = DockStyle.Right;
-            displayPlane.Visible = false;
-
-
-            //adds container to form
-            this.Controls.Add(container);
-            this.Controls.Add(rulesPanel);
-
-            //Creates new menu strip
-            MenuStrip mainMenu = new MenuStrip();
-
-            //Creates new toolStripMenuItems
-            ToolStripMenuItem about = new ToolStripMenuItem("About");
-            ToolStripMenuItem rules = new ToolStripMenuItem("Game Rules");
-
-            //Adds onClick event listener to about menu item
-            about.Click += new System.EventHandler(this.onAboutClick);
-
-            //Adds onClick event listener to rules menu item
-            rules.Click += new System.EventHandler(this.onRulesClick);
-
-            //Adds them to mainMenu
-            mainMenu.Items.Add(about);
-            mainMenu.Items.Add(rules);
-
-            mainMenu.Dock = DockStyle.Top;
-
-            //Adds mainMenu to form
-            this.Controls.Add(mainMenu);
+            MenuStrip();
         }
 
         /**
@@ -167,11 +127,50 @@ namespace CS_GridGame_Team5
             }
         }
 
-        //private void displayPlaneData()
-        //{
+        private void MenuStrip()
+        {
+            //AutoSizes container & rulesPanel
+            container.AutoSize = true;
+            rulesPanel.AutoSize = true;
+
+            //Docks container to the Bottom
+            container.Dock = DockStyle.Fill;
+
+            //Docks rulesPanel to the right
+            rulesPanel.Dock = DockStyle.Right;
+            rulesPanel.Visible = false;
+
+            //Docks tilePanel to the right;
+            displaytile.Dock = DockStyle.Right;
+            displaytile.Visible = false;
 
 
-        //}
+            //adds container to form
+            this.Controls.Add(container);
+            this.Controls.Add(rulesPanel);
+
+            //Creates new menu strip
+            MenuStrip mainMenu = new MenuStrip();
+
+            //Creates new toolStripMenuItems
+            ToolStripMenuItem about = new ToolStripMenuItem("About");
+            ToolStripMenuItem rules = new ToolStripMenuItem("Game Rules");
+
+            //Adds onClick event listener to about menu item
+            about.Click += new System.EventHandler(this.onAboutClick);
+
+            //Adds onClick event listener to rules menu item
+            rules.Click += new System.EventHandler(this.onRulesClick);
+
+            //Adds them to mainMenu
+            mainMenu.Items.Add(about);
+            mainMenu.Items.Add(rules);
+
+            mainMenu.Dock = DockStyle.Top;
+
+            //Adds mainMenu to form
+            this.Controls.Add(mainMenu);
+        }
 
         private void Form_Game_Load(object sender, EventArgs e)
         {
