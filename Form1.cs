@@ -48,6 +48,53 @@ namespace CS_GridGame_Team5
         }
 
         /**
+         *All of then menu strip code packaged in one spot
+         * */
+        private void MenuStrip()
+        {
+            //AutoSizes container & rulesPanel
+            container.AutoSize = true;
+            rulesPanel.AutoSize = true;
+
+            //Docks container to the Bottom
+            container.Dock = DockStyle.Fill;
+
+            //Docks rulesPanel to the right
+            rulesPanel.Dock = DockStyle.Right;
+            rulesPanel.Visible = false;
+
+            //Docks tilePanel to the right;
+            displaytile.Dock = DockStyle.Right;
+            displaytile.Visible = false;
+
+
+            //adds container to form
+            this.Controls.Add(rulesPanel);
+
+            //Creates new menu strip
+            MenuStrip mainMenu = new MenuStrip();
+
+            //Creates new toolStripMenuItems
+            ToolStripMenuItem about = new ToolStripMenuItem("About");
+            ToolStripMenuItem rules = new ToolStripMenuItem("Game Rules");
+
+            //Adds onClick event listener to about menu item
+            about.Click += new System.EventHandler(this.onAboutClick);
+
+            //Adds onClick event listener to rules menu item
+            rules.Click += new System.EventHandler(this.onRulesClick);
+
+            //Adds them to mainMenu
+            mainMenu.Items.Add(about);
+            mainMenu.Items.Add(rules);
+
+            mainMenu.Dock = DockStyle.Top;
+
+            //Adds mainMenu to form
+            this.Controls.Add(mainMenu);
+        }
+
+        /**
          * EventHandler for about menu item, shows a message box on click.
          * */
         private void onAboutClick(object sender, EventArgs e)
@@ -110,50 +157,6 @@ namespace CS_GridGame_Team5
                 //Shows error if file is missing/any other error.
                 MessageBox.Show("Error when opening rules file. Is it no longer located in Assets/TextFiles?", "Error!");
             }
-        }
-
-        private void MenuStrip()
-        {
-            //AutoSizes container & rulesPanel
-            container.AutoSize = true;
-            rulesPanel.AutoSize = true;
-
-            //Docks container to the Bottom
-            container.Dock = DockStyle.Fill;
-
-            //Docks rulesPanel to the right
-            rulesPanel.Dock = DockStyle.Right;
-            rulesPanel.Visible = false;
-
-            //Docks tilePanel to the right;
-            displaytile.Dock = DockStyle.Right;
-            displaytile.Visible = false;
-
-
-            //adds container to form
-            this.Controls.Add(rulesPanel);
-
-            //Creates new menu strip
-            MenuStrip mainMenu = new MenuStrip();
-
-            //Creates new toolStripMenuItems
-            ToolStripMenuItem about = new ToolStripMenuItem("About");
-            ToolStripMenuItem rules = new ToolStripMenuItem("Game Rules");
-
-            //Adds onClick event listener to about menu item
-            about.Click += new System.EventHandler(this.onAboutClick);
-
-            //Adds onClick event listener to rules menu item
-            rules.Click += new System.EventHandler(this.onRulesClick);
-
-            //Adds them to mainMenu
-            mainMenu.Items.Add(about);
-            mainMenu.Items.Add(rules);
-
-            mainMenu.Dock = DockStyle.Top;
-
-            //Adds mainMenu to form
-            this.Controls.Add(mainMenu);
         }
 
         private void Form_Game_Load(object sender, EventArgs e)
