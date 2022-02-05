@@ -25,12 +25,14 @@ namespace CS_GridGame_Team5
         public void SwapTiles(ref Tile tile)
         {
             Tile temp = new Tile(); //  Temporary variable
+            this.Name = "Plane.....";
             temp.Name = this.Name;
             temp.Health = this.Health;
             temp.Moves = this.Moves;
             temp.Altitude = this.Altitude;
             temp.AmmoType = this.AmmoType;
             temp.Type = this.Type;
+            temp.panel.BackgroundImage = this.panel.BackgroundImage;
 
             this.Name = tile.Name;
             this.Health = tile.Health;
@@ -38,6 +40,7 @@ namespace CS_GridGame_Team5
             this.Altitude = tile.Altitude;
             this.AmmoType = tile.AmmoType;
             this.Type = tile.Type;
+            this.panel.BackgroundImage = tile.panel.BackgroundImage;
 
             tile.Name = temp.Name;
             tile.Health = temp.Health;
@@ -45,6 +48,7 @@ namespace CS_GridGame_Team5
             tile.Altitude = temp.Altitude;
             tile.AmmoType = temp.AmmoType;
             tile.Type = temp.Type;
+            tile.panel.BackgroundImage = temp.panel.BackgroundImage;
         }
     }
 
