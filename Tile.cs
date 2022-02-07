@@ -10,9 +10,6 @@ namespace CS_GridGame_Team5
     public class Tile : Object
     {
 
-        private int x; //Position of TIle- x
-        private int y; //Position of Tile- y
-
         public Button btnTile = new Button();
         public Tile() // Empty Tile
         {
@@ -54,9 +51,6 @@ namespace CS_GridGame_Team5
             tile.Type = temp.Type;
             tile.btnTile.BackgroundImage = temp.btnTile.BackgroundImage;
         }
-
-        public int X { get => x; set => x = value; }
-        public int Y { get => y; set => y = value; }
     }
 
 }

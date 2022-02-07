@@ -19,7 +19,7 @@ namespace CS_GridGame_Team5
         Tile[,] tiles = new Tile[15,15]; //2D array to hold tile.
         Panel container = new Panel(); //container panel for tiles
         Panel rulesPanel = new Panel(); //container panel for game rules
-        Panel displaytile = new Panel(); //container panel for tile data.
+        Panel planeInfoPan = new Panel(); //new panel to display plane info 
 
         public Form_Game()
         {
@@ -48,9 +48,7 @@ namespace CS_GridGame_Team5
                     tiles[x, y].btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_512;
                     tiles[x, y].btnTile.BackgroundImageLayout = ImageLayout.Stretch;
                     
-                    //Sets co-ord of tile
-                    tiles[x, y].X = x;
-                    tiles[x, y].Y = y;
+            
 
                     //System.Diagnostics.Debug.WriteLine("X Coord of Tile Is: (" + tiles[x, y].X + ", " + tiles[x, y].Y + ")\n");
                     //System.Diagnostics.Debug.WriteLine();
@@ -78,19 +76,22 @@ namespace CS_GridGame_Team5
         private void MenuStrip()
         {
             //AutoSizes rulesPanel
-            rulesPanel.AutoSize = true;
+            //rulesPanel.AutoSize = true;
 
             //Docks rulesPanel to the right
             rulesPanel.Dock = DockStyle.Right;
             rulesPanel.Visible = false;
-
-            //Docks tilePanel to the right;
-            displaytile.Dock = DockStyle.Right;
-            displaytile.Visible = false;
-
+            rulesPanel.Height = 400;
+            rulesPanel.Width = 200;
+            //Docks planeInfoPanel to the right;
+            planeInfoPan.Dock = DockStyle.Right;
+            planeInfoPan.Visible = false;
+            planeInfoPan.Height = 400;
+            planeInfoPan.Width = 200;
 
             //adds container to form
             this.Controls.Add(rulesPanel);
+            this.Controls.Add(planeInfoPan);
 
             //Creates new menu strip
             MenuStrip mainMenu = new MenuStrip();
@@ -139,26 +140,58 @@ namespace CS_GridGame_Team5
         }
 
         /**
-         * 
+         * Method to show plane info
          */
-        private void planeInfo()
+        private void planeInfo(int x, int y)
         {
 
-            
+            //Creates textBox
+            RichTextBox textBox = new RichTextBox();
 
+            //Settings for textBox.
+            textBox.Multiline = true;
+            textBox.ReadOnly = true;
+            textBox.AutoSize = true;
+            textBox.WordWrap = true;
+
+            textBox.Font = new Font("Calibri", 12);
+
+            textBox.Clear();
+            textBox.AppendText("Plane: " + tiles[x, y].Name);
+            textBox.AppendText("Health: " + tiles[x, y].Health);
+            textBox.AppendText("Plane Type: " + tiles[x, y].Type);
+            textBox.AppendText("Moves: " + tiles[x, y].Moves);
+            textBox.AppendText("AmmoType: " + tiles[x, y].AmmoType);
+            textBox.AppendText("Altitude: " + tiles[x, y].Altitude);
+
+            textBox.SetBounds(400, 0, 600, 850);
+            planeInfoPan.SetBounds(400,  0,  600,  850);
+            planeInfoPan.Controls.Add(textBox);
+
+            planeInfoPan.Visible = true;
+
+
+            //adds container to form
+            this.Controls.Add(planeInfoPan);
+            //tiles[x, y].Altitude;
         }
 
-        /**
-         * A method to manage on tile click
-         */
-        private void onTileClick(object sender, EventArgs e)
+    /**
+     * A method to manage on tile click
+     */
+    private void onTileClick(object sender, EventArgs e)
         {
-            //Location.X
-
             System.Diagnostics.Debug.WriteLine(((Button)sender).Text);
 
-            //System.Diagnostics.Debug.WriteLine("X Coord of Tile Is: " + tiles[1, 1].X);
-            //System.Diagnostics.Debug.WriteLine("Y Coord of Tile Is: ");
+            // Split string by delimeter - https://docs.microsoft.com/en-us/dotnet/api/system.string.split?view=net-6.0 - 07/02/2022
+            string coords = ((Button)sender).Text;
+            string[] subString = coords.Split(',');
+            
+            int x,  y;
+            x = int.Parse(subString[0]);
+            y = int.Parse(subString[1]);
+
+            planeInfo(x,y);
         }
 
         /**
@@ -176,14 +209,11 @@ namespace CS_GridGame_Team5
                 textBox.Multiline = true;
                 textBox.ReadOnly = true;
                 //textBox.AutoSize = true;
-                textBox.Height = 413;
-                textBox.Width = 200;
+            
                 textBox.WordWrap = true;
 
                 textBox.Font = new Font("Calibri", 12);
 
-                rulesPanel.Height = 413;
-                rulesPanel.Width = 200;
 
                 /**
                 * Code adapted from https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/file-system/how-to-read-from-a-text-file
