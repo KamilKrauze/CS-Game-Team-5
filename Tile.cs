@@ -9,7 +9,11 @@ namespace CS_GridGame_Team5
 {
     public class Tile : Object
     {
-        public Panel panel = new Panel();
+
+        private int x; //Position of TIle- x
+        private int y; //Position of Tile- y
+
+        public Button btnTile = new Button();
         public Tile() // Empty Tile
         {
             this.Name = "Empty";
@@ -32,7 +36,7 @@ namespace CS_GridGame_Team5
             temp.Altitude = this.Altitude;
             temp.AmmoType = this.AmmoType;
             temp.Type = this.Type;
-            temp.panel.BackgroundImage = this.panel.BackgroundImage;
+            temp.btnTile.BackgroundImage = this.btnTile.BackgroundImage;
 
             this.Name = tile.Name;
             this.Health = tile.Health;
@@ -40,7 +44,7 @@ namespace CS_GridGame_Team5
             this.Altitude = tile.Altitude;
             this.AmmoType = tile.AmmoType;
             this.Type = tile.Type;
-            this.panel.BackgroundImage = tile.panel.BackgroundImage;
+            this.btnTile.BackgroundImage = tile.btnTile.BackgroundImage;
 
             tile.Name = temp.Name;
             tile.Health = temp.Health;
@@ -48,8 +52,11 @@ namespace CS_GridGame_Team5
             tile.Altitude = temp.Altitude;
             tile.AmmoType = temp.AmmoType;
             tile.Type = temp.Type;
-            tile.panel.BackgroundImage = temp.panel.BackgroundImage;
+            tile.btnTile.BackgroundImage = temp.btnTile.BackgroundImage;
         }
+
+        public int X { get => x; set => x = value; }
+        public int Y { get => y; set => y = value; }
     }
 
 }
