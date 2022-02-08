@@ -27,7 +27,7 @@ namespace CS_GridGame_Team5
 
             resizeForm();
 
-            this.BackgroundImage = Properties.Resources.NightClouds_2048x2048;
+            //this.BackgroundImage = Properties.Resources.NightClouds_2048x2048;
             this.BackgroundImageLayout = ImageLayout.Stretch;
             container.BackColor = Color.Transparent;
             container.AutoSize = true;            
@@ -43,22 +43,14 @@ namespace CS_GridGame_Team5
                 {
                     tiles[x, y] = new Tile();
                     tiles[x, y].btnTile.SetBounds(x + (x * i), y + (y * i), i, i);
-                   // tiles[x, y].btnTile.BorderStyle = BorderStyle.FixedSingle;
+
                     tiles[x, y].btnTile.BackColor = Color.FromArgb(0,0,0,0);
-                    tiles[x, y].btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_512;
+                    //tiles[x, y].btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_512;
                     tiles[x, y].btnTile.BackgroundImageLayout = ImageLayout.Stretch;
                     
-            
-
-                    //System.Diagnostics.Debug.WriteLine("X Coord of Tile Is: (" + tiles[x, y].X + ", " + tiles[x, y].Y + ")\n");
-                    //System.Diagnostics.Debug.WriteLine();
                     tiles[x, y].btnTile.Text = x + "," + y;
                     tiles[x, y].btnTile.ForeColor = Color.White;
 
-
-                    // -- Deprecated --
-                    //Adds onClick event listener to every panel and passes through x & y coord
-                    //tiles[x, y].panel.Click += (sender, e) => onTileClick(sender, e);
                     tiles[x,  y].btnTile.Click += new EventHandler(onTileClick);
 
                     container.AutoScroll = true; 
