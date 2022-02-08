@@ -137,7 +137,9 @@ namespace CS_GridGame_Team5
 
             infoTxtBox.Font = new Font("Calibri", 15);
             infoTxtBox.Clear();
-            infoTxtBox.SetBounds(7, 10, 400, 379);
+            infoTxtBox.SetBounds(7, 5, 400, 745);
+            infoTxtBox.BackColor = Color.DarkSeaGreen;
+            infoTxtBox.ForeColor = Color.White;
 
             infoPanel.SetBounds(765, 27, 415, 758);
             infoPanel.BackColor = Color.FromArgb(100, 55, 98, 72);
@@ -163,18 +165,20 @@ namespace CS_GridGame_Team5
          * A method to manage on tile click
          */
         private void onTileClick(object sender, EventArgs e)
-            {
-                System.Diagnostics.Debug.WriteLine(((Button)sender).Text);
+        {
+            showRules = false;
+            System.Diagnostics.Debug.WriteLine(((Button)sender).Text);
 
-                // Split string by delimeter - https://docs.microsoft.com/en-us/dotnet/api/system.string.split?view=net-6.0 - 07/02/2022
-                string coords = ((Button)sender).Text;
-                string[] subString = coords.Split(',');
+            // Split string by delimeter - https://docs.microsoft.com/en-us/dotnet/api/system.string.split?view=net-6.0 - 07/02/2022
+            string coords = ((Button)sender).Text;
+            string[] subString = coords.Split(',');
             
-                int x,  y;
-                x = int.Parse(subString[0]);
-                y = int.Parse(subString[1]);
+            int x,  y;
+            x = int.Parse(subString[0]);
+            y = int.Parse(subString[1]);
 
-            }
+            infoTxtBox.Text = tiles[x, y].Name + "\n" + tiles[x, y].Health + "\n" + tiles[x, y].Moves + "\n" + tiles[x, y].Altitude + "\n" + tiles[x, y].Type;
+        }
 
         /**
          * EventHandler for rules menuItem, shows the game rules on the right side panel on click.
