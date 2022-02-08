@@ -51,7 +51,7 @@ namespace CS_GridGame_Team5
             List<string> rawHighScores = new List<string>(); // Creats a list for highscores being read from high scores file
             
             // Gets contents for highScores file
-            StreamReader s = File.OpenText(@"highScores.txt"); // Set file name
+            StreamReader s = File.OpenText(@"Assets\highScores.txt"); // Set file name
             string read = null;
             while ((read = s.ReadLine()) != null) // Read from file until done
             {
@@ -63,7 +63,7 @@ namespace CS_GridGame_Team5
             int counter = 0;
             while (rawHighScores[counter] != null) // While there are rawHighScores, split score from player name for hisg scores
             {
-                highScores.Add(rawHighScores[counter].Split(','));
+                highScores.Add(rawHighScores[counter].Split(',')); // "Name,Score"
                 counter ++;
             }
 
@@ -73,7 +73,7 @@ namespace CS_GridGame_Team5
             String textBox = "";
             for (int i = 0; i < 10; i++)
             {
-                textBox = textBox + "\n\r1\t" + highScores[i][1] + "\t" + highScores[i][0];
+                textBox = textBox + "\n\r1\t" + highScores[i][0] + "\t" + highScores[i][1];
             }
         }
         /**

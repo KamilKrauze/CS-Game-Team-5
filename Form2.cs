@@ -38,5 +38,12 @@ namespace CS_GridGame_Team5
             Form_Game gameWindow = new Form_Game();
             gameWindow.ShowDialog();
         }
+
+        private void highScoresButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form3 highScoresWindow = new Form3();
+            highScoresWindow.ShowDialog();
+        }
     }
 }

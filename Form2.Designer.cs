@@ -94,6 +94,7 @@ namespace CS_GridGame_Team5
             this.highScoresButton.TabIndex = 3;
             this.highScoresButton.Text = "High Scores";
             this.highScoresButton.UseVisualStyleBackColor = false;
+            this.highScoresButton.Click += new System.EventHandler(this.highScoresButton_Click);
             // 
             // exitButton
             // 
