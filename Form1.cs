@@ -23,6 +23,9 @@ namespace CS_GridGame_Team5
         Panel infoPanel = new Panel();
         RichTextBox infoTxtBox = new RichTextBox();
 
+        public string planeDataStoredWhenShowingGameRules = "";
+        public bool showRules = false;
+
         public Form_Game()
         {
             InitializeComponent();
@@ -30,10 +33,12 @@ namespace CS_GridGame_Team5
             resizeForm();
             MenuStrip();
 
-            //this.BackgroundImage = Properties.Resources.NightClouds_2048x2048;
+            this.BackgroundImage = Properties.Resources.NightClouds_2048x2048;
+
             this.BackgroundImageLayout = ImageLayout.Stretch;
-            container.BackColor = Color.Transparent;
-            //container.AutoSize = true;
+            this.BackColor = Color.White;
+
+            container.BackColor = Color.FromArgb(0,255,0,0);
             container.SetBounds(5, 27, 760, 760);
 
             int i = 75;
@@ -45,29 +50,21 @@ namespace CS_GridGame_Team5
                     tiles[x, y] = new Tile();
                     tiles[x, y].btnTile.SetBounds(x + (x * i), y + (y * i), i, i);
 
-                    tiles[x, y].btnTile.BackColor = Color.FromArgb(0, 0, 0, 0);
-                    //tiles[x, y].btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_512;
+                    //tiles[x, y].btnTile.BackColor = Color.Transparent;
+                    tiles[x, y].btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_512;
                     tiles[x, y].btnTile.BackgroundImageLayout = ImageLayout.Stretch;
 
                     tiles[x, y].btnTile.Text = x + "," + y;
-                    tiles[x, y].btnTile.ForeColor = Color.White;
 
                     tiles[x, y].btnTile.Click += new EventHandler(onTileClick);
 
-                    container.AutoScroll = true;
+                    //container.AutoScroll = true;
                     container.Controls.Add(tiles[x, y].btnTile);
                 }
             }
 
-            Controls.Add(container);
-            infoPanel.SetBounds(765, 27, 415, 758);
-            infoPanel.BackColor = Color.Black;
-
-            infoPanel.Controls.Add(infoTxtBox);
-            infoPanel.Visible = true;
-
-            Controls.Add(infoPanel);
-
+            this.Controls.Add(container);
+            infoPanel_setup();
         }
 
         /**
@@ -81,13 +78,13 @@ namespace CS_GridGame_Team5
             //Docks rulesPanel to the right
             rulesPanel.Anchor = AnchorStyles.Right;
             rulesPanel.Visible = false;
-            rulesPanel.Height = 400;
-            rulesPanel.Width = 200;
+            rulesPanel.Height = 40;
+            rulesPanel.Width = 20;
             //Docks planeInfoPanel to the right;
             infoPanel.Anchor = AnchorStyles.Left;
             infoPanel.Visible = false;
-            infoPanel.Height = 400;
-            infoPanel.Width = 200;
+            infoPanel.Height = 40;
+            infoPanel.Width = 20;
 
             //adds container to form
             this.Controls.Add(rulesPanel);
@@ -97,7 +94,7 @@ namespace CS_GridGame_Team5
             MenuStrip mainMenu = new MenuStrip();
 
             //MenuStrip settings
-            mainMenu.BackColor = Color.Black;
+            mainMenu.BackColor = Color.FromArgb(100, 55, 98, 72);
 
             //Creates new toolStripMenuItems
             ToolStripMenuItem about = new ToolStripMenuItem("About");
@@ -140,15 +137,15 @@ namespace CS_GridGame_Team5
 
             infoTxtBox.Font = new Font("Calibri", 15);
             infoTxtBox.Clear();
-            infoTxtBox.SetBounds(0, 0, 400, 850);
-            
-            infoPanel.SetBounds(300, 0, 400, 850);
-            infoPanel.BackColor = Color.AliceBlue;
+            infoTxtBox.SetBounds(7, 10, 400, 379);
+
+            infoPanel.SetBounds(765, 27, 415, 758);
+            infoPanel.BackColor = Color.FromArgb(100, 55, 98, 72);
 
             infoPanel.Controls.Add(infoTxtBox);
             infoPanel.Visible = true;
 
-            this.Controls.Add(infoPanel);
+            Controls.Add(infoPanel);
         }
 
         /**
@@ -180,58 +177,49 @@ namespace CS_GridGame_Team5
             }
 
         /**
-         * EventHandler for rules menuItem, shows the gameRules panel on click.
+         * EventHandler for rules menuItem, shows the game rules on the right side panel on click.
          */
         private void onRulesClick(object sender, EventArgs e)
         {
-            //Tries opening the file
-            try
+            if (showRules == false)
             {
-                //Creates textBox
-                RichTextBox textBox = new RichTextBox();
-
-                //Settings for textBox.
-                textBox.Multiline = true;
-                textBox.ReadOnly = true;
-                //textBox.AutoSize = true;
-            
-                textBox.WordWrap = true;
-
-                textBox.Font = new Font("Calibri", 12);
-
-
-                /**
-                * Code adapted from https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/file-system/how-to-read-from-a-text-file
-                * on 2/2/22 at 21:00
-                */
-
-                //Reads all the lines in file and stores them in string array lines.
-                string[] lines = System.IO.File.ReadAllLines(@"..\..\Assets\Text Files\rules.txt");
-
-                //For every line in string array lines
-                foreach (string line in lines)
+                //Tries opening the file
+                try
                 {
+                    /**
+                    * Code adapted from https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/file-system/how-to-read-from-a-text-file
+                    * on 2/2/22 at 21:00
+                    */
 
-                    //Prints line to console
-                    System.Diagnostics.Debug.WriteLine("\n" + line);
+                    //Reads all the lines in file and stores them in string array lines.
+                    string[] lines = System.IO.File.ReadAllLines(@"..\..\Assets\Text Files\rules.txt");
 
-                    //writes line to text box.
-                    textBox.AppendText(line);
+                    //For every line in string array lines
+                    foreach (string line in lines)
+                    {
+
+                        //Prints line to console
+                        System.Diagnostics.Debug.WriteLine("\n" + line);
+
+                        //writes line to text box.
+                        planeDataStoredWhenShowingGameRules = infoTxtBox.Text;
+                        infoTxtBox.Clear();
+                        infoTxtBox.AppendText(line);
+                    }
+                    // Adapted code ends here
                 }
 
-                //Adapted code ends here.
-
-                rulesPanel.Controls.Add(textBox);
-
-                //Toggles visibility of rulesPanel
-                rulesPanel.Visible = !rulesPanel.Visible;
+                catch (Exception)
+                {
+                    //Shows error if file is missing/any other error.
+                    MessageBox.Show("Error when opening rules file. Is it no longer located in Assets/TextFiles?", "Error!");
+                }
             }
-
-            catch (Exception)
+            else
             {
-                //Shows error if file is missing/any other error.
-                MessageBox.Show("Error when opening rules file. Is it no longer located in Assets/TextFiles?", "Error!");
+                infoTxtBox.Text = planeDataStoredWhenShowingGameRules;
             }
+            showRules = !showRules;
         }
 
         private void Form_Game_Load(object sender, EventArgs e)
@@ -243,6 +231,7 @@ namespace CS_GridGame_Team5
         {
             this.Height = 825;
             this.Width = 1200;
+            this.MaximizeBox = false;
         }
     }
 }
