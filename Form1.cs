@@ -16,7 +16,7 @@ namespace CS_GridGame_Team5
 {
     public partial class Form_Game : Form
     {
-        Tile[,] tiles = new Tile[15,15]; //2D array to hold tile.
+        Tile[,] tiles = new Tile[10,10]; //2D array to hold tile.
         Panel container = new Panel(); //container panel for tiles
         Panel rulesPanel = new Panel(); //container panel for game rules
         Panel planeInfoPan = new Panel(); //new panel to display plane info 
@@ -168,23 +168,23 @@ namespace CS_GridGame_Team5
             //tiles[x, y].Altitude;
         }
 
-    /**
-     * A method to manage on tile click
-     */
-    private void onTileClick(object sender, EventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine(((Button)sender).Text);
+        /**
+         * A method to manage on tile click
+         */
+        private void onTileClick(object sender, EventArgs e)
+            {
+                System.Diagnostics.Debug.WriteLine(((Button)sender).Text);
 
-            // Split string by delimeter - https://docs.microsoft.com/en-us/dotnet/api/system.string.split?view=net-6.0 - 07/02/2022
-            string coords = ((Button)sender).Text;
-            string[] subString = coords.Split(',');
+                // Split string by delimeter - https://docs.microsoft.com/en-us/dotnet/api/system.string.split?view=net-6.0 - 07/02/2022
+                string coords = ((Button)sender).Text;
+                string[] subString = coords.Split(',');
             
-            int x,  y;
-            x = int.Parse(subString[0]);
-            y = int.Parse(subString[1]);
+                int x,  y;
+                x = int.Parse(subString[0]);
+                y = int.Parse(subString[1]);
 
-            planeInfo(x,y);
-        }
+                planeInfo(x,y);
+            }
 
         /**
          * EventHandler for rules menuItem, shows the gameRules panel on click.
