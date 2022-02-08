@@ -19,7 +19,9 @@ namespace CS_GridGame_Team5
         Tile[,] tiles = new Tile[10,10]; //2D array to hold tile.
         Panel container = new Panel(); //container panel for tiles
         Panel rulesPanel = new Panel(); //container panel for game rules
-        Panel planeInfoPan = new Panel(); //new panel to display plane info 
+        
+        Panel infoPanel = new Panel();
+        RichTextBox infoTxtBox = new RichTextBox();
 
         public Form_Game()
         {
@@ -30,10 +32,8 @@ namespace CS_GridGame_Team5
             //this.BackgroundImage = Properties.Resources.NightClouds_2048x2048;
             this.BackgroundImageLayout = ImageLayout.Stretch;
             container.BackColor = Color.Transparent;
-            container.AutoSize = true;            
-            //Docks container to the Bottom
-            container.Dock = DockStyle.Fill;
-
+            //container.AutoSize = true;
+            container.SetBounds(5, 25, 760, 760);
 
             int i = 75;
 
@@ -44,26 +44,34 @@ namespace CS_GridGame_Team5
                     tiles[x, y] = new Tile();
                     tiles[x, y].btnTile.SetBounds(x + (x * i), y + (y * i), i, i);
 
-                    tiles[x, y].btnTile.BackColor = Color.FromArgb(0,0,0,0);
+                    tiles[x, y].btnTile.BackColor = Color.FromArgb(0, 0, 0, 0);
                     //tiles[x, y].btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_512;
                     tiles[x, y].btnTile.BackgroundImageLayout = ImageLayout.Stretch;
-                    
+
                     tiles[x, y].btnTile.Text = x + "," + y;
                     tiles[x, y].btnTile.ForeColor = Color.White;
 
-                    tiles[x,  y].btnTile.Click += new EventHandler(onTileClick);
+                    tiles[x, y].btnTile.Click += new EventHandler(onTileClick);
 
-                    container.AutoScroll = true; 
+                    container.AutoScroll = true;
                     container.Controls.Add(tiles[x, y].btnTile);
-                   
                 }
             }
-            this.Controls.Add(container);
-            MenuStrip();
+
+            Controls.Add(container);
+            infoPanel.SetBounds(765, 25, 415, 758);
+            infoPanel.BackColor = Color.Black;
+
+            infoPanel.Controls.Add(infoTxtBox);
+            infoPanel.Visible = true;
+
+            Controls.Add(infoPanel);
+
+            //MenuStrip();
         }
 
         /**
-         *All of then menu strip code packaged in one spot
+         * All of then menu strip code packaged in one spot
          * */
         private void MenuStrip()
         {
@@ -71,19 +79,19 @@ namespace CS_GridGame_Team5
             //rulesPanel.AutoSize = true;
 
             //Docks rulesPanel to the right
-            rulesPanel.Dock = DockStyle.Right;
+            rulesPanel.Anchor = AnchorStyles.Right;
             rulesPanel.Visible = false;
             rulesPanel.Height = 400;
             rulesPanel.Width = 200;
             //Docks planeInfoPanel to the right;
-            planeInfoPan.Dock = DockStyle.Right;
-            planeInfoPan.Visible = false;
-            planeInfoPan.Height = 400;
-            planeInfoPan.Width = 200;
+            infoPanel.Anchor = AnchorStyles.Left;
+            infoPanel.Visible = false;
+            infoPanel.Height = 400;
+            infoPanel.Width = 200;
 
             //adds container to form
             this.Controls.Add(rulesPanel);
-            this.Controls.Add(planeInfoPan);
+            this.Controls.Add(infoPanel);
 
             //Creates new menu strip
             MenuStrip mainMenu = new MenuStrip();
@@ -114,10 +122,33 @@ namespace CS_GridGame_Team5
             mainMenu.Items.Add(about);
             mainMenu.Items.Add(rules);
 
-            mainMenu.Dock = DockStyle.Top;
+            mainMenu.SetBounds(0, 0, 1200, 20);
 
             //Adds mainMenu to form
             this.Controls.Add(mainMenu);
+        }
+        
+        /**
+         * Sets up the info text box properties on function call.
+         * */
+        private void infoPanel_setup()
+        {
+            infoTxtBox.Multiline = true;
+            infoTxtBox.ReadOnly = true;
+            infoTxtBox.WordWrap = true;
+            infoTxtBox.BorderStyle = BorderStyle.FixedSingle;
+
+            infoTxtBox.Font = new Font("Calibri", 15);
+            infoTxtBox.Clear();
+            infoTxtBox.SetBounds(0, 0, 400, 850);
+            
+            infoPanel.SetBounds(300, 0, 400, 850);
+            infoPanel.BackColor = Color.AliceBlue;
+
+            infoPanel.Controls.Add(infoTxtBox);
+            infoPanel.Visible = true;
+
+            this.Controls.Add(infoPanel);
         }
 
         /**
@@ -129,43 +160,6 @@ namespace CS_GridGame_Team5
             //Shows info box.
             MessageBox.Show("Dambusters, based off Warhammer Aeronautica, implemented by Caitlin Ridge-Sykes, Kamil Krauze, and Euan West", "About");
 
-        }
-
-        /**
-         * Method to show plane info
-         */
-        private void planeInfo(int x, int y)
-        {
-
-            //Creates textBox
-            RichTextBox textBox = new RichTextBox();
-
-            //Settings for textBox.
-            textBox.Multiline = true;
-            textBox.ReadOnly = true;
-            textBox.AutoSize = true;
-            textBox.WordWrap = true;
-
-            textBox.Font = new Font("Calibri", 12);
-
-            textBox.Clear();
-            textBox.AppendText("Plane: " + tiles[x, y].Name);
-            textBox.AppendText("Health: " + tiles[x, y].Health);
-            textBox.AppendText("Plane Type: " + tiles[x, y].Type);
-            textBox.AppendText("Moves: " + tiles[x, y].Moves);
-            textBox.AppendText("AmmoType: " + tiles[x, y].AmmoType);
-            textBox.AppendText("Altitude: " + tiles[x, y].Altitude);
-
-            textBox.SetBounds(400, 0, 600, 850);
-            planeInfoPan.SetBounds(400,  0,  600,  850);
-            planeInfoPan.Controls.Add(textBox);
-
-            planeInfoPan.Visible = true;
-
-
-            //adds container to form
-            this.Controls.Add(planeInfoPan);
-            //tiles[x, y].Altitude;
         }
 
         /**
@@ -183,7 +177,6 @@ namespace CS_GridGame_Team5
                 x = int.Parse(subString[0]);
                 y = int.Parse(subString[1]);
 
-                planeInfo(x,y);
             }
 
         /**
