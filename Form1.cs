@@ -28,12 +28,13 @@ namespace CS_GridGame_Team5
             InitializeComponent();
 
             resizeForm();
+            MenuStrip();
 
             //this.BackgroundImage = Properties.Resources.NightClouds_2048x2048;
             this.BackgroundImageLayout = ImageLayout.Stretch;
             container.BackColor = Color.Transparent;
             //container.AutoSize = true;
-            container.SetBounds(5, 25, 760, 760);
+            container.SetBounds(5, 27, 760, 760);
 
             int i = 75;
 
@@ -59,7 +60,7 @@ namespace CS_GridGame_Team5
             }
 
             Controls.Add(container);
-            infoPanel.SetBounds(765, 25, 415, 758);
+            infoPanel.SetBounds(765, 27, 415, 758);
             infoPanel.BackColor = Color.Black;
 
             infoPanel.Controls.Add(infoTxtBox);
@@ -67,7 +68,6 @@ namespace CS_GridGame_Team5
 
             Controls.Add(infoPanel);
 
-            //MenuStrip();
         }
 
         /**
