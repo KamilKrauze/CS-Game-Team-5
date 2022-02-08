@@ -35,7 +35,7 @@ namespace CS_GridGame_Team5
             container.Dock = DockStyle.Fill;
 
 
-            int i = 50;
+            int i = 75;
 
             for (int x = 0; x < tiles.GetLength(1); x++)
             {
