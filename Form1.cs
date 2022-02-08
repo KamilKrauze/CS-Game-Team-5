@@ -72,9 +72,6 @@ namespace CS_GridGame_Team5
          * */
         private void MenuStrip()
         {
-            //AutoSizes rulesPanel
-            //rulesPanel.AutoSize = true;
-
             //Docks rulesPanel to the right
             rulesPanel.Anchor = AnchorStyles.Right;
             rulesPanel.Visible = false;
@@ -177,7 +174,7 @@ namespace CS_GridGame_Team5
             x = int.Parse(subString[0]);
             y = int.Parse(subString[1]);
 
-            infoTxtBox.Text = tiles[x, y].Name + "\n" + tiles[x, y].Health + "\n" + tiles[x, y].Moves + "\n" + tiles[x, y].Altitude + "\n" + tiles[x, y].Type;
+            infoTxtBox.Text = "Name: " + tiles[x, y].Name + "\nType: " + tiles[x, y].Type + "\nHP: " + tiles[x, y].Health + "\nMoves: " + tiles[x, y].Moves + "\nAltitude: " + tiles[x, y].Altitude;
         }
 
         /**
