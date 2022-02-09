@@ -118,16 +118,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Clouds_4096x4096" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Textures\Clouds-4096x4096.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MeBF109_R0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\MeBF109_R0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MeBF109_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Textures\MeBF109_512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MeBF109_R180" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\MeBF109_R180.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="NightClouds_2048x2048" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Textures\NightClouds-2048x2048.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MeBF109_R270" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\MeBF109_R270.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SpitfireMK2_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Textures\SpitfireMK2_512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MeBF109_R90" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\MeBF109_R90.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SpitfireMK2_R0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\SpitfireMK2_R0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SpitfireMK2_R180" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\SpitfireMK2_R180.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SpitfireMK2_R270" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\SpitfireMK2_R270.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SpitfireMK2_R90" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\SpitfireMK2_R90.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -16,17 +16,26 @@ namespace CS_GridGame_Team5
 {
     public partial class Form_Game : Form
     {
+
+        private int selectedTileX;
+        private int selectedTileY;
+
+
         Tile[,] tiles = new Tile[10,10]; //2D array to hold tile.
         Panel container = new Panel(); //container panel for tiles
         Panel rulesPanel = new Panel(); //container panel for game rules
-        
-        Panel infoPanel = new Panel();
-        RichTextBox infoTxtBox = new RichTextBox();
+        Panel controlPanel = new Panel(); //container panel for controls
+
+        Panel infoPanel = new Panel(); //Panel to hold info about planes
+        RichTextBox infoTxtBox = new RichTextBox(); //text box
 
         public string planeDataStoredWhenShowingGameRules = "";
         public bool showRules = false;
 
-        public Form_Game()
+        public int SelectedTileX { get => selectedTileX; set => selectedTileX = value; }
+        public int SelectedTileY { get => selectedTileY; set => selectedTileY = value; }
+    
+    public Form_Game()
         {
             InitializeComponent();
 
@@ -55,7 +64,7 @@ namespace CS_GridGame_Team5
                     //Sets up British planes position
                     if (x == 0 && y == 0 || x == 1 && y == 1 || x == 0 && y ==2)
                     {
-                        tiles[x, y].btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_512;
+                        tiles[x, y].btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_R0;
 
                         //Sets up plane attributes
                         tiles[x, y].Health = 3;
@@ -69,7 +78,7 @@ namespace CS_GridGame_Team5
 
                     else if (x == 0 && y == 1)
                     {
-                        tiles[x, y].btnTile.BackgroundImage = Properties.Resources.MeBF109_512;
+                        tiles[x, y].btnTile.BackgroundImage = Properties.Resources.MeBF109_R0;
 
                         //Sets up plane attributes
                         tiles[x, y].Health = 5;
@@ -83,7 +92,7 @@ namespace CS_GridGame_Team5
                     //8,7 ; 8,8 ; 8.9 ; heavy - 7,8
                     else if (x == 8 && y == 8 || x == 7 && y == 7 || x == 9 && y == 9 || x == 6 && y == 8 || x == 5 && y == 9)
                     {
-                        tiles[x, y].btnTile.BackgroundImage = Properties.Resources.MeBF109_512;
+                        tiles[x, y].btnTile.BackgroundImage = Properties.Resources.MeBF109_R0;
 
                         //Sets up plane attributes
                         tiles[x, y].Health = 3;
@@ -109,6 +118,7 @@ namespace CS_GridGame_Team5
             container.AutoSize = true;
             this.Controls.Add(container);
             infoPanel_setup();
+            controlsUI();
         }
 
         /**
@@ -218,6 +228,9 @@ namespace CS_GridGame_Team5
             x = int.Parse(subString[0]);
             y = int.Parse(subString[1]);
 
+            SelectedTileX = x;
+            SelectedTileY = y;
+
             infoTxtBox.Text = "Name: " + tiles[x, y].Name + "\n\nType: " + tiles[x, y].Type + "\n\nHP: " + tiles[x, y].Health + "\n\nMoves: " + tiles[x, y].Moves + "\n\nAltitude: " + tiles[x, y].Altitude;
         }
 
@@ -272,6 +285,121 @@ namespace CS_GridGame_Team5
 
         }
 
+        /**
+         * Method to control the controls section of the UI
+         */
+        private void controlsUI()
+        {
+            Button upButton = new Button();
+            Button leftButton = new Button();
+            Button rightButton = new Button();
+            RichTextBox moveCount = new RichTextBox();
+            Button rotateL = new Button();
+            Button rotateR = new Button();
+            Button aviateButton = new Button();
+            Button deviateButton = new Button();
+
+            moveCount.ReadOnly = true;
+            moveCount.BorderStyle = BorderStyle.FixedSingle;
+            moveCount.Font = new Font("Calibri", 25);
+
+            moveCount.Text = "2";
+
+            // Text alignment in a rich text box - https://stackoverflow.com/questions/6243350/how-to-align-text-in-richtextbox-c - 09/02/2022
+            moveCount.SelectAll();
+            moveCount.SelectionAlignment = HorizontalAlignment.Center;
+            moveCount.DeselectAll();
+
+            upButton.SetBounds(60,  0,  55,  55);
+            leftButton.SetBounds(0, 60, 55, 55);
+            rightButton.SetBounds(120, 60, 55, 55);
+            moveCount.SetBounds(60, 60, 55, 55);
+            rotateL.SetBounds(0, 0, 55, 55);
+            rotateR.SetBounds(120, 0, 55, 55);
+            aviateButton.SetBounds(200, 0, 55, 55);
+            deviateButton.SetBounds(200, 60, 55, 55);
+
+            //EventHandlers
+            rotateL.Click += new EventHandler(rotateLClick);
+            rotateR.Click += new EventHandler(rotateRClick);
+            upButton.Click += new EventHandler(upButtonClick);
+            leftButton.Click += new EventHandler(leftButtonClick);
+            rightButton.Click += new EventHandler(rightButtonClick);
+            aviateButton.Click += new EventHandler(aviateButtonClick);
+            deviateButton.Click += new EventHandler(deviateButtonClick);
+
+
+
+
+
+            //Adds button to panel
+            controlPanel.Controls.Add(rotateL);
+            controlPanel.Controls.Add(upButton);
+            controlPanel.Controls.Add(rotateR);
+            controlPanel.Controls.Add(leftButton);
+            controlPanel.Controls.Add(moveCount);
+            controlPanel.Controls.Add(rightButton);
+            controlPanel.Controls.Add(aviateButton);
+            controlPanel.Controls.Add(deviateButton);
+
+            //Sets controlPanel
+            controlPanel.SetBounds(845, 500, 365, 258);
+            controlPanel.BackColor = Color.FromArgb(100, 55, 98, 72);
+
+
+            //Control Panel is visible
+            controlPanel.Visible = true;
+
+            //Adds to main form
+            Controls.Add(controlPanel);
+
+        }
+
+        private void rotateLClick(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine(SelectedTileX + ", " + SelectedTileY);
+
+
+            tiles[SelectedTileX, SelectedTileY].btnTile.BackgroundImage = Properties.Resources.MeBF109_R270;
+            tiles[SelectedTileX, SelectedTileY].Moves = (tiles[SelectedTileX, SelectedTileY].Moves - 1);
+            infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nMoves: " + tiles[SelectedTileX, SelectedTileY].Moves + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
+
+        }
+
+        private void rotateRClick(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine(SelectedTileX + ", " + SelectedTileY);
+            tiles[SelectedTileX, SelectedTileY].btnTile.BackgroundImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            tiles[SelectedTileX, SelectedTileY].Moves = (tiles[SelectedTileX, SelectedTileY].Moves - 1);
+            infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nMoves: " + tiles[SelectedTileX, SelectedTileY].Moves + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
+
+        }
+
+        private void upButtonClick(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("\n" + "Cake");
+        }
+
+        private void leftButtonClick(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("\n" + "Cake");
+        }
+
+        private void rightButtonClick(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("\n" + "Cake");
+        }
+
+        private void aviateButtonClick(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("\n" + "Cake");
+        }
+
+        private void deviateButtonClick(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("\n" + "Cake");
+        }
+
         private void resizeForm()
         {
             this.Height = 825;
@@ -279,4 +407,8 @@ namespace CS_GridGame_Team5
             this.MaximizeBox = false;
         }
     }
+
+   
 }
+
+

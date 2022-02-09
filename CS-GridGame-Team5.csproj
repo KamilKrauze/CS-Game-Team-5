@@ -134,5 +134,29 @@
   <ItemGroup>
     <None Include="Assets\Textures\NightClouds-2048x2048.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Textures\MeBF109_R270.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Textures\SpitfireMK2_R0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Textures\SpitfireMK2_R90.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Textures\SpitfireMK2_R180.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Textures\SpitfireMK2_R270.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Textures\MeBF109_R0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Textures\MeBF109_R90.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Textures\MeBF109_R180.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
