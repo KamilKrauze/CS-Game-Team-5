@@ -28,6 +28,7 @@ namespace CS_GridGame_Team5
 
         Panel infoPanel = new Panel(); //Panel to hold info about planes
         RichTextBox infoTxtBox = new RichTextBox(); //text box
+        RichTextBox moveCount = new RichTextBox(); //move count text box
 
         public string planeDataStoredWhenShowingGameRules = "";
         public bool showRules = false;
@@ -231,7 +232,9 @@ namespace CS_GridGame_Team5
             SelectedTileX = x;
             SelectedTileY = y;
 
-            infoTxtBox.Text = "Name: " + tiles[x, y].Name + "\n\nType: " + tiles[x, y].Type + "\n\nHP: " + tiles[x, y].Health + "\n\nMoves: " + tiles[x, y].Moves + "\n\nAltitude: " + tiles[x, y].Altitude;
+            moveCount.Text = (tiles[SelectedTileX, SelectedTileY].Moves).ToString();
+
+            infoTxtBox.Text = "Name: " + tiles[x, y].Name + "\n\nType: " + tiles[x, y].Type + "\n\nHP: " + tiles[x, y].Health  + "\n\nAltitude: " + tiles[x, y].Altitude;
         }
 
         /**
@@ -293,7 +296,6 @@ namespace CS_GridGame_Team5
             Button upButton = new Button();
             Button leftButton = new Button();
             Button rightButton = new Button();
-            RichTextBox moveCount = new RichTextBox();
             Button rotateL = new Button();
             Button rotateR = new Button();
             Button aviateButton = new Button();
@@ -303,7 +305,7 @@ namespace CS_GridGame_Team5
             moveCount.BorderStyle = BorderStyle.FixedSingle;
             moveCount.Font = new Font("Calibri", 25);
 
-            moveCount.Text = "2";
+            
 
             // Text alignment in a rich text box - https://stackoverflow.com/questions/6243350/how-to-align-text-in-richtextbox-c - 09/02/2022
             moveCount.SelectAll();
@@ -361,17 +363,29 @@ namespace CS_GridGame_Team5
 
 
             tiles[SelectedTileX, SelectedTileY].btnTile.BackgroundImage = Properties.Resources.MeBF109_R270;
+<<<<<<< Updated upstream
             if (tiles[SelectedTileX, SelectedTileY].Moves != 0) { tiles[SelectedTileX, SelectedTileY].Moves -= 1; } // Decrement move from tile. Clamp to 0;
             infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nMoves: " + tiles[SelectedTileX, SelectedTileY].Moves + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
 
+=======
+            tiles[SelectedTileX, SelectedTileY].Moves = (tiles[SelectedTileX, SelectedTileY].Moves - 1);
+            infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
+            moveCount.Text = (tiles[SelectedTileX, SelectedTileY].Moves).ToString();
+>>>>>>> Stashed changes
         }
 
         private void rotateRClick(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine(SelectedTileX + ", " + SelectedTileY);
+<<<<<<< Updated upstream
             if (tiles[SelectedTileX, SelectedTileY].Moves != 0) { tiles[SelectedTileX, SelectedTileY].Moves -= 1; } // Decrement move from tile. Clamp to 0;
             else { return; }
             infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nMoves: " + tiles[SelectedTileX, SelectedTileY].Moves + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
+=======
+            tiles[SelectedTileX, SelectedTileY].btnTile.BackgroundImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            tiles[SelectedTileX, SelectedTileY].Moves = (tiles[SelectedTileX, SelectedTileY].Moves - 1);
+            infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
+>>>>>>> Stashed changes
 
         }
 
