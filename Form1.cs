@@ -361,7 +361,7 @@ namespace CS_GridGame_Team5
 
 
             tiles[SelectedTileX, SelectedTileY].btnTile.BackgroundImage = Properties.Resources.MeBF109_R270;
-            tiles[SelectedTileX, SelectedTileY].Moves = (tiles[SelectedTileX, SelectedTileY].Moves - 1);
+            if (tiles[SelectedTileX, SelectedTileY].Moves != 0) { tiles[SelectedTileX, SelectedTileY].Moves -= 1; } // Decrement move from tile. Clamp to 0;
             infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nMoves: " + tiles[SelectedTileX, SelectedTileY].Moves + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
 
         }
@@ -369,8 +369,8 @@ namespace CS_GridGame_Team5
         private void rotateRClick(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine(SelectedTileX + ", " + SelectedTileY);
-            tiles[SelectedTileX, SelectedTileY].btnTile.BackgroundImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            tiles[SelectedTileX, SelectedTileY].Moves = (tiles[SelectedTileX, SelectedTileY].Moves - 1);
+            if (tiles[SelectedTileX, SelectedTileY].Moves != 0) { tiles[SelectedTileX, SelectedTileY].Moves -= 1; } // Decrement move from tile. Clamp to 0;
+            else { return; }
             infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nMoves: " + tiles[SelectedTileX, SelectedTileY].Moves + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
 
         }
