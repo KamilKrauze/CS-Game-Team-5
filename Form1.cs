@@ -33,7 +33,7 @@ namespace CS_GridGame_Team5
             resizeForm();
             MenuStrip();
 
-            this.BackgroundImage = Properties.Resources.NightClouds_2048x2048;
+            //this.BackgroundImage = Properties.Resources.NightClouds_2048x2048;
 
             this.BackgroundImageLayout = ImageLayout.Stretch;
             this.BackColor = Color.White;
@@ -47,16 +47,60 @@ namespace CS_GridGame_Team5
             {
                 for (int y = 0; y < tiles.GetLength(1); y++)
                 {
+                    //British 1,0 ; 2,1 ; 1,2; heavy: 1,1
+
                     tiles[x, y] = new Tile();
                     tiles[x, y].btnTile.SetBounds(x + (x * i), y + (y * i), i, i);
 
+                    //Sets up British planes position
+                    if (x == 0 && y == 0 || x == 1 && y == 1 || x == 0 && y ==2)
+                    {
+                        tiles[x, y].btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_512;
+
+                        //Sets up plane attributes
+                        tiles[x, y].Health = 3;
+                        tiles[x, y].Name = "Spitfire MK3";
+                        tiles[x, y].Type = ObjectType.Fighter;
+                        tiles[x, y].Altitude = 2;
+                        tiles[x, y].Moves = 3;
+                        tiles[x, y].AmmoType = AmmoType.Light;
+
+                    }
+
+                    else if (x == 0 && y == 1)
+                    {
+                        tiles[x, y].btnTile.BackgroundImage = Properties.Resources.MeBF109_512;
+
+                        //Sets up plane attributes
+                        tiles[x, y].Health = 5;
+                        tiles[x, y].Name = "Bomber 2";
+                        tiles[x, y].Type = ObjectType.Bomber;
+                        tiles[x, y].Altitude = 2;
+                        tiles[x, y].Moves = 2;
+                        tiles[x, y].AmmoType = AmmoType.Light;
+                    }
+
+                    //8,7 ; 8,8 ; 8.9 ; heavy - 7,8
+                    else if (x == 8 && y == 8 || x == 7 && y == 7 || x == 9 && y == 9 || x == 6 && y == 8 || x == 5 && y == 9)
+                    {
+                        tiles[x, y].btnTile.BackgroundImage = Properties.Resources.MeBF109_512;
+
+                        //Sets up plane attributes
+                        tiles[x, y].Health = 3;
+                        tiles[x, y].Name = "Spitfire MK3";
+                        tiles[x, y].Type = ObjectType.Fighter;
+                        tiles[x, y].Altitude = 2;
+                        tiles[x, y].Moves = 3;
+                        tiles[x, y].AmmoType = AmmoType.Light;
+
+            }
+
+                   //7,6 ; 8,7 ; 9,8 ; 6,7 ; 5,8
                     //tiles[x, y].btnTile.BackColor = Color.Transparent;
-                    tiles[x, y].btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_512;
+
                     tiles[x, y].btnTile.BackgroundImageLayout = ImageLayout.Stretch;
-
-                    tiles[x, y].btnTile.Text = x + "," + y;
-
                     tiles[x, y].btnTile.Click += new EventHandler(onTileClick);
+                    tiles[x, y].btnTile.Text = x + "," + y;
 
                     //container.AutoScroll = true;
                     container.Controls.Add(tiles[x, y].btnTile);
