@@ -36,9 +36,9 @@ namespace CS_GridGame_Team5
             //this.BackgroundImage = Properties.Resources.NightClouds_2048x2048;
 
             this.BackgroundImageLayout = ImageLayout.Stretch;
-            this.BackColor = Color.White;
+            this.BackColor = Color.FromArgb(255, 55, 98, 72);
 
-            container.BackColor = Color.FromArgb(0,255,0,0);
+            container.BackColor = Color.FromArgb(0,0,0,0);
             container.SetBounds(5, 27, 760, 760);
 
             int i = 75;
@@ -102,11 +102,11 @@ namespace CS_GridGame_Team5
                     tiles[x, y].btnTile.Click += new EventHandler(onTileClick);
                     tiles[x, y].btnTile.Text = x + "," + y;
 
-                    //container.AutoScroll = true;
+                    container.AutoScroll = true;
                     container.Controls.Add(tiles[x, y].btnTile);
                 }
             }
-
+            container.AutoSize = true;
             this.Controls.Add(container);
             infoPanel_setup();
         }
@@ -135,7 +135,7 @@ namespace CS_GridGame_Team5
             MenuStrip mainMenu = new MenuStrip();
 
             //MenuStrip settings
-            mainMenu.BackColor = Color.FromArgb(100, 55, 98, 72);
+            mainMenu.BackColor = Color.FromArgb(255,55, 98, 72);
 
             //Creates new toolStripMenuItems
             ToolStripMenuItem about = new ToolStripMenuItem("About");
