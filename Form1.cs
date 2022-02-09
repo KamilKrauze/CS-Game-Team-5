@@ -134,11 +134,11 @@ namespace CS_GridGame_Team5
 
             infoTxtBox.Font = new Font("Calibri", 15);
             infoTxtBox.Clear();
-            infoTxtBox.SetBounds(7, 5, 400, 745);
+            infoTxtBox.SetBounds(7, 5, 400, 245);
             infoTxtBox.BackColor = Color.DarkSeaGreen;
             infoTxtBox.ForeColor = Color.White;
 
-            infoPanel.SetBounds(765, 27, 415, 758);
+            infoPanel.SetBounds(765, 27, 415, 258);
             infoPanel.BackColor = Color.FromArgb(100, 55, 98, 72);
 
             infoPanel.Controls.Add(infoTxtBox);
@@ -174,7 +174,7 @@ namespace CS_GridGame_Team5
             x = int.Parse(subString[0]);
             y = int.Parse(subString[1]);
 
-            infoTxtBox.Text = "Name: " + tiles[x, y].Name + "\nType: " + tiles[x, y].Type + "\nHP: " + tiles[x, y].Health + "\nMoves: " + tiles[x, y].Moves + "\nAltitude: " + tiles[x, y].Altitude;
+            infoTxtBox.Text = "Name: " + tiles[x, y].Name + "\n\nType: " + tiles[x, y].Type + "\n\nHP: " + tiles[x, y].Health + "\n\nMoves: " + tiles[x, y].Moves + "\n\nAltitude: " + tiles[x, y].Altitude;
         }
 
         /**
