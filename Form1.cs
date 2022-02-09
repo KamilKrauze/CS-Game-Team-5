@@ -21,7 +21,7 @@ namespace CS_GridGame_Team5
         private int selectedTileY;
 
 
-        Tile[,] tiles = new Tile[10,10]; //2D array to hold tile.
+        Tile[,] tiles = new Tile[10, 10]; //2D array to hold tile.
         Panel container = new Panel(); //container panel for tiles
         Panel rulesPanel = new Panel(); //container panel for game rules
         Panel controlPanel = new Panel(); //container panel for controls
@@ -35,8 +35,8 @@ namespace CS_GridGame_Team5
 
         public int SelectedTileX { get => selectedTileX; set => selectedTileX = value; }
         public int SelectedTileY { get => selectedTileY; set => selectedTileY = value; }
-    
-    public Form_Game()
+
+        public Form_Game()
         {
             InitializeComponent();
 
@@ -48,7 +48,7 @@ namespace CS_GridGame_Team5
             this.BackgroundImageLayout = ImageLayout.Stretch;
             this.BackColor = Color.FromArgb(255, 55, 98, 72);
 
-            container.BackColor = Color.FromArgb(0,0,0,0);
+            container.BackColor = Color.FromArgb(0, 0, 0, 0);
             container.SetBounds(5, 27, 760, 760);
 
             int i = 75;
@@ -63,49 +63,23 @@ namespace CS_GridGame_Team5
                     tiles[x, y].btnTile.SetBounds(x + (x * i), y + (y * i), i, i);
 
                     //Sets up British planes position
-                    if (x == 0 && y == 0 || x == 1 && y == 1 || x == 0 && y ==2)
+                    if (x == 0 && y == 0 || x == 1 && y == 1 || x == 0 && y == 2)
                     {
-                        tiles[x, y].btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_R0;
-
-                        //Sets up plane attributes
-                        tiles[x, y].Health = 3;
-                        tiles[x, y].Name = "Spitfire MK3";
-                        tiles[x, y].Type = ObjectType.Fighter;
-                        tiles[x, y].Altitude = 2;
-                        tiles[x, y].Moves = 3;
-                        tiles[x, y].AmmoType = AmmoType.Light;
-
+                        tiles[x, y].createSpitFire();
                     }
 
                     else if (x == 0 && y == 1)
                     {
-                        tiles[x, y].btnTile.BackgroundImage = Properties.Resources.MeBF109_R0;
-
-                        //Sets up plane attributes
-                        tiles[x, y].Health = 5;
-                        tiles[x, y].Name = "Bomber 2";
-                        tiles[x, y].Type = ObjectType.Bomber;
-                        tiles[x, y].Altitude = 2;
-                        tiles[x, y].Moves = 2;
-                        tiles[x, y].AmmoType = AmmoType.Light;
+                        tiles[x, y].createDamBuster();
                     }
 
                     //8,7 ; 8,8 ; 8.9 ; heavy - 7,8
                     else if (x == 8 && y == 8 || x == 7 && y == 7 || x == 9 && y == 9 || x == 6 && y == 8 || x == 5 && y == 9)
                     {
-                        tiles[x, y].btnTile.BackgroundImage = Properties.Resources.MeBF109_R0;
+                        tiles[x, y].createMeBF109();
+                    }
 
-                        //Sets up plane attributes
-                        tiles[x, y].Health = 3;
-                        tiles[x, y].Name = "Spitfire MK3";
-                        tiles[x, y].Type = ObjectType.Fighter;
-                        tiles[x, y].Altitude = 2;
-                        tiles[x, y].Moves = 3;
-                        tiles[x, y].AmmoType = AmmoType.Light;
-
-            }
-
-                   //7,6 ; 8,7 ; 9,8 ; 6,7 ; 5,8
+                    //7,6 ; 8,7 ; 9,8 ; 6,7 ; 5,8
                     //tiles[x, y].btnTile.BackColor = Color.Transparent;
 
                     tiles[x, y].btnTile.BackgroundImageLayout = ImageLayout.Stretch;
@@ -146,7 +120,7 @@ namespace CS_GridGame_Team5
             MenuStrip mainMenu = new MenuStrip();
 
             //MenuStrip settings
-            mainMenu.BackColor = Color.FromArgb(255,55, 98, 72);
+            mainMenu.BackColor = Color.FromArgb(255, 55, 98, 72);
 
             //Creates new toolStripMenuItems
             ToolStripMenuItem about = new ToolStripMenuItem("About");
@@ -176,7 +150,7 @@ namespace CS_GridGame_Team5
             //Adds mainMenu to form
             this.Controls.Add(mainMenu);
         }
-        
+
         /**
          * Sets up the info text box properties on function call.
          * */
@@ -224,8 +198,8 @@ namespace CS_GridGame_Team5
             // Split string by delimeter - https://docs.microsoft.com/en-us/dotnet/api/system.string.split?view=net-6.0 - 07/02/2022
             string coords = ((Button)sender).Text;
             string[] subString = coords.Split(',');
-            
-            int x,  y;
+
+            int x, y;
             x = int.Parse(subString[0]);
             y = int.Parse(subString[1]);
 
@@ -234,7 +208,7 @@ namespace CS_GridGame_Team5
 
             moveCount.Text = (tiles[SelectedTileX, SelectedTileY].Moves).ToString();
 
-            infoTxtBox.Text = "Name: " + tiles[x, y].Name + "\n\nType: " + tiles[x, y].Type + "\n\nHP: " + tiles[x, y].Health  + "\n\nAltitude: " + tiles[x, y].Altitude;
+            infoTxtBox.Text = "Name: " + tiles[x, y].Name + "\n\nType: " + tiles[x, y].Type + "\n\nHP: " + tiles[x, y].Health + "\n\nAltitude: " + tiles[x, y].Altitude;
         }
 
         /**
@@ -305,14 +279,14 @@ namespace CS_GridGame_Team5
             moveCount.BorderStyle = BorderStyle.FixedSingle;
             moveCount.Font = new Font("Calibri", 25);
 
-            
+
 
             // Text alignment in a rich text box - https://stackoverflow.com/questions/6243350/how-to-align-text-in-richtextbox-c - 09/02/2022
             moveCount.SelectAll();
             moveCount.SelectionAlignment = HorizontalAlignment.Center;
             moveCount.DeselectAll();
 
-            upButton.SetBounds(60,  0,  55,  55);
+            upButton.SetBounds(60, 0, 55, 55);
             leftButton.SetBounds(0, 60, 55, 55);
             rightButton.SetBounds(120, 60, 55, 55);
             moveCount.SetBounds(60, 60, 55, 55);
@@ -329,9 +303,6 @@ namespace CS_GridGame_Team5
             rightButton.Click += new EventHandler(rightButtonClick);
             aviateButton.Click += new EventHandler(aviateButtonClick);
             deviateButton.Click += new EventHandler(deviateButtonClick);
-
-
-
 
 
             //Adds button to panel
@@ -361,32 +332,54 @@ namespace CS_GridGame_Team5
         {
             System.Diagnostics.Debug.WriteLine(SelectedTileX + ", " + SelectedTileY);
 
+            // Decrement move from tile. Clamp to 0
+            if (tiles[SelectedTileX, SelectedTileY].Moves != 0)
+            {
+                tiles[SelectedTileX, SelectedTileY].Moves -= 1;
 
-            tiles[SelectedTileX, SelectedTileY].btnTile.BackgroundImage = Properties.Resources.MeBF109_R270;
-<<<<<<< Updated upstream
-            if (tiles[SelectedTileX, SelectedTileY].Moves != 0) { tiles[SelectedTileX, SelectedTileY].Moves -= 1; } // Decrement move from tile. Clamp to 0;
+                // Subtract from rotation paramater by 90 deg. If 0 then set to 270.
+                if (tiles[SelectedTileX, SelectedTileY].Rotation == 0)
+                {
+                    tiles[SelectedTileX, SelectedTileY].Rotation = 270;
+                }
+                else
+                {
+                    tiles[SelectedTileX, SelectedTileY].Rotation -= 90;
+                }
+
+                //Apply correct rotation function call
+                tiles[SelectedTileX, SelectedTileY].rotateTile();
+            }
+            else { return; }
+
             infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nMoves: " + tiles[SelectedTileX, SelectedTileY].Moves + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
-
-=======
-            tiles[SelectedTileX, SelectedTileY].Moves = (tiles[SelectedTileX, SelectedTileY].Moves - 1);
-            infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
-            moveCount.Text = (tiles[SelectedTileX, SelectedTileY].Moves).ToString();
->>>>>>> Stashed changes
         }
-
         private void rotateRClick(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine(SelectedTileX + ", " + SelectedTileY);
-<<<<<<< Updated upstream
-            if (tiles[SelectedTileX, SelectedTileY].Moves != 0) { tiles[SelectedTileX, SelectedTileY].Moves -= 1; } // Decrement move from tile. Clamp to 0;
-            else { return; }
-            infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nMoves: " + tiles[SelectedTileX, SelectedTileY].Moves + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
-=======
-            tiles[SelectedTileX, SelectedTileY].btnTile.BackgroundImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            tiles[SelectedTileX, SelectedTileY].Moves = (tiles[SelectedTileX, SelectedTileY].Moves - 1);
-            infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
->>>>>>> Stashed changes
 
+            // Decrement move from tile. Clamp to 0
+            if (tiles[SelectedTileX, SelectedTileY].Moves != 0) 
+            {
+                tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                
+                // Add to rotation paramater by 90 deg. If 360 then set to 0.
+                if (tiles[SelectedTileX, SelectedTileY].Rotation == 270)
+                {
+                    tiles[SelectedTileX, SelectedTileY].Rotation = 0;
+                }
+                else
+                {
+                    tiles[SelectedTileX, SelectedTileY].Rotation += 90;
+                }
+
+                //Apply correct rotation function call
+                tiles[SelectedTileX, SelectedTileY].rotateTile();
+            }
+            else { return; }
+
+
+            infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nMoves: " + tiles[SelectedTileX, SelectedTileY].Moves + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
         }
 
         private void upButtonClick(object sender, EventArgs e)
@@ -421,8 +414,6 @@ namespace CS_GridGame_Team5
             this.MaximizeBox = false;
         }
     }
-
-   
 }
 
 

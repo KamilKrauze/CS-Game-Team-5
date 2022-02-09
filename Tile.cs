@@ -14,8 +14,6 @@ namespace CS_GridGame_Team5
 
         private int rotation;
 
-
-
         public Tile() // Empty Tile
         {
             this.Name = "Empty";
@@ -25,6 +23,45 @@ namespace CS_GridGame_Team5
             this.AmmoType = AmmoType.None;
             this.Type = ObjectType.Empty;
             this.rotation = 0;
+        }
+
+        // Creates a tile that is the Spitfire MK2
+        public void createSpitFire()
+        {
+            this.Name = "Spitfire MK2";
+            this.Health = 3;
+            this.Moves = 3;
+            this.Altitude = 2;
+            this.AmmoType = AmmoType.Light;
+            this.Type = ObjectType.Fighter;
+            this.rotation = 0;
+            this.btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_R0;
+        }
+
+        // Creates a tile that is the Dam Buster. aka - Avro Lancaster
+        public void createDamBuster()
+        {
+            this.Name = "Avro Lancaster / Dam Buster";
+            this.Health = 5;
+            this.Moves = 2;
+            this.Altitude = 2;
+            this.AmmoType = AmmoType.Light;
+            this.Type = ObjectType.Bomber;
+            this.rotation = 0;
+            this.btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_R180;
+        }
+
+        // Creates a tile that is the Messerschmitt BF 109
+        public void createMeBF109()
+        {
+            this.Name = "Messerschmitt Bf 109";
+            this.Health = 3;
+            this.Moves = 3;
+            this.Altitude = 2;
+            this.AmmoType = AmmoType.Light;
+            this.Type = ObjectType.Fighter;
+            this.rotation = 0;
+            this.btnTile.BackgroundImage = Properties.Resources.MeBF109_R0;
         }
 
         // Transfers data to another Tile object
@@ -61,6 +98,55 @@ namespace CS_GridGame_Team5
         }
 
         public int Rotation { get => rotation; set => rotation = value; }
+        
+        // Rotates the tile appropriately to the rotation parameter of the tile
+        public void rotateTile()
+        {
+            // Brittish Planes
+            if (this.Name == "Spitfire MK2" || this.Name == "Avro Lancaster / Dam Buster")
+            {
+                if (this.Rotation == 0)
+                {
+                    this.btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_R0;
+                }
+                else if (this.Rotation == 90)
+                {
+                    this.btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_R90;
+                }
+                else if (this.Rotation == 180)
+                {
+                    this.btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_R180;
+                }
+                else if (this.Rotation == 270)
+                {
+                    this.btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_R270;
+                }
+            }
+            // German Planes
+            else if (this.Name == "Messerschmitt Bf 109")
+            {
+                if (this.Rotation == 0)
+                {
+                    this.btnTile.BackgroundImage = Properties.Resources.MeBF109_R0;
+                }
+                else if (this.Rotation == 90)
+                {
+                    this.btnTile.BackgroundImage = Properties.Resources.MeBF109_R90;
+                }
+                else if (this.Rotation == 180)
+                {
+                    this.btnTile.BackgroundImage = Properties.Resources.MeBF109_R180;
+                }
+                else if (this.Rotation == 270)
+                {
+                    this.btnTile.BackgroundImage = Properties.Resources.MeBF109_R270;
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 
 }
