@@ -412,6 +412,7 @@ namespace CS_GridGame_Team5
             this.Height = 825;
             this.Width = 1200;
             this.MaximizeBox = false;
+            this.AutoScroll = true;
         }
     }
 }
