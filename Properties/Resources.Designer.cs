@@ -63,9 +63,39 @@ namespace CS_GridGame_Team5.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Clouds_4096x4096 {
+        internal static System.Drawing.Bitmap MeBF109_R0 {
             get {
-                object obj = ResourceManager.GetObject("Clouds_4096x4096", resourceCulture);
+                object obj = ResourceManager.GetObject("MeBF109_R0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MeBF109_R180 {
+            get {
+                object obj = ResourceManager.GetObject("MeBF109_R180", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MeBF109_R270 {
+            get {
+                object obj = ResourceManager.GetObject("MeBF109_R270", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MeBF109_R90 {
+            get {
+                object obj = ResourceManager.GetObject("MeBF109_R90", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +123,39 @@ namespace CS_GridGame_Team5.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SpitfireMK2 {
+        internal static System.Drawing.Bitmap SpitfireMK2_R0 {
             get {
-                object obj = ResourceManager.GetObject("SpitfireMK2", resourceCulture);
+                object obj = ResourceManager.GetObject("SpitfireMK2_R0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SpitfireMK2_R180 {
+            get {
+                object obj = ResourceManager.GetObject("SpitfireMK2_R180", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SpitfireMK2_R270 {
+            get {
+                object obj = ResourceManager.GetObject("SpitfireMK2_R270", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SpitfireMK2_R90 {
+            get {
+                object obj = ResourceManager.GetObject("SpitfireMK2_R90", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

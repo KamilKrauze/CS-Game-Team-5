@@ -73,7 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="E_AmmoType.cs" />
-    <Compile Include="E_PlaneType.cs" />
+    <Compile Include="E_ObjectType.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,9 +98,15 @@
     <Compile Include="Form4.Designer.cs">
       <DependentUpon>Form4.cs</DependentUpon>
     </Compile>
-    <Compile Include="Plane.cs" />
+    <Compile Include="Object.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Tile.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -115,14 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -153,6 +154,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\highScores.txt" />
+    <None Include="Assets\Textures\SpitfireMK2_R270.png" />
+    <None Include="Assets\Textures\SpitfireMK2_R180.png" />
+    <None Include="Assets\Textures\SpitfireMK2_R90.png" />
+    <None Include="Assets\Textures\SpitfireMK2_R0.png" />
+    <None Include="Assets\Textures\MeBF109_R270.png" />
+    <None Include="Assets\Textures\MeBF109_R180.png" />
+    <None Include="Assets\Textures\MeBF109_R90.png" />
+    <None Include="Assets\Textures\MeBF109_R0.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
