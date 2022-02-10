@@ -279,8 +279,6 @@ namespace CS_GridGame_Team5
             moveCount.BorderStyle = BorderStyle.FixedSingle;
             moveCount.Font = new Font("Calibri", 25);
 
-
-
             // Text alignment in a rich text box - https://stackoverflow.com/questions/6243350/how-to-align-text-in-richtextbox-c - 09/02/2022
             moveCount.SelectAll();
             moveCount.SelectionAlignment = HorizontalAlignment.Center;
@@ -336,6 +334,7 @@ namespace CS_GridGame_Team5
             if (tiles[SelectedTileX, SelectedTileY].Moves != 0)
             {
                 tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                updateMoveCount_txtBox();
 
                 // Subtract from rotation paramater by 90 deg. If 0 then set to 270.
                 if (tiles[SelectedTileX, SelectedTileY].Rotation == 0)
@@ -362,6 +361,7 @@ namespace CS_GridGame_Team5
             if (tiles[SelectedTileX, SelectedTileY].Moves != 0) 
             {
                 tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                updateMoveCount_txtBox();
                 
                 // Add to rotation paramater by 90 deg. If 360 then set to 0.
                 if (tiles[SelectedTileX, SelectedTileY].Rotation == 270)
@@ -413,6 +413,16 @@ namespace CS_GridGame_Team5
             this.Width = 1200;
             this.MaximizeBox = false;
             this.AutoScroll = true;
+        }
+
+        private void updateMoveCount_txtBox()
+        {
+            moveCount.Clear();
+            moveCount.Text = (tiles[selectedTileX, selectedTileY].Moves).ToString();
+
+            moveCount.SelectAll();
+            moveCount.SelectionAlignment = HorizontalAlignment.Center;
+            moveCount.DeselectAll();
         }
     }
 }
