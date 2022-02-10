@@ -384,28 +384,27 @@ namespace CS_GridGame_Team5
 
         private void upButtonClick(object sender, EventArgs e)
         {
-             //New instance of tile
-             Tile newTile = new Tile();
-
-            //New tile is set to current tile minus one (so going up)
-             newTile = tiles[SelectedTileX, (SelectedTileY-1)];
-
-            //Decrement move from tile. Clamp to 0
-            if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileY != 0 && tiles[SelectedTileX, SelectedTileY].Rotation == 0 && newTile.Type == ObjectType.Empty )
+            if (selectedTileY != 0)
             {
-               
+                //New instance of tile
+                Tile newTile = new Tile();
 
-                //Decrement moves
-                tiles[SelectedTileX, SelectedTileY].Moves -= 1;
-                updateMoveCount_txtBox();
+                //New tile is set to current tile minus one (so going up)
+                newTile = tiles[SelectedTileX, (SelectedTileY - 1)];
 
-                
+                //Decrement move from tile. Clamp to 0
+                if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileY != 0 && tiles[SelectedTileX, SelectedTileY].Rotation == 0 && newTile.Type == ObjectType.Empty)
+                {
 
-                //Calls swap tiles from Tile.
-                tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
+                    //Decrement moves
+                    tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                    updateMoveCount_txtBox();
+
+                    //Calls swap tiles from Tile.
+                    tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
+                    SelectedTileY--;
+                }
             }
-            
-        
         }
 
         private void leftButtonClick(object sender, EventArgs e)
@@ -415,7 +414,26 @@ namespace CS_GridGame_Team5
 
         private void rightButtonClick(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("\n" + "Cake");
+            if (selectedTileX != 9)
+            {
+                //New instance of tile
+                Tile newTile = new Tile();
+
+                //New tile is set to current tile minus one (so going up)
+                newTile = tiles[(SelectedTileX + 1), SelectedTileY];
+
+                //Decrement move from tile. Clamp to 0
+                if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileX != 9 && tiles[SelectedTileX, SelectedTileY].Rotation == 90 && newTile.Type == ObjectType.Empty)
+                {
+                    //Decrement moves
+                    tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                    updateMoveCount_txtBox();
+
+                    //Calls swap tiles from Tile.
+                    tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
+                    SelectedTileX++;
+                }
+            }
         }
 
         private void aviateButtonClick(object sender, EventArgs e)
