@@ -565,28 +565,140 @@ namespace CS_GridGame_Team5
         // checkBoard helper function
         private bool isPotentialTargetInRange(int x, int y)
         {
-            if(tiles[x,y].AmmoType == AmmoType.Light)
+            if (tiles[x, y].Rotation == 0)
             {
-                if (tiles[x, y].Rotation == 0)
+                return checkY_Up(x,y);
+            }
+            else if (tiles[x, y].Rotation == 90)
+            {
+                
+
+            }
+            else if (tiles[x, y].Rotation == 180)
+            {
+                checkY_Down(x, y);
+            }
+            else if (tiles[x, y].Rotation == 270)
+            {
+                 
+            }
+            return false;
+        }
+
+        private bool checkY_Up(int x, int y)
+        {
+            int yUp1 = y - 1;
+            int yUp2 = y - 2;
+            int yUp3 = y - 3;
+
+            if (yUp1 >= 0)
+            {
+                if (tiles[x,yUp1].Type != ObjectType.Empty)
                 {
-                    if (y == 0)
+                    if (tiles[x, yUp1].Team != tiles[x, y].Team)
                     {
-                        return false;
+                        planeList.sourceX.Add(x);
+                        planeList.sourceY.Add(y);
+                        planeList.targetX.Add(x);
+                        planeList.targetY.Add(yUp1);
+
+                        return true;
                     }
-
-                    if ()
                 }
-                else if (tiles[x, y].Rotation == 90)
-                {
+            }
 
+            if (yUp3 >= 0)
+            {
+                if (tiles[x, yUp3].Type != ObjectType.Empty)
+                {
+                    if (tiles[x, yUp3].Team != tiles[x, y].Team)
+                    {
+                        planeList.sourceX.Add(x);
+                        planeList.sourceY.Add(y);
+                        planeList.targetX.Add(x);
+                        planeList.targetY.Add(yUp3);
+
+                        return true;
+                    }
                 }
-                else if (tiles[x, y].Rotation == 180)
-                {
+            }
 
+            if (tiles[x,y].AmmoType == AmmoType.Heavy)
+            {
+                if (yUp3 >= 0)
+                {
+                    if (tiles[x, yUp3].Type != ObjectType.Empty)
+                    {
+                        if (tiles[x, yUp3].Team != tiles[x, y].Team)
+                        {
+                            planeList.sourceX.Add(x);
+                            planeList.sourceY.Add(y);
+                            planeList.targetX.Add(x);
+                            planeList.targetY.Add(yUp3);
+
+                            return true;
+                        }
+                    }
                 }
-                else if (tiles[x, y].Rotation == 270)
-                {
+            }
 
+            return false;
+        }
+
+        private bool checkY_Down(int x, int y)
+        {
+            int yDown1 = y + 1;
+            int yDown2 = y + 2;
+            int yDown3 = y + 3;
+
+            if (yDown1 <= 9)
+            {
+                if (tiles[x, yDown1].Type != ObjectType.Empty)
+                {
+                    if (tiles[x, yDown1].Team != tiles[x, y].Team)
+                    {
+                        planeList.sourceX.Add(x);
+                        planeList.sourceY.Add(y);
+                        planeList.targetX.Add(x);
+                        planeList.targetY.Add(yDown1);
+
+                        return true;
+                    }
+                }
+            }
+
+            if (yDown2 <= 9)
+            {
+                if (tiles[x, yDown2].Type != ObjectType.Empty)
+                {
+                    if (tiles[x, yDown2].Team != tiles[x, y].Team)
+                    {
+                        planeList.sourceX.Add(x);
+                        planeList.sourceY.Add(y);
+                        planeList.targetX.Add(x);
+                        planeList.targetY.Add(yDown2);
+
+                        return true;
+                    }
+                }
+            }
+
+            if (tiles[x, y].AmmoType == AmmoType.Heavy)
+            {
+                if (yDown3 <= 9)
+                {
+                    if (tiles[x, yDown3].Type != ObjectType.Empty)
+                    {
+                        if (tiles[x, yDown3].Team != tiles[x, y].Team)
+                        {
+                            planeList.sourceX.Add(x);
+                            planeList.sourceY.Add(y);
+                            planeList.targetX.Add(x);
+                            planeList.targetY.Add(yDown3);
+
+                            return true;
+                        }
+                    }
                 }
             }
             return false;
