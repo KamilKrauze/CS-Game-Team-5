@@ -89,30 +89,13 @@ namespace CS_GridGame_Team5.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-       
-        internal static System.Drawing.Bitmap MeBF109_512 {
-            get {
-                object obj = ResourceManager.GetObject("MeBF109_512", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap NightClouds_2048x2048 {
+        internal static System.Drawing.Bitmap SpitfireMK2 {
             get {
-                object obj = ResourceManager.GetObject("NightClouds_2048x2048", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SpitfireMK2_512 {
-            get {
-                object obj = ResourceManager.GetObject("SpitfireMK2_512", resourceCulture);
+                object obj = ResourceManager.GetObject("SpitfireMK2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
