@@ -6,4 +6,5 @@ public enum ObjectType
     AA,
     Fighter,
     Bomber,
+    Dam,
 }
