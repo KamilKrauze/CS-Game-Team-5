@@ -573,6 +573,8 @@ namespace CS_GridGame_Team5
                     {
                         return false;
                     }
+
+                    if ()
                 }
                 else if (tiles[x, y].Rotation == 90)
                 {

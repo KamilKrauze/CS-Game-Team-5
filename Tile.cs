@@ -103,6 +103,7 @@ namespace CS_GridGame_Team5
         }
 
         public int Rotation { get => rotation; set => rotation = value; }
+        public Team Team { get => team; set => team = value; }
         
         // Rotates the tile appropriately to the rotation parameter of the tile
         public void rotateTile()
