@@ -15,14 +15,6 @@ namespace CS_GridGame_Team5
         public List<int> targetX;
         public List<int> targetY;
 
-        public PlaneList()
-        {
-            this.sourceX.Clear();
-            this.sourceY.Clear();
-            this.targetX.Clear();
-            this.targetY.Clear();
-        }
-
         public void resetList()
         {
             this.sourceX.Clear();
