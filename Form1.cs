@@ -20,6 +20,8 @@ namespace CS_GridGame_Team5
         private int selectedTileX;
         private int selectedTileY;
 
+        PlaneList planeList = new PlaneList();
+
         Tile[,] tiles = new Tile[10, 10]; //2D array to hold tile.
         Panel container = new Panel(); //container panel for tiles
         Panel rulesPanel = new Panel(); //container panel for game rules
@@ -39,7 +41,7 @@ namespace CS_GridGame_Team5
         {
             InitializeComponent();
 
-            resizeForm();
+            initForm();
             MenuStrip();
 
             //this.BackgroundImage = Properties.Resources.NightClouds_2048x2048;
@@ -329,6 +331,9 @@ namespace CS_GridGame_Team5
 
         }
 
+        /**
+         * Event handlers for movement
+         */
         private void rotateLClick(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine(SelectedTileX + ", " + SelectedTileY);
@@ -518,7 +523,8 @@ namespace CS_GridGame_Team5
                 }
         }
 
-        private void resizeForm()
+        // Initializes the form with specific properties
+        private void initForm()
         {
             this.Height = 825;
             this.Width = 1200;
@@ -526,6 +532,7 @@ namespace CS_GridGame_Team5
             this.AutoScroll = true;
         }
 
+        // Helper function to update the move counter text box - the text box between the controls
         private void updateMoveCount_txtBox()
         {
             moveCount.Clear();
