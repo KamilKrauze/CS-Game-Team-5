@@ -99,5 +99,5 @@ namespace CS_GridGame_Team5
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.TextBox textBox2;
-    }
+        }
 }

@@ -16,6 +16,7 @@ namespace CS_GridGame_Team5
         public Form3()
         {
             InitializeComponent();
+            this.Load += new System.EventHandler(this.Form3_Load);
         }
 
         /**
@@ -45,13 +46,44 @@ namespace CS_GridGame_Team5
             }
         }
         */
+        private void Form3_Load(object sender, EventArgs e)
+        {
+            List<string> rawHighScores = new List<string>(); // Creats a list for highscores being read from high scores file
+
+            // Gets contents for highScores file
+            StreamReader s = File.OpenText("../../Assets/highScores.txt"); // Set file name
+            string read = null;
+            while ((read = s.ReadLine()) != null) // Read from file until done
+            {
+                rawHighScores.Add(read); // Output text to highscores list
+            }
+            s.Close();
+
+            List<String[]> highScores = new List<String[]>(); // Makes new list for High scores once they have been processed
+            for (int i = 0; i < rawHighScores.Count(); i++) // for every rawHighScore, split score from player name for hisg scores
+            {
+                highScores.Add(rawHighScores[i].Split(',')); // "Name,Score"
+            }
+
+            //highScores = sort(highScores); // sort high scores
+            highScores.Sort((x, y) => int.Parse(y[1]).CompareTo(int.Parse(x[1])));
+
+            // Display first 10 high scores
+            String textBox = "";
+            for (int i = 0; i < 10; i++)
+            {
+                textBox = textBox + "\r\n" + (i+1).ToString() + "\t" + highScores[i][0] + "\t" + highScores[i][1];
+            }
+            textBox2.Text = textBox;
+        }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
+            /**
             List<string> rawHighScores = new List<string>(); // Creats a list for highscores being read from high scores file
             
             // Gets contents for highScores file
-            StreamReader s = File.OpenText(@"Assets\highScores.txt"); // Set file name
+            StreamReader s = File.OpenText(@"..\Assets\highScores.txt"); // Set file name
             string read = null;
             while ((read = s.ReadLine()) != null) // Read from file until done
             {
@@ -73,19 +105,23 @@ namespace CS_GridGame_Team5
             String textBox = "";
             for (int i = 0; i < 10; i++)
             {
-                textBox = textBox + "\n\r1\t" + highScores[i][0] + "\t" + highScores[i][1];
+                //textBox = textBox + "\n\r1\t" + highScores[i][0] + "\t" + highScores[i][1];
+                //textBox = textBox + "a";
             }
+            textBox2.Text = "boo";
+            **/
         }
+
         /**
          * Method to sort a list, specifically highscores
          **/
         public List<String[]> sort(List<String[]> highScores)
         {
-            int counter = 0;
             String[] tempScore;
-            while (highScores[counter] != null)
+
+            for (int counter = 0; counter < highScores.Count(); counter++)
             {
-                if (highScores[counter + 1] == null)
+                if (highScores.Count() - 1 == counter)
                 {
                     break;
                 }
@@ -96,7 +132,6 @@ namespace CS_GridGame_Team5
                         tempScore = highScores[counter];
                         highScores[counter] = highScores[counter + 1];
                         highScores[counter + 1] = tempScore;
-                        counter ++;
                     }
                 }
             }

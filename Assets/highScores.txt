@@ -1,5 +1,5 @@
 ﻿Euan,10000
-Caitlin,12000
+Cate,12000
 Kamil,99999
 Jhon,100
 James,1234
