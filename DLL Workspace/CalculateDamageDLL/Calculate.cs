@@ -74,5 +74,26 @@ namespace Calculate
 
             return damageOutput;
         }
+        
+        // Gets the distance between the two tiles
+        public static int getDistance(int selfX, int selfY, int targetX, int targetY)
+        {
+            int range = 0;
+            if (selfX == targetX && selfY != targetY)
+            {
+                range = selfY - targetY;
+            }
+            else if (selfX != targetX && selfY == targetY)
+            {
+                range = selfX - targetX;
+            }
+
+            if (range < 0)
+            {
+                range *= -1;
+            }
+
+            return range;
+        }
     }
 }

@@ -93,6 +93,7 @@
     <Compile Include="E_ammoType.cs" />
     <Compile Include="E_ObjectType.cs" />
     <Compile Include="E_Team.cs" />
+    <Compile Include="E_WinCondition.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

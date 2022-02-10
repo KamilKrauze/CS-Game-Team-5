@@ -355,6 +355,38 @@ namespace CS_GridGame_Team5
         {
             System.Diagnostics.Debug.WriteLine("Turn is " + Turn);
             Turn = !turn;
+
+            if (Turn == true)
+            {
+                if (checkBoard() == true) // Do damage calculation step
+                {
+                    for (int i = 0; i < planeList.sourceX.Count(); i++)
+                    {
+                        int damage = Compute.damageOutput
+                        (
+                            tiles[planeList.sourceX[i], planeList.sourceY[i]].Altitude, // Self altitude
+                            (byte)tiles[planeList.sourceX[i], planeList.sourceY[i]].Type, // Self object type
+                            (byte)tiles[planeList.sourceX[i], planeList.sourceY[i]].AmmoType, // Self ammo type
+                            Compute.getDistance(planeList.sourceX[i], planeList.sourceY[i], planeList.targetX[i], planeList.targetY[i]), // distance between the two tiles
+                            tiles[planeList.targetX[i], planeList.targetY[i]].Altitude, // Target altitude
+                            (byte)tiles[planeList.targetX[i], planeList.targetY[i]].Type // Target object type
+                        );
+
+                        tiles[planeList.targetX[i], planeList.targetY[i]].Health -= damage; // DAMAGE
+                        
+                        if (tiles[planeList.targetX[i], planeList.targetY[i]].Health <= 0) // Destroy target if health reaches 0 or less
+                        {
+                            Tile emptyTile = new Tile();
+                            tiles[planeList.targetX[i], planeList.targetY[i]] = emptyTile;
+                        }
+                    }
+                }
+                
+                if(checkForWinCondition() != WinCondition.None)
+                {
+                    // Do something
+                }
+            }
         }
         private void rotateLClick(object sender, EventArgs e)
         {
@@ -482,6 +514,7 @@ namespace CS_GridGame_Team5
         }
 
             }
+        
         private void leftButtonClick(object sender, EventArgs e)
         {
 
@@ -602,6 +635,37 @@ namespace CS_GridGame_Team5
             moveCount.SelectAll();
             moveCount.SelectionAlignment = HorizontalAlignment.Center;
             moveCount.DeselectAll();
+        }
+
+        private WinCondition checkForWinCondition()
+        {
+            int RAFPlaneCount = 0;
+            int DamCount = 0;
+            for (int x = 0; x < tiles.GetLength(1); x++)
+            {
+                for (int y = 0; y < tiles.GetLength(1); y++)
+                {
+                    if (tiles[x,y].Team == Team.RAF)
+                    {
+                        RAFPlaneCount++;
+                    }
+                    else if (tiles[x,y].Type == ObjectType.Dam)
+                    {
+                        DamCount++;
+                    }
+                }
+            }
+
+            if (RAFPlaneCount == 0) // The Luftwaffe win
+            {
+                return WinCondition.Luftwaffe;
+            }
+            else if (DamCount == 0) // The British win
+            {
+                return WinCondition.RAF;
+            }
+            
+            return WinCondition.None;
         }
 
         /*
