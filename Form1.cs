@@ -268,6 +268,7 @@ namespace CS_GridGame_Team5
         private void controlsUI()
         {
             Button upButton = new Button();
+            Button downButton = new Button();
             Button leftButton = new Button();
             Button rightButton = new Button();
             Button rotateL = new Button();
@@ -285,6 +286,7 @@ namespace CS_GridGame_Team5
             moveCount.DeselectAll();
 
             upButton.SetBounds(60, 0, 55, 55);
+            downButton.SetBounds(60, 120, 55, 55);
             leftButton.SetBounds(0, 60, 55, 55);
             rightButton.SetBounds(120, 60, 55, 55);
             moveCount.SetBounds(60, 60, 55, 55);
@@ -297,6 +299,7 @@ namespace CS_GridGame_Team5
             rotateL.Click += new EventHandler(rotateLClick);
             rotateR.Click += new EventHandler(rotateRClick);
             upButton.Click += new EventHandler(upButtonClick);
+            downButton.Click += new EventHandler(downButtonClick);
             leftButton.Click += new EventHandler(leftButtonClick);
             rightButton.Click += new EventHandler(rightButtonClick);
             aviateButton.Click += new EventHandler(aviateButtonClick);
@@ -306,6 +309,7 @@ namespace CS_GridGame_Team5
             //Adds button to panel
             controlPanel.Controls.Add(rotateL);
             controlPanel.Controls.Add(upButton);
+            controlPanel.Controls.Add(downButton);
             controlPanel.Controls.Add(rotateR);
             controlPanel.Controls.Add(leftButton);
             controlPanel.Controls.Add(moveCount);
@@ -314,7 +318,7 @@ namespace CS_GridGame_Team5
             controlPanel.Controls.Add(deviateButton);
 
             //Sets controlPanel
-            controlPanel.SetBounds(845, 500, 365, 258);
+            controlPanel.SetBounds(845, 500, 365, 320);
             controlPanel.BackColor = Color.FromArgb(100, 55, 98, 72);
 
 
@@ -395,53 +399,68 @@ namespace CS_GridGame_Team5
                 //Decrement move from tile. Clamp to 0
                 if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileY != 0 && tiles[SelectedTileX, SelectedTileY].Rotation == 0 && newTile.Type == ObjectType.Empty)
                 {
+                    //Decrement moves
+                    tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                    updateMoveCount_txtBox();
+
+                    //Calls swap tiles from Tile.
+                    tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
+                    selectedTileY--;
+                }
+            }
+        }
+
+        private void downButtonClick(object sender, EventArgs e)
+        {
+            if (selectedTileY != 9)
+            {
+                //New instance of tile
+                Tile newTile = new Tile();
+
+                //New tile is set to current tile minus one (so going up)
+                newTile = tiles[SelectedTileX, (SelectedTileY + 1)];
+
+                //Decrement move from tile. Clamp to 0
+                if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileY != 9 && tiles[SelectedTileX, SelectedTileY].Rotation == 180 && newTile.Type == ObjectType.Empty)
+                {
 
                     //Decrement moves
                     tiles[SelectedTileX, SelectedTileY].Moves -= 1;
                     updateMoveCount_txtBox();
-                    //Decrement move from tile. Clamp to 0
-                    if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileY != 0 && tiles[SelectedTileX, SelectedTileY].Rotation == 0 && newTile.Type == ObjectType.Empty)
-                    {
 
-                        //Decrement moves
-                        tiles[SelectedTileX, SelectedTileY].Moves -= 1;
-                        updateMoveCount_txtBox();
-
-
-
-                        //Calls swap tiles from Tile.
-                        tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
-                    }
+                    //Calls swap tiles from Tile.
+                    tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
+                    selectedTileY++;
                 }
             }
         }
 
         private void leftButtonClick(object sender, EventArgs e)
         {
-            
+
             //Checks if X axis is 0
             if (SelectedTileX != 0)
             {
                 //New instance of tile
-                 Tile newTile = new Tile();
+                Tile newTile = new Tile();
 
                 //New tile is set to current tile minus one (so going up)
-                newTile = tiles[(SelectedTileX-1), SelectedTileY];
-            
+                newTile = tiles[(SelectedTileX - 1), SelectedTileY];
 
-            //Decrement move from tile. Clamp to 0
-            if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileX != 0 && tiles[SelectedTileX, SelectedTileY].Rotation == 270 && newTile.Type == ObjectType.Empty )
-            {
-               
-                //Decrement moves
-                tiles[SelectedTileX, SelectedTileY].Moves -= 1;
-                updateMoveCount_txtBox();
 
-                //Calls swap tiles from Tile.
-                tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
+                //Decrement move from tile. Clamp to 0
+                if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileX != 0 && tiles[SelectedTileX, SelectedTileY].Rotation == 270 && newTile.Type == ObjectType.Empty)
+                {
 
-                SelectedTileX--;
-            }
+                    //Decrement moves
+                    tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                    updateMoveCount_txtBox();
+
+                    //Calls swap tiles from Tile.
+                    tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
+
+                    SelectedTileX--;
+                }
             }
         }
 
