@@ -19,6 +19,8 @@ namespace CS_GridGame_Team5
 
         private int selectedTileX;
         private int selectedTileY;
+        
+
 
         PlaneList planeList = new PlaneList();
 
@@ -33,9 +35,13 @@ namespace CS_GridGame_Team5
 
         public string planeDataStoredWhenShowingGameRules = "";
         public bool showRules = false;
+        public bool turn = true; // boolean to control who's turn it is. If true, brit, if false, axis.
+
+        
 
         public int SelectedTileX { get => selectedTileX; set => selectedTileX = value; }
         public int SelectedTileY { get => selectedTileY; set => selectedTileY = value; }
+        public bool Turn { get => turn; set => turn = value; }
 
         public Form_Game()
         {
@@ -207,6 +213,8 @@ namespace CS_GridGame_Team5
             SelectedTileX = x;
             SelectedTileY = y;
 
+  
+
             moveCount.Text = (tiles[SelectedTileX, SelectedTileY].Moves).ToString();
 
             infoTxtBox.Text = "Name: " + tiles[x, y].Name + "\n\nType: " + tiles[x, y].Type + "\n\nHP: " + tiles[x, y].Health + "\n\nAltitude: " + tiles[x, y].Altitude;
@@ -229,7 +237,7 @@ namespace CS_GridGame_Team5
 
                     //Reads all the lines in file and stores them in string array lines.
                     string[] lines = System.IO.File.ReadAllLines(@"..\..\Assets\Text Files\rules.txt");
-
+                    infoTxtBox.Clear();
                     //For every line in string array lines
                     foreach (string line in lines)
                     {
@@ -239,7 +247,7 @@ namespace CS_GridGame_Team5
 
                         //writes line to text box.
                         planeDataStoredWhenShowingGameRules = infoTxtBox.Text;
-                        infoTxtBox.Clear();
+                       
                         infoTxtBox.AppendText(line);
                     }
                     // Adapted code ends here
@@ -253,6 +261,7 @@ namespace CS_GridGame_Team5
             }
             else
             {
+                infoTxtBox.Clear();
                 infoTxtBox.Text = planeDataStoredWhenShowingGameRules;
             }
             showRules = !showRules;
@@ -277,6 +286,8 @@ namespace CS_GridGame_Team5
             Button aviateButton = new Button();
             Button deviateButton = new Button();
 
+            Button confirmButton = new Button();
+
             moveCount.ReadOnly = true;
             moveCount.BorderStyle = BorderStyle.FixedSingle;
             moveCount.Font = new Font("Calibri", 25);
@@ -296,6 +307,10 @@ namespace CS_GridGame_Team5
             aviateButton.SetBounds(200, 0, 55, 55);
             deviateButton.SetBounds(200, 60, 55, 55);
 
+            confirmButton.SetBounds(200, 120, 55, 55);
+
+
+
             //EventHandlers
             rotateL.Click += new EventHandler(rotateLClick);
             rotateR.Click += new EventHandler(rotateRClick);
@@ -305,7 +320,7 @@ namespace CS_GridGame_Team5
             rightButton.Click += new EventHandler(rightButtonClick);
             aviateButton.Click += new EventHandler(aviateButtonClick);
             deviateButton.Click += new EventHandler(deviateButtonClick);
-
+            confirmButton.Click += new EventHandler(confirmClick);
 
             //Adds button to panel
             controlPanel.Controls.Add(rotateL);
@@ -317,6 +332,7 @@ namespace CS_GridGame_Team5
             controlPanel.Controls.Add(rightButton);
             controlPanel.Controls.Add(aviateButton);
             controlPanel.Controls.Add(deviateButton);
+            controlPanel.Controls.Add(confirmButton);
 
             //Sets controlPanel
             controlPanel.SetBounds(845, 500, 365, 320);
@@ -334,9 +350,24 @@ namespace CS_GridGame_Team5
         /**
          * Event handlers for movement
          */
+
+        private void confirmClick(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Turn is " + Turn);
+            Turn = !turn;
+        }
         private void rotateLClick(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine(SelectedTileX + ", " + SelectedTileY);
+
+            //Checks if the team matches the plane selection.
+            if ((tiles[SelectedTileX, SelectedTileY].Team == Team.RAF && gameLoop() == true) || (gameLoop() == false && tiles[SelectedTileX, SelectedTileY].Team == Team.Luftwaffe)) { 
+           
+            System.Diagnostics.Debug.WriteLine("\n" + tiles[SelectedTileX, SelectedTileY].Team);
+                
+            System.Diagnostics.Debug.WriteLine(Turn);
+
+
 
             // Decrement move from tile. Clamp to 0
             if (tiles[SelectedTileX, SelectedTileY].Moves != 0)
@@ -360,11 +391,14 @@ namespace CS_GridGame_Team5
             else { return; }
 
             infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
-        }
+        }}
         
         private void rotateRClick(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine(SelectedTileX + ", " + SelectedTileY);
+
+            //Checks if the team matches the plane selection.
+            if ((tiles[SelectedTileX, SelectedTileY].Team == Team.RAF && gameLoop() == true) || (gameLoop() == false && tiles[SelectedTileX, SelectedTileY].Team == Team.Luftwaffe)) { 
 
             // Decrement move from tile. Clamp to 0
             if (tiles[SelectedTileX, SelectedTileY].Moves != 0) 
@@ -390,9 +424,13 @@ namespace CS_GridGame_Team5
 
             infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nMoves: " + tiles[SelectedTileX, SelectedTileY].Moves + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
         }
+            }
 
         private void upButtonClick(object sender, EventArgs e)
         {
+
+            //Checks if the team matches the plane selection.
+            if ((tiles[SelectedTileX, SelectedTileY].Team == Team.RAF && gameLoop() == true) || (gameLoop() == false && tiles[SelectedTileX, SelectedTileY].Team == Team.Luftwaffe)) { 
             if (selectedTileY != 0)
             {
                 //New instance of tile
@@ -413,10 +451,13 @@ namespace CS_GridGame_Team5
                     selectedTileY--;
                 }
             }
-        }
+        }}
 
         private void downButtonClick(object sender, EventArgs e)
         {
+            //Checks if the team matches the plane selection.
+            if ((tiles[SelectedTileX, SelectedTileY].Team == Team.RAF && gameLoop() == true) || (gameLoop() == false && tiles[SelectedTileX, SelectedTileY].Team == Team.Luftwaffe)) { 
+                
             if (selectedTileY != 9)
             {
                 //New instance of tile
@@ -440,8 +481,12 @@ namespace CS_GridGame_Team5
             }
         }
 
+            }
         private void leftButtonClick(object sender, EventArgs e)
         {
+
+            //Checks if the team matches the plane selection.
+            if ((tiles[SelectedTileX, SelectedTileY].Team == Team.RAF && gameLoop() == true) || (gameLoop() == false && tiles[SelectedTileX, SelectedTileY].Team == Team.Luftwaffe)) { 
 
             //Checks if X axis is 0
             if (SelectedTileX != 0)
@@ -467,10 +512,20 @@ namespace CS_GridGame_Team5
                     SelectedTileX--;
                 }
             }
-        }
+        }}
 
         private void rightButtonClick(object sender, EventArgs e)
         {
+
+            System.Diagnostics.Debug.WriteLine("\n Before IF" + tiles[SelectedTileX, SelectedTileY].Team); 
+
+            //Checks if the team matches the plane selection.
+            if ((tiles[SelectedTileX, SelectedTileY].Team == Team.RAF && gameLoop() == true) || (gameLoop() == false && tiles[SelectedTileX, SelectedTileY].Team == Team.Luftwaffe)) { 
+
+                System.Diagnostics.Debug.WriteLine("\n" + tiles[SelectedTileX, SelectedTileY].Team);
+                
+                System.Diagnostics.Debug.WriteLine(Turn);
+
             if (selectedTileX != 9)
             {
                 //New instance of tile
@@ -491,12 +546,14 @@ namespace CS_GridGame_Team5
                     SelectedTileX++;
                 }
             }
-        }
+        } }
 
         private void aviateButtonClick(object sender, EventArgs e)
         {
             
-                
+            //Checks if the team matches the plane selection.
+            if ((tiles[SelectedTileX, SelectedTileY].Team == Team.RAF && gameLoop() == true) || (gameLoop() == false && tiles[SelectedTileX, SelectedTileY].Team == Team.Luftwaffe)) { 
+
                 //Decrement move from tile. Clamp to 0
                 if (tiles[SelectedTileX, SelectedTileY].Altitude != 5 && tiles[SelectedTileX, SelectedTileY].Moves != 0)
                 {
@@ -508,10 +565,14 @@ namespace CS_GridGame_Team5
 
                 }
             }
+            }
         
         private void deviateButtonClick(object sender, EventArgs e)
         {
-             //Decrement move from tile. Clamp to 0
+            
+            //Checks if the team matches the plane selection.
+            if ((tiles[SelectedTileX, SelectedTileY].Team == Team.RAF && gameLoop() == true) || (gameLoop() == false && tiles[SelectedTileX, SelectedTileY].Team == Team.Luftwaffe)) { 
+                //Decrement move from tile. Clamp to 0
                 if (tiles[SelectedTileX, SelectedTileY].Altitude != 5  && tiles[SelectedTileX, SelectedTileY].Moves != 0)
                 {
                     //Decrement moves
@@ -521,7 +582,7 @@ namespace CS_GridGame_Team5
                     infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
 
                 }
-        }
+        }}
 
         // Initializes the form with specific properties
         private void initForm()
@@ -570,6 +631,21 @@ namespace CS_GridGame_Team5
             return false;
         }
 
+
+        private bool gameLoop()
+        {
+            //Checks whose turn it is based on boolean
+            if (turn == true)
+            {
+                //System.Diagnostics.Debug.WriteLine("Team is Britain");
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+        }
         // checkBoard helper function
         private bool isPotentialTargetInRange(int x, int y)
         {

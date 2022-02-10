@@ -81,7 +81,9 @@ namespace CS_GridGame_Team5
             temp.AmmoType = this.AmmoType;
             temp.Type = this.Type;
             temp.Rotation = this.Rotation;
+            temp.Team = this.Team;
             temp.btnTile.BackgroundImage = this.btnTile.BackgroundImage;
+            
             
             this.Name = tile.Name;
             this.Health = tile.Health;
@@ -90,6 +92,7 @@ namespace CS_GridGame_Team5
             this.AmmoType = tile.AmmoType;
             this.Type = tile.Type;
             this.Rotation = tile.Rotation;
+            this.Team = tile.Team;
             this.btnTile.BackgroundImage = tile.btnTile.BackgroundImage;
 
             tile.Name = temp.Name;
@@ -99,6 +102,7 @@ namespace CS_GridGame_Team5
             tile.AmmoType = temp.AmmoType;
             tile.Type = temp.Type;
             tile.Rotation = temp.Rotation;
+            tile.Team = temp.Team;
             tile.btnTile.BackgroundImage = temp.btnTile.BackgroundImage;
         }
 
