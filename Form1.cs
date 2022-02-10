@@ -542,5 +542,14 @@ namespace CS_GridGame_Team5
             moveCount.SelectionAlignment = HorizontalAlignment.Center;
             moveCount.DeselectAll();
         }
+
+        /*
+         * Checks board if there will be a damage step needed
+         */
+        private bool checkBoard()
+        {
+
+            return false;
+        }
     }
 }
