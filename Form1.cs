@@ -20,7 +20,6 @@ namespace CS_GridGame_Team5
         private int selectedTileX;
         private int selectedTileY;
 
-
         Tile[,] tiles = new Tile[10, 10]; //2D array to hold tile.
         Panel container = new Panel(); //container panel for tiles
         Panel rulesPanel = new Panel(); //container panel for game rules
