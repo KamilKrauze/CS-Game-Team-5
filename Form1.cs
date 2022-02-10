@@ -351,7 +351,7 @@ namespace CS_GridGame_Team5
             }
             else { return; }
 
-            infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nMoves: " + tiles[SelectedTileX, SelectedTileY].Moves + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
+            infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
         }
         private void rotateRClick(object sender, EventArgs e)
         {
@@ -471,12 +471,33 @@ namespace CS_GridGame_Team5
 
         private void aviateButtonClick(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("\n" + "Cake");
-        }
+            
+                
+                //Decrement move from tile. Clamp to 0
+                if (tiles[SelectedTileX, SelectedTileY].Altitude != 5 && tiles[SelectedTileX, SelectedTileY].Moves != 0)
+                {
+                    //Decrement moves
+                    tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                    tiles[SelectedTileX, SelectedTileY].Altitude += 1;
+                    updateMoveCount_txtBox();
+                    infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
+
+                }
+            }
+        
 
         private void deviateButtonClick(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("\n" + "Cake");
+             //Decrement move from tile. Clamp to 0
+                if (tiles[SelectedTileX, SelectedTileY].Altitude != 5  && tiles[SelectedTileX, SelectedTileY].Moves != 0)
+                {
+                    //Decrement moves
+                    tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                    tiles[SelectedTileX, SelectedTileY].Altitude -= 1;
+                    updateMoveCount_txtBox();
+                    infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
+
+                }
         }
 
         private void resizeForm()
