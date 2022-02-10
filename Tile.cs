@@ -13,6 +13,7 @@ namespace CS_GridGame_Team5
         public Button btnTile = new Button();
 
         private int rotation;
+        private Team team;
 
         public Tile() // Empty Tile
         {
@@ -23,6 +24,7 @@ namespace CS_GridGame_Team5
             this.AmmoType = AmmoType.None;
             this.Type = ObjectType.Empty;
             this.rotation = 0;
+            this.team = Team.None;
         }
 
         // Creates a tile that is the Spitfire MK2
@@ -35,6 +37,7 @@ namespace CS_GridGame_Team5
             this.AmmoType = AmmoType.Light;
             this.Type = ObjectType.Fighter;
             this.rotation = 0;
+            this.team = Team.RAF;
             this.btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_R0;
         }
 
@@ -48,6 +51,7 @@ namespace CS_GridGame_Team5
             this.AmmoType = AmmoType.Light;
             this.Type = ObjectType.Bomber;
             this.rotation = 0;
+            this.team = Team.RAF;
             this.btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_R180;
         }
 
@@ -61,6 +65,7 @@ namespace CS_GridGame_Team5
             this.AmmoType = AmmoType.Light;
             this.Type = ObjectType.Fighter;
             this.rotation = 0;
+            this.team = Team.Luftwaffe;
             this.btnTile.BackgroundImage = Properties.Resources.MeBF109_R0;
         }
 

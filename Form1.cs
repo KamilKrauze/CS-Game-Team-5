@@ -548,7 +548,45 @@ namespace CS_GridGame_Team5
          */
         private bool checkBoard()
         {
+            for (int x = 0; x < tiles.GetLength(1); x++)
+            {
+                for (int y = 0; y < tiles.GetLength(1); y++)
+                {
+                    if (tiles[x,y].Type != ObjectType.Empty)
+                    {
+                        
+                    }
+                }
+            }
 
+            return false;
+        }
+
+        // checkBoard helper function
+        private bool isPotentialTargetInRange(int x, int y)
+        {
+            if(tiles[x,y].AmmoType == AmmoType.Light)
+            {
+                if (tiles[x, y].Rotation == 0)
+                {
+                    if (y == 0)
+                    {
+                        return false;
+                    }
+                }
+                else if (tiles[x, y].Rotation == 90)
+                {
+
+                }
+                else if (tiles[x, y].Rotation == 180)
+                {
+
+                }
+                else if (tiles[x, y].Rotation == 270)
+                {
+
+                }
+            }
             return false;
         }
     }

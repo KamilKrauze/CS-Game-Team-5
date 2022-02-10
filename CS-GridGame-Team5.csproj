@@ -92,6 +92,7 @@
   <ItemGroup>
     <Compile Include="E_ammoType.cs" />
     <Compile Include="E_ObjectType.cs" />
+    <Compile Include="E_Team.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +124,7 @@
       <DependentUpon>gameOver.cs</DependentUpon>
     </Compile>
     <Compile Include="Object.cs" />
+    <Compile Include="PlaneList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tile.cs" />
