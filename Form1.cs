@@ -399,17 +399,50 @@ namespace CS_GridGame_Team5
                     //Decrement moves
                     tiles[SelectedTileX, SelectedTileY].Moves -= 1;
                     updateMoveCount_txtBox();
+                    //Decrement move from tile. Clamp to 0
+                    if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileY != 0 && tiles[SelectedTileX, SelectedTileY].Rotation == 0 && newTile.Type == ObjectType.Empty)
+                    {
 
-                    //Calls swap tiles from Tile.
-                    tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
-                    SelectedTileY--;
+                        //Decrement moves
+                        tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                        updateMoveCount_txtBox();
+
+
+
+                        //Calls swap tiles from Tile.
+                        tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
+                    }
                 }
             }
         }
 
         private void leftButtonClick(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("\n" + "Cake");
+            
+            //Checks if X axis is 0
+            if (SelectedTileX != 0)
+            {
+                //New instance of tile
+                 Tile newTile = new Tile();
+
+                //New tile is set to current tile minus one (so going up)
+                newTile = tiles[(SelectedTileX-1), SelectedTileY];
+            
+
+            //Decrement move from tile. Clamp to 0
+            if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileX != 0 && tiles[SelectedTileX, SelectedTileY].Rotation == 270 && newTile.Type == ObjectType.Empty )
+            {
+               
+                //Decrement moves
+                tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                updateMoveCount_txtBox();
+
+                //Calls swap tiles from Tile.
+                tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
+
+                SelectedTileX--;
+            }
+            }
         }
 
         private void rightButtonClick(object sender, EventArgs e)
