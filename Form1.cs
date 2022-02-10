@@ -384,18 +384,22 @@ namespace CS_GridGame_Team5
 
         private void upButtonClick(object sender, EventArgs e)
         {
-            
+             //New instance of tile
+             Tile newTile = new Tile();
+
+            //New tile is set to current tile minus one (so going up)
+             newTile = tiles[SelectedTileX, (SelectedTileY-1)];
+
             //Decrement move from tile. Clamp to 0
-            if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileX != 0 && tiles[SelectedTileX, SelectedTileY].Rotation == 0)
+            if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileY != 0 && tiles[SelectedTileX, SelectedTileY].Rotation == 0 && newTile.Type == ObjectType.Empty )
             {
-                //New instance of tile
-                Tile newTile = new Tile();
+               
 
                 //Decrement moves
                 tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                updateMoveCount_txtBox();
 
-                //New tile is set to current tile minus one (so going up)
-                newTile = tiles[SelectedTileX, (SelectedTileY-1)];
+                
 
                 //Calls swap tiles from Tile.
                 tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
