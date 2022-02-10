@@ -32,12 +32,11 @@ namespace CS_GridGame_Team5
         Panel infoPanel = new Panel(); //Panel to hold info about planes
         RichTextBox infoTxtBox = new RichTextBox(); //text box
         RichTextBox moveCount = new RichTextBox(); //move count text box
+        Label TeamTurnNotifier = new Label();
 
         public string planeDataStoredWhenShowingGameRules = "";
         public bool showRules = false;
         public bool turn = true; // boolean to control who's turn it is. If true, brit, if false, axis.
-
-        
 
         public int SelectedTileX { get => selectedTileX; set => selectedTileX = value; }
         public int SelectedTileY { get => selectedTileY; set => selectedTileY = value; }
@@ -49,8 +48,6 @@ namespace CS_GridGame_Team5
 
             initForm();
             MenuStrip();
-
-            //this.BackgroundImage = Properties.Resources.NightClouds_2048x2048;
 
             this.BackgroundImageLayout = ImageLayout.Stretch;
             this.BackColor = Color.FromArgb(255, 55, 98, 72);
@@ -297,19 +294,25 @@ namespace CS_GridGame_Team5
             moveCount.SelectionAlignment = HorizontalAlignment.Center;
             moveCount.DeselectAll();
 
-            upButton.SetBounds(60, 0, 55, 55);
-            downButton.SetBounds(60, 120, 55, 55);
-            leftButton.SetBounds(0, 60, 55, 55);
-            rightButton.SetBounds(120, 60, 55, 55);
-            moveCount.SetBounds(60, 60, 55, 55);
-            rotateL.SetBounds(0, 0, 55, 55);
-            rotateR.SetBounds(120, 0, 55, 55);
-            aviateButton.SetBounds(200, 0, 55, 55);
-            deviateButton.SetBounds(200, 60, 55, 55);
+            upButton.SetBounds(60, 80, 55, 55);
+            downButton.SetBounds(60, 200, 55, 55);
+            leftButton.SetBounds(0, 140, 55, 55);
+            rightButton.SetBounds(120, 140, 55, 55);
+            moveCount.SetBounds(60, 140, 55, 55);
+            rotateL.SetBounds(0, 80, 55, 55);
+            rotateR.SetBounds(120, 80, 55, 55);
+            aviateButton.SetBounds(200, 80, 55, 55);
+            deviateButton.SetBounds(200, 140, 55, 55);
 
-            confirmButton.SetBounds(200, 120, 55, 55);
+            confirmButton.SetBounds(200, 200, 55, 55);
 
+            // Turn Label
+            TeamTurnNotifier.Text = "RAF";
+            TeamTurnNotifier.Font = new Font("Calibri", 27);
+            TeamTurnNotifier.AutoSize = true;
+            TeamTurnNotifier.SetBounds(90, 0, 300, 150);
 
+            controlPanel.Controls.Add(TeamTurnNotifier);
 
             //EventHandlers
             rotateL.Click += new EventHandler(rotateLClick);
@@ -335,7 +338,7 @@ namespace CS_GridGame_Team5
             controlPanel.Controls.Add(confirmButton);
 
             //Sets controlPanel
-            controlPanel.SetBounds(845, 500, 365, 320);
+            controlPanel.SetBounds(845, 500, 365, 410);
             controlPanel.BackColor = Color.FromArgb(100, 55, 98, 72);
 
 
@@ -386,6 +389,15 @@ namespace CS_GridGame_Team5
                 {
                     // Do something
                 }
+            }
+
+            if (Turn == true) // Update label
+            {
+                TeamTurnNotifier.Text = "RAF";
+            }
+            else
+            {
+                TeamTurnNotifier.Text = "Luftwaffe";
             }
         }
         private void rotateLClick(object sender, EventArgs e)
