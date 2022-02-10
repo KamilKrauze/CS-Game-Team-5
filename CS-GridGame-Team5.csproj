@@ -57,7 +57,7 @@
       <HintPath>DLL Workspace\CalculateDamageDLL\bin\Debug\CalculateDamageDLL.dll</HintPath>
     </Reference>
     <Reference Include="SFX_DLL">
-      <HintPath>DLL Workspace\SFX_DLL\obj\Debug\SFX_DLL.dll</HintPath>
+      <HintPath>DLL Workspace\SFX_DLL\bin\Debug\SFX_DLL.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -73,34 +73,60 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="E_AmmoType.cs" />
-    <Compile Include="E_ObjectType.cs" />
+    <Compile Include="E_PlaneType.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tile.cs" />
-    <Compile Include="Object.cs" />
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form4.Designer.cs">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plane.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form4.resx">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -120,19 +146,13 @@
     <None Include="Assets\Textures\Clouds_Albedo-4096x4096 %281%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Textures\Clouds-4096x4096.png" />
+    <None Include="Resources\menuBackgoround.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Textures\SpitfireMK2.png" />
+    <None Include="Resources\name.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Textures\MeBF109_512.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Textures\SpitfireMK2_512.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Textures\NightClouds-2048x2048.png" />
+    <Content Include="Assets\highScores.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

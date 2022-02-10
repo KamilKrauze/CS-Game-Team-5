@@ -1,9 +1,7 @@
 ﻿using System;
 
-public enum AmmoType
+enum AmmoType
 {   
-    None,
-    AntiAir,
     Light,
     Heavy,
 }

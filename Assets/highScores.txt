@@ -1,0 +1,10 @@
+﻿Euan,10000
+Caitlin,12000
+Kamil,99999
+Jhon,100
+James,1234
+Jenifer,3765
+Joey,1
+Jimmy,5002
+Jack, 987
+Jazz Hands, 9001
