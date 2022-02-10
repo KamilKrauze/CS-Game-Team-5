@@ -356,6 +356,7 @@ namespace CS_GridGame_Team5
 
             infoTxtBox.Text = "Name: " + tiles[SelectedTileX, SelectedTileY].Name + "\n\nType: " + tiles[SelectedTileX, SelectedTileY].Type + "\n\nHP: " + tiles[SelectedTileX, SelectedTileY].Health + "\n\nAltitude: " + tiles[SelectedTileX, SelectedTileY].Altitude;
         }
+        
         private void rotateRClick(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine(SelectedTileX + ", " + SelectedTileY);
@@ -503,7 +504,6 @@ namespace CS_GridGame_Team5
                 }
             }
         
-
         private void deviateButtonClick(object sender, EventArgs e)
         {
              //Decrement move from tile. Clamp to 0
