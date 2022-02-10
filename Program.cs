@@ -16,7 +16,7 @@ namespace CS_GridGame_Team5
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_Game());
+            Application.Run(new Form2());
         }
     }
 }

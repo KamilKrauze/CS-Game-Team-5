@@ -17,6 +17,11 @@ namespace CS_GridGame_Team5
             InitializeComponent();
         }
 
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -29,7 +34,9 @@ namespace CS_GridGame_Team5
 
         private void buttonRules_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Form4 rulesWindow = new Form4();
+            rulesWindow.ShowDialog();
         }
 
         private void buttonPlay_Click(object sender, EventArgs e)

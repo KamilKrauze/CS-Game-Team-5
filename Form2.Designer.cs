@@ -125,6 +125,7 @@ namespace CS_GridGame_Team5
             this.Controls.Add(this.dambustersWordArt);
             this.Name = "Form2";
             this.Text = "Dambusters - Main Menu";
+            this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dambustersWordArt)).EndInit();
             this.ResumeLayout(false);
 
