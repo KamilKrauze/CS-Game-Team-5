@@ -121,13 +121,31 @@
   <data name="menuBackgoround" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\menuBackgoround.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Clouds_4096x4096" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Textures\Clouds_Albedo-4096x4096 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SpitfireMK2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Textures\SpitfireMK2 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="name" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\name.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MeBF109_R0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\MeBF109_R0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MeBF109_R180" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\MeBF109_R180.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MeBF109_R270" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\MeBF109_R270.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MeBF109_R90" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\MeBF109_R90.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SpitfireMK2_R0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\SpitfireMK2_R0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SpitfireMK2_R180" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\SpitfireMK2_R180.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SpitfireMK2_R270" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\SpitfireMK2_R270.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SpitfireMK2_R90" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\SpitfireMK2_R90.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
