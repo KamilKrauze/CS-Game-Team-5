@@ -352,11 +352,24 @@ namespace CS_GridGame_Team5
             downButton.BackgroundImage = Properties.Resources.downArrow;
             downButton.BackgroundImageLayout = ImageLayout.Stretch;
 
-             leftButton.BackgroundImage = Properties.Resources.leftArrow;
-             leftButton.BackgroundImageLayout = ImageLayout.Stretch;
+            leftButton.BackgroundImage = Properties.Resources.leftArrow;
+            leftButton.BackgroundImageLayout = ImageLayout.Stretch;
 
-             rightButton.BackgroundImage = Properties.Resources.rightArrow;
-             rightButton.BackgroundImageLayout = ImageLayout.Stretch;
+            rightButton.BackgroundImage = Properties.Resources.rightArrow;
+            rightButton.BackgroundImageLayout = ImageLayout.Stretch;
+
+            aviateButton.BackgroundImage = Properties.Resources.aviateArrow;
+            aviateButton.BackgroundImageLayout = ImageLayout.Stretch;
+
+            deviateButton.BackgroundImage = Properties.Resources.deviateArrow;
+            deviateButton.BackgroundImageLayout = ImageLayout.Stretch;
+
+            rotateL.BackgroundImage = Properties.Resources.rotateLeft;
+            rotateL.BackgroundImageLayout = ImageLayout.Stretch;
+
+            rotateR.BackgroundImage = Properties.Resources.rotateRight;
+            rotateR.BackgroundImageLayout = ImageLayout.Stretch;
+
 
 
             //Adds button to panel
