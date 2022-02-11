@@ -370,6 +370,10 @@ namespace CS_GridGame_Team5
             rotateR.BackgroundImage = Properties.Resources.rotateRight;
             rotateR.BackgroundImageLayout = ImageLayout.Stretch;
 
+            confirmButton.BackColor = Color.LimeGreen;
+            confirmButton.ForeColor = Color.White;
+            confirmButton.Text = "Confirm";
+
             //Adds button to panel
             controlPanel.Controls.Add(rotateL);
             controlPanel.Controls.Add(upButton);
