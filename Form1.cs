@@ -731,7 +731,7 @@ namespace CS_GridGame_Team5
             {
                 for (int y = 0; y < tiles.GetLength(1); y++)
                 {
-                    if (tiles[x,y].Team == Team.RAF)
+                    if (tiles[x,y].Type == ObjectType.Bomber)
                     {
                         RAFPlaneCount++;
                     }
