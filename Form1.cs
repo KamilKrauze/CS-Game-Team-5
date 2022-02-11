@@ -98,13 +98,26 @@ namespace CS_GridGame_Team5
             tiles[0, 1].createDamBuster();
             tiles[0, 1].Rotation = 90;
 
+            // Luftwaffe planes setup
             tiles[5, 9].createMeBF109();
             tiles[6, 8].createMeBF109();
             tiles[9, 9].createMeBF109();
             tiles[7, 7].createMeBF109();
             tiles[8, 8].createMeBF109();
 
+            // Create dam
             tiles[9, 2].createDam();
+
+            // Update images according to rotation
+            tiles[0, 0].rotateTile();
+            tiles[1, 1].rotateTile();
+            tiles[0, 2].rotateTile();
+            tiles[0, 1].rotateTile();
+            tiles[5, 9].rotateTile();
+            tiles[6, 8].rotateTile();
+            tiles[9, 9].rotateTile();
+            tiles[7, 7].rotateTile();
+            tiles[8 ,8].rotateTile();
         }
 
         /**
