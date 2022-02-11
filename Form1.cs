@@ -16,6 +16,8 @@ namespace CS_GridGame_Team5
 {
     public partial class Form_Game : Form
     {
+        private int RAFScore = 0;
+        private int LuftwaffeScore = 0;
 
         private int selectedTileX;
         private int selectedTileY;
@@ -452,6 +454,8 @@ namespace CS_GridGame_Team5
                 if(checkForWinCondition() != WinCondition.None)
                 {
                     Console.WriteLine("Win Condition: " + checkForWinCondition());
+                    gameOver gameOverScreen = new gameOver();
+                    gameOverScreen.winner
                 }
             }
 
@@ -539,133 +543,204 @@ namespace CS_GridGame_Team5
         {
 
             //Checks if the team matches the plane selection.
-            if ((tiles[SelectedTileX, SelectedTileY].Team == Team.RAF && gameLoop() == true) || (gameLoop() == false && tiles[SelectedTileX, SelectedTileY].Team == Team.Luftwaffe)) { 
-            if (selectedTileY != 0)
+            if ((tiles[SelectedTileX, SelectedTileY].Team == Team.RAF && gameLoop() == true) || (gameLoop() == false && tiles[SelectedTileX, SelectedTileY].Team == Team.Luftwaffe))
             {
-                //New instance of tile
-                Tile newTile = new Tile();
-
-                //New tile is set to current tile minus one (so going up)
-                newTile = tiles[SelectedTileX, (SelectedTileY - 1)];
-
-                //Decrement move from tile. Clamp to 0
-                if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileY != 0 && tiles[SelectedTileX, SelectedTileY].Rotation == 0 && (newTile.Type == ObjectType.Empty || newTile.Type == ObjectType.Dam))
+                if (selectedTileY != 0)
                 {
-                    //Decrement moves
-                    tiles[SelectedTileX, SelectedTileY].Moves -= 1;
-                    updateMoveCount_txtBox();
+                    //New instance of tile
+                    Tile newTile = new Tile();
 
-                    //Calls swap tiles from Tile.
-                    tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
-                    selectedTileY--;
-                }
-            }
-        }}
+                    //New tile is set to current tile minus one (so going up)
+                    newTile = tiles[SelectedTileX, (SelectedTileY - 1)];
 
-        private void downButtonClick(object sender, EventArgs e)
-        {
-            //Checks if the team matches the plane selection.
-            if ((tiles[SelectedTileX, SelectedTileY].Team == Team.RAF && gameLoop() == true) || (gameLoop() == false && tiles[SelectedTileX, SelectedTileY].Team == Team.Luftwaffe)) { 
-                
-            if (selectedTileY != 9)
-            {
-                //New instance of tile
-                Tile newTile = new Tile();
+                    //Decrement move from tile. Clamp to 0
+                    if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileY != 0 && tiles[SelectedTileX, SelectedTileY].Rotation == 0 && (newTile.Type == ObjectType.Empty || newTile.Type == ObjectType.Dam))
+                    {
+                        //Decrement move from tile. Clamp to 0
+                        if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileY != 9 && tiles[SelectedTileX, SelectedTileY].Rotation == 180 && (newTile.Type == ObjectType.Empty || newTile.Type == ObjectType.Dam))
+                        {
 
-                //New tile is set to current tile minus one (so going up)
-                newTile = tiles[SelectedTileX, (SelectedTileY + 1)];
+                            // Check if plane being piloted is the bomber plane and if its going into the target tile.
+                            if (newTile.Type == ObjectType.Dam && tiles[selectedTileX, selectedTileY].Type == ObjectType.Bomber && tiles[selectedTileX, selectedTileY].Altitude == 1)
+                            {
+                                tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                                updateMoveCount_txtBox();
 
-                //Decrement move from tile. Clamp to 0
-                if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileY != 9 && tiles[SelectedTileX, SelectedTileY].Rotation == 180 && (newTile.Type == ObjectType.Empty || newTile.Type == ObjectType.Dam))
-                {
+                                tiles[SelectedTileX, SelectedTileY].PutBomberPlaneOnTarget(ref newTile);
+                                SelectedTileY--;
+                            }
+                            // Don't let move to be executed
+                            else if (newTile.Type == ObjectType.Dam && tiles[selectedTileX, selectedTileY].Type != ObjectType.Bomber && tiles[selectedTileX, selectedTileY].Altitude == 1)
+                            {
+                                return;
+                            }
+                            else // Otherwise move as normal
+                            {
+                                //Decrement moves
+                                tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                                updateMoveCount_txtBox();
 
-                    //Decrement moves
-                    tiles[SelectedTileX, SelectedTileY].Moves -= 1;
-                    updateMoveCount_txtBox();
-
-                    //Calls swap tiles from Tile.
-                    tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
-                    selectedTileY++;
+                                //Calls swap tiles from Tile.
+                                tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
+                                SelectedTileY--;
+                            }
+                        }
+                    }
                 }
             }
         }
 
+        private void downButtonClick(object sender, EventArgs e)
+        {
+            //Checks if the team matches the plane selection.
+            if ((tiles[SelectedTileX, SelectedTileY].Team == Team.RAF && gameLoop() == true) || (gameLoop() == false && tiles[SelectedTileX, SelectedTileY].Team == Team.Luftwaffe))
+            {
+
+                if (selectedTileY != 9)
+                {
+                    //New instance of tile
+                    Tile newTile = new Tile();
+
+                    //New tile is set to current tile minus one (so going up)
+                    newTile = tiles[SelectedTileX, (SelectedTileY + 1)];
+
+                    //Decrement move from tile. Clamp to 0
+                    if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileY != 9 && tiles[SelectedTileX, SelectedTileY].Rotation == 180 && (newTile.Type == ObjectType.Empty || newTile.Type == ObjectType.Dam))
+                    {
+
+                        // Check if plane being piloted is the bomber plane and if its going into the target tile.
+                        if (newTile.Type == ObjectType.Dam && tiles[selectedTileX, selectedTileY].Type == ObjectType.Bomber && tiles[selectedTileX, selectedTileY].Altitude == 1)
+                        {
+                            tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                            updateMoveCount_txtBox();
+
+                            tiles[SelectedTileX, SelectedTileY].PutBomberPlaneOnTarget(ref newTile);
+                            SelectedTileY++;
+                        }
+                        // Don't let move to be executed
+                        else if (newTile.Type == ObjectType.Dam && tiles[selectedTileX, selectedTileY].Type != ObjectType.Bomber && tiles[selectedTileX, selectedTileY].Altitude == 1)
+                        {
+                            return;
+                        }
+                        else // Otherwise move as normal
+                        {
+                            //Decrement moves
+                            tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                            updateMoveCount_txtBox();
+
+                            //Calls swap tiles from Tile.
+                            tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
+                            SelectedTileY++;
+                        }
+                    }
+                }
             }
-        
+        }
+
         private void leftButtonClick(object sender, EventArgs e)
         {
 
             //Checks if the team matches the plane selection.
-            if ((tiles[SelectedTileX, SelectedTileY].Team == Team.RAF && gameLoop() == true) || (gameLoop() == false && tiles[SelectedTileX, SelectedTileY].Team == Team.Luftwaffe)) { 
-
-            //Checks if X axis is 0
-            if (SelectedTileX != 0)
+            if ((tiles[SelectedTileX, SelectedTileY].Team == Team.RAF && gameLoop() == true) || (gameLoop() == false && tiles[SelectedTileX, SelectedTileY].Team == Team.Luftwaffe))
             {
-                //New instance of tile
-                Tile newTile = new Tile();
 
-                //New tile is set to current tile minus one (so going up)
-                newTile = tiles[(SelectedTileX - 1), SelectedTileY];
-
-
-                //Decrement move from tile. Clamp to 0
-                if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileX != 0 && tiles[SelectedTileX, SelectedTileY].Rotation == 270 && (newTile.Type == ObjectType.Empty || newTile.Type == ObjectType.Dam))
+                //Checks if X axis is 0
+                if (SelectedTileX != 0)
                 {
+                    //New instance of tile
+                    Tile newTile = new Tile();
 
-                    //Decrement moves
-                    tiles[SelectedTileX, SelectedTileY].Moves -= 1;
-                    updateMoveCount_txtBox();
+                    //New tile is set to current tile minus one (so going up)
+                    newTile = tiles[(SelectedTileX - 1), SelectedTileY];
 
-                    //Calls swap tiles from Tile.
-                    tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
 
-                    SelectedTileX--;
+                    //Decrement move from tile. Clamp to 0
+                    if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileX != 0 && tiles[SelectedTileX, SelectedTileY].Rotation == 270 && (newTile.Type == ObjectType.Empty || newTile.Type == ObjectType.Dam))
+                    {
+
+                        // Check if plane being piloted is the bomber plane and if its going into the target tile.
+                        if (newTile.Type == ObjectType.Dam && tiles[selectedTileX, selectedTileY].Type == ObjectType.Bomber && tiles[selectedTileX, selectedTileY].Altitude == 1)
+                        {
+                            tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                            updateMoveCount_txtBox();
+
+                            tiles[SelectedTileX, SelectedTileY].PutBomberPlaneOnTarget(ref newTile);
+                            SelectedTileX--;
+
+                        }
+                        // Don't let move to be executed
+                        else if (newTile.Type == ObjectType.Dam && tiles[selectedTileX, selectedTileY].Type != ObjectType.Bomber && tiles[selectedTileX, selectedTileY].Altitude == 1)
+                        {
+                            return;
+                        }
+                        else // Otherwise move as normal
+                        {
+                            //Decrement moves
+                            tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                            updateMoveCount_txtBox();
+
+                            //Calls swap tiles from Tile.
+                            tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
+                            SelectedTileX--;
+                        }
+                    }
                 }
             }
-        }}
+        }
 
         private void rightButtonClick(object sender, EventArgs e)
         {
 
-            System.Diagnostics.Debug.WriteLine("\n Before IF" + tiles[SelectedTileX, SelectedTileY].Team); 
+            System.Diagnostics.Debug.WriteLine("\n Before IF" + tiles[SelectedTileX, SelectedTileY].Team);
 
             //Checks if the team matches the plane selection.
-            if ((tiles[SelectedTileX, SelectedTileY].Team == Team.RAF && gameLoop() == true) || (gameLoop() == false && tiles[SelectedTileX, SelectedTileY].Team == Team.Luftwaffe)) { 
+            if ((tiles[SelectedTileX, SelectedTileY].Team == Team.RAF && gameLoop() == true) || (gameLoop() == false && tiles[SelectedTileX, SelectedTileY].Team == Team.Luftwaffe))
+            {
 
                 System.Diagnostics.Debug.WriteLine("\n" + tiles[SelectedTileX, SelectedTileY].Team);
-                
+
                 System.Diagnostics.Debug.WriteLine(Turn);
 
-            if (selectedTileX != 9)
-            {
-                //New instance of tile
-                Tile newTile = new Tile();
-
-                //New tile is set to current tile minus one (so going up)
-                newTile = tiles[(SelectedTileX + 1), SelectedTileY];
-
-                if (newTile.Type == ObjectType.Dam && tiles[selectedTileX, selectedTileY].Type == ObjectType.Bomber)
+                if (selectedTileX != 9)
                 {
-                        tiles[SelectedTileX, SelectedTileY].Moves -= 1;
-                        updateMoveCount_txtBox();
+                    //New instance of tile
+                    Tile newTile = new Tile();
 
-                        tiles[SelectedTileX, SelectedTileY].PutBomberPlaneOnTarget(ref newTile);
-                        SelectedTileX++;
-                }
+                    //New tile is set to current tile minus one (so going up)
+                    newTile = tiles[(SelectedTileX + 1), SelectedTileY];
 
-                //Decrement move from tile. Clamp to 0
-                if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileX != 9 && tiles[SelectedTileX, SelectedTileY].Rotation == 90 && newTile.Type == ObjectType.Empty)
-                {
-                    //Decrement moves
-                    tiles[SelectedTileX, SelectedTileY].Moves -= 1;
-                    updateMoveCount_txtBox();
+                    //Decrement move from tile. Clamp to 0
+                    if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileX != 9 && tiles[SelectedTileX, SelectedTileY].Rotation == 90 && newTile.Type == ObjectType.Empty)
+                    {
+                        // Check if plane being piloted is the bomber plane and if its going into the target tile.
+                        if (newTile.Type == ObjectType.Dam && tiles[selectedTileX, selectedTileY].Type == ObjectType.Bomber && tiles[selectedTileX, selectedTileY].Altitude == 1)
+                        {
+                            tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                            updateMoveCount_txtBox();
 
-                    //Calls swap tiles from Tile.
-                    tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
-                    SelectedTileX++;
+                            tiles[SelectedTileX, SelectedTileY].PutBomberPlaneOnTarget(ref newTile);
+                            SelectedTileX++;
+                        }
+                        // Don't let move to be executed
+                        else if (newTile.Type == ObjectType.Dam && tiles[selectedTileX, selectedTileY].Type != ObjectType.Bomber && tiles[selectedTileX, selectedTileY].Altitude == 1)
+                        {
+                            return;
+                        }
+                        else // Otherwise move as normal
+                        {
+                            //Decrement moves
+                            tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                            updateMoveCount_txtBox();
+
+                            //Calls swap tiles from Tile.
+                            tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
+                            SelectedTileX++;
+                        }
+
+                    }
                 }
             }
-        } }
+        }
 
         private void aviateButtonClick(object sender, EventArgs e)
         {
