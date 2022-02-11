@@ -29,6 +29,7 @@ namespace CS_GridGame_Team5
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.backButton = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -87,6 +88,7 @@ namespace CS_GridGame_Team5
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.textBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form3";
             this.Text = "Dambusters - HighScores";
             this.ResumeLayout(false);

@@ -29,6 +29,7 @@ namespace CS_GridGame_Team5
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.dambustersWordArt = new System.Windows.Forms.PictureBox();
             this.buttonPlay = new System.Windows.Forms.Button();
             this.buttonRules = new System.Windows.Forms.Button();
@@ -123,6 +124,7 @@ namespace CS_GridGame_Team5
             this.Controls.Add(this.buttonRules);
             this.Controls.Add(this.buttonPlay);
             this.Controls.Add(this.dambustersWordArt);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
             this.Text = "Dambusters - Main Menu";
             this.Load += new System.EventHandler(this.Form2_Load);
