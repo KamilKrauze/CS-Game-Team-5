@@ -358,7 +358,7 @@ namespace CS_GridGame_Team5
             rightButton.BackgroundImage = Properties.Resources.rightArrow;
             rightButton.BackgroundImageLayout = ImageLayout.Stretch;
 
-            aviateButton.BackgroundImage = Properties.Resources.aviateArrow;
+            aviateButton.BackgroundImage = Properties.Resources.elevateArrow;
             aviateButton.BackgroundImageLayout = ImageLayout.Stretch;
 
             deviateButton.BackgroundImage = Properties.Resources.deviateArrow;
