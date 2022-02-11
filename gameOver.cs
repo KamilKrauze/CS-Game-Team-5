@@ -58,5 +58,14 @@ namespace CS_GridGame_Team5
             Form2 gameWindow = new Form2();
             gameWindow.ShowDialog();
         }
+
+        /**
+         * Function to be called once the game has been won
+         * */
+        public void gameWon(WinCondition condition, int score)
+        {   
+            winner = condition.ToString();
+            this.score = score;
+        }
     }
 }
