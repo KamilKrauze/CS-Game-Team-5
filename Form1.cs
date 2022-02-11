@@ -471,10 +471,14 @@ namespace CS_GridGame_Team5
                     if (checkForWinCondition() == WinCondition.RAF)
                     {
                         gameOverScreen.gameWon(checkForWinCondition(), RAFScore);
+                        this.Hide();
+                        gameOverScreen.ShowDialog();
                     }
                     else
                     {
                         gameOverScreen.gameWon(checkForWinCondition(), LuftwaffeScore);
+                        this.Hide();
+                        gameOverScreen.ShowDialog();
                     }
                 }
             }
