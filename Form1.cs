@@ -19,6 +19,11 @@ namespace CS_GridGame_Team5
         private int RAFScore = 0;
         private int LuftwaffeScore = 0;
 
+        private int rafPlaneCount = 4;
+        private bool isBomberPlaneAlive = true;
+        private bool isDamAlive = true;
+        private int luftwaffePlaneCount = 5;
+
         private int selectedTileX;
         private int selectedTileY;
 
@@ -41,8 +46,13 @@ namespace CS_GridGame_Team5
         public bool showRules = false;
         public bool turn = true; // boolean to control who's turn it is. If true, brit, if false, axis.
 
+        // Shorthand getter and setter
         public int SelectedTileX { get => selectedTileX; set => selectedTileX = value; }
         public int SelectedTileY { get => selectedTileY; set => selectedTileY = value; }
+        public int RAFPlaneCount { get => rafPlaneCount; set => rafPlaneCount = value; }
+        public bool IsBomberPlaneAlive { get => isBomberPlaneAlive; set => isBomberPlaneAlive = value; }
+        public bool IsDamAlive { get => isDamAlive; set => isDamAlive = value; }
+        public int LuftwaffePlaneCount { get => luftwaffePlaneCount; set => luftwaffePlaneCount = value; }
         public bool Turn { get => turn; set => turn = value; }
 
         public Form_Game()
@@ -450,8 +460,11 @@ namespace CS_GridGame_Team5
                         }
                     }
                 }
-                
-                if(checkForWinCondition() != WinCondition.None)
+
+                checkIfPlanesHaveBeenDestroyed();
+
+                // Check if either team has won
+                if (checkForWinCondition() != WinCondition.None)
                 {
                     Console.WriteLine("Win Condition: " + checkForWinCondition());
                     gameOver gameOverScreen = new gameOver();
@@ -834,6 +847,59 @@ namespace CS_GridGame_Team5
             }
             
             return WinCondition.None;
+        }
+
+        private void checkIfPlanesHaveBeenDestroyed()
+        {
+            // Loop through the board and check if there are less planes than previously
+            int rafCount = 0;
+            int luftCount = 0;
+            bool isBomberPlaneAlive = false;
+            bool isDamAlive = false;
+            for (int x = 0; x < tiles.GetLength(1); x++)
+            {
+                for (int y = 0; y < tiles.GetLength(1); y++)
+                {
+                    if (tiles[x, y].Team == Team.RAF)
+                    {
+                        rafCount++;
+                    }
+                    else if (tiles[x,y].Team == Team.Luftwaffe)
+                    {
+                        luftCount ++;
+                    }
+                    // Check if the bomber plane is alive. - Useful for score calculation
+                    if (tiles[x, y].Type == ObjectType.Bomber)
+                    {
+                        isBomberPlaneAlive = true;
+                    }
+                    if (tiles[x, y].Type == ObjectType.Dam)
+                    {
+                        isDamAlive = true;
+                    }
+                }
+            }
+
+            if (rafCount < RAFPlaneCount) // Add points to the Luftwaffe
+            {
+                LuftwaffeScore += 500;
+                RAFPlaneCount = rafCount;
+            }
+            else if (isBomberPlaneAlive != IsBomberPlaneAlive) // Add points to the luftwaffe if the bomber has been destroyed
+            {
+                LuftwaffePlaneCount += 1000;
+                IsBomberPlaneAlive = isBomberPlaneAlive;
+            }
+            else if (luftCount < luftwaffePlaneCount) // Add points to the RAF
+            {
+                RAFScore += 500;
+                LuftwaffePlaneCount = luftCount;
+            }
+            else if (isDamAlive != IsDamAlive)
+            {
+                RAFScore += 1000;
+                IsDamAlive = isDamAlive;
+            }
         }
 
         /*
