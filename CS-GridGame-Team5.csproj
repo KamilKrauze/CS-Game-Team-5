@@ -184,6 +184,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\highScores.txt" />
+    <None Include="Assets\Textures\LancasterBomber_R90.png" />
+    <None Include="Assets\Textures\LancasterBomber_R0.png" />
+    <None Include="Assets\Textures\LancasterBomber_R270.png" />
+    <None Include="Assets\Textures\LancasterBomber_R180.png" />
     <None Include="Assets\Textures\SpitfireMK2_R270.png" />
     <None Include="Assets\Textures\SpitfireMK2_R180.png" />
     <None Include="Assets\Textures\SpitfireMK2_R90.png" />

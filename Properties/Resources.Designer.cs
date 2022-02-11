@@ -63,6 +63,16 @@ namespace CS_GridGame_Team5.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap crosshair {
+            get {
+                object obj = ResourceManager.GetObject("crosshair", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap deviateArrow {
             get {
                 object obj = ResourceManager.GetObject("deviateArrow", resourceCulture);
@@ -86,6 +96,46 @@ namespace CS_GridGame_Team5.Properties {
         internal static System.Drawing.Bitmap elevateArrow {
             get {
                 object obj = ResourceManager.GetObject("elevateArrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LancasterBomber_R0 {
+            get {
+                object obj = ResourceManager.GetObject("LancasterBomber_R0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LancasterBomber_R180 {
+            get {
+                object obj = ResourceManager.GetObject("LancasterBomber_R180", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LancasterBomber_R270 {
+            get {
+                object obj = ResourceManager.GetObject("LancasterBomber_R270", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LancasterBomber_R90 {
+            get {
+                object obj = ResourceManager.GetObject("LancasterBomber_R90", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -156,16 +206,6 @@ namespace CS_GridGame_Team5.Properties {
         internal static System.Drawing.Bitmap name {
             get {
                 object obj = ResourceManager.GetObject("name", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap NightClouds_2048x2048 {
-            get {
-                object obj = ResourceManager.GetObject("NightClouds_2048x2048", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

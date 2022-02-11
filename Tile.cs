@@ -52,7 +52,7 @@ namespace CS_GridGame_Team5
             this.Type = ObjectType.Bomber;
             this.rotation = 0;
             this.team = Team.RAF;
-            this.btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_R180;
+            this.btnTile.BackgroundImage = Properties.Resources.LancasterBomber_R0;
         }
 
         // Creates a tile that is the Messerschmitt BF 109
@@ -138,7 +138,7 @@ namespace CS_GridGame_Team5
         public void rotateTile()
         {
             // Brittish Planes
-            if (this.Name == "Spitfire MK2" || this.Name == "Avro Lancaster / Dam Buster")
+            if (this.Name == "Spitfire MK2")
             {
                 if (this.Rotation == 0)
                 {
@@ -157,6 +157,27 @@ namespace CS_GridGame_Team5
                     this.btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_R270;
                 }
             }
+
+            if (this.Name == "Avro Lancaster / Dam Buster")
+            {
+                if (this.Rotation == 0)
+                {
+                    this.btnTile.BackgroundImage = Properties.Resources.LancasterBomber_R0;
+                }
+                else if (this.Rotation == 90)
+                {
+                    this.btnTile.BackgroundImage = Properties.Resources.LancasterBomber_R90;
+                }
+                else if (this.Rotation == 180)
+                {
+                    this.btnTile.BackgroundImage = Properties.Resources.LancasterBomber_R180;
+                }
+                else if (this.Rotation == 270)
+                {
+                    this.btnTile.BackgroundImage = Properties.Resources.LancasterBomber_R270;
+                }
+            }
+
             // German Planes
             else if (this.Name == "Messerschmitt Bf 109")
             {

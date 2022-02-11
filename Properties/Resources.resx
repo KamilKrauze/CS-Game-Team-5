@@ -136,9 +136,6 @@
   <data name="MeBF109_R90" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Textures\MeBF109_R90.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="NightClouds_2048x2048" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Textures\NightClouds-2048x2048.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="SpitfireMK2_R0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Textures\SpitfireMK2_R0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -177,5 +174,17 @@
   </data>
   <data name="rotateRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Textures\rotateRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LancasterBomber_R0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\LancasterBomber_R0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LancasterBomber_R180" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\LancasterBomber_R180.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LancasterBomber_R270" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\LancasterBomber_R270.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LancasterBomber_R90" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\LancasterBomber_R90.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
