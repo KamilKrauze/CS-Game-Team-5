@@ -1192,7 +1192,7 @@ namespace CS_GridGame_Team5
             int xLeft2 = x - 2;
             int xLeft3 = x - 3;
 
-            if (xLeft1 <= 0)
+            if (xLeft1 >= 0)
             {
                 if (tiles[xLeft1, y].Type != ObjectType.Empty)
                 {
@@ -1208,7 +1208,7 @@ namespace CS_GridGame_Team5
                 }
             }
 
-            if (xLeft2 <= 0)
+            if (xLeft2 >= 0)
             {
                 if (tiles[xLeft2, y].Type != ObjectType.Empty)
                 {
@@ -1226,7 +1226,7 @@ namespace CS_GridGame_Team5
 
             if (tiles[x, y].AmmoType == AmmoType.Heavy)
             {
-                if (xLeft3 <= 0)
+                if (xLeft3 >= 0)
                 {
                     if (tiles[xLeft3, y].Type != ObjectType.Empty)
                     {
