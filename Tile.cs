@@ -79,7 +79,7 @@ namespace CS_GridGame_Team5
             this.Type = ObjectType.Dam;
             this.rotation = 0;
             this.team = Team.None;
-            this.btnTile.BackgroundImage = Properties.Resources.NightClouds_2048x2048;
+            this.btnTile.BackgroundImage = Properties.Resources.crosshair;
         }
 
         // Transfers data to another Tile object
