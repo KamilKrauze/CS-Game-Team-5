@@ -58,6 +58,7 @@ namespace CS_GridGame_Team5
         public Form_Game()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.GameIcon;
 
             initForm();
             MenuStrip();
