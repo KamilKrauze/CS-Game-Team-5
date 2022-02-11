@@ -370,8 +370,6 @@ namespace CS_GridGame_Team5
             rotateR.BackgroundImage = Properties.Resources.rotateRight;
             rotateR.BackgroundImageLayout = ImageLayout.Stretch;
 
-
-
             //Adds button to panel
             controlPanel.Controls.Add(rotateL);
             controlPanel.Controls.Add(upButton);
