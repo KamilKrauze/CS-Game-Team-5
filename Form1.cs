@@ -707,7 +707,6 @@ namespace CS_GridGame_Team5
             return false;
         }
 
-
         private bool gameLoop()
         {
             //Checks whose turn it is based on boolean

@@ -108,7 +108,19 @@ namespace CS_GridGame_Team5
 
         public int Rotation { get => rotation; set => rotation = value; }
         public Team Team { get => team; set => team = value; }
-        
+
+        public void ResetMoves()
+        {
+            if (this.Type == ObjectType.Fighter)
+            {
+                this.Moves = 3;
+            }
+            else if (this.Type == ObjectType.Bomber)
+            {
+                this.Moves = 2;
+            }
+        }
+
         // Rotates the tile appropriately to the rotation parameter of the tile
         public void rotateTile()
         {
