@@ -576,34 +576,30 @@ namespace CS_GridGame_Team5
                     //Decrement move from tile. Clamp to 0
                     if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileY != 0 && tiles[SelectedTileX, SelectedTileY].Rotation == 0 && (newTile.Type == ObjectType.Empty || newTile.Type == ObjectType.Dam))
                     {
-                        //Decrement move from tile. Clamp to 0
-                        if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileY != 9 && tiles[SelectedTileX, SelectedTileY].Rotation == 180 && (newTile.Type == ObjectType.Empty || newTile.Type == ObjectType.Dam))
+
+                        // Check if plane being piloted is the bomber plane and if its going into the target tile.
+                        if (newTile.Type == ObjectType.Dam && tiles[selectedTileX, selectedTileY].Type == ObjectType.Bomber && tiles[selectedTileX, selectedTileY].Altitude == 1)
                         {
+                            tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                            updateMoveCount_txtBox();
 
-                            // Check if plane being piloted is the bomber plane and if its going into the target tile.
-                            if (newTile.Type == ObjectType.Dam && tiles[selectedTileX, selectedTileY].Type == ObjectType.Bomber && tiles[selectedTileX, selectedTileY].Altitude == 1)
-                            {
-                                tiles[SelectedTileX, SelectedTileY].Moves -= 1;
-                                updateMoveCount_txtBox();
+                            tiles[SelectedTileX, SelectedTileY].PutBomberPlaneOnTarget(ref newTile);
+                            SelectedTileY--;
+                        }
+                        // Don't let move to be executed
+                        else if (newTile.Type == ObjectType.Dam && tiles[selectedTileX, selectedTileY].Type != ObjectType.Bomber && tiles[selectedTileX, selectedTileY].Altitude == 1)
+                        {
+                            return;
+                        }
+                        else // Otherwise move as normal
+                        {
+                            //Decrement moves
+                            tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                            updateMoveCount_txtBox();
 
-                                tiles[SelectedTileX, SelectedTileY].PutBomberPlaneOnTarget(ref newTile);
-                                SelectedTileY--;
-                            }
-                            // Don't let move to be executed
-                            else if (newTile.Type == ObjectType.Dam && tiles[selectedTileX, selectedTileY].Type != ObjectType.Bomber && tiles[selectedTileX, selectedTileY].Altitude == 1)
-                            {
-                                return;
-                            }
-                            else // Otherwise move as normal
-                            {
-                                //Decrement moves
-                                tiles[SelectedTileX, SelectedTileY].Moves -= 1;
-                                updateMoveCount_txtBox();
-
-                                //Calls swap tiles from Tile.
-                                tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
-                                SelectedTileY--;
-                            }
+                            //Calls swap tiles from Tile.
+                            tiles[SelectedTileX, SelectedTileY].SwapTiles(ref newTile);
+                            SelectedTileY--;
                         }
                     }
                 }
@@ -818,6 +814,7 @@ namespace CS_GridGame_Team5
             moveCount.DeselectAll();
         }
 
+        // Checks the entire board if a win condition has been met.
         private WinCondition checkForWinCondition()
         {
             int RAFPlaneCount = 0;
@@ -849,6 +846,7 @@ namespace CS_GridGame_Team5
             return WinCondition.None;
         }
 
+        // Checks the entire baord if planes or the dam has been destroyed and distribute the points accordingly
         private void checkIfPlanesHaveBeenDestroyed()
         {
             // Loop through the board and check if there are less planes than previously
