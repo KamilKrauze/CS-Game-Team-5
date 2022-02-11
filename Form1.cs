@@ -408,6 +408,15 @@ namespace CS_GridGame_Team5
             if (haveAllPlanesHaveMoved())
             {
                 Turn = !turn;
+
+                // Reset moves for each plane
+                for (int x = 0; x < tiles.GetLength(1); x++)
+                {
+                    for (int y = 0; y < tiles.GetLength(1); y++)
+                    {
+                        tiles[x, y].ResetMoves();
+                    }
+                }
             }
             else
             {
