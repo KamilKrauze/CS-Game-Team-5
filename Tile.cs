@@ -13,6 +13,7 @@ namespace CS_GridGame_Team5
         public Button btnTile = new Button();
 
         private int rotation;
+        private Team team;
 
         public Tile() // Empty Tile
         {
@@ -23,6 +24,7 @@ namespace CS_GridGame_Team5
             this.AmmoType = AmmoType.None;
             this.Type = ObjectType.Empty;
             this.rotation = 0;
+            this.team = Team.None;
         }
 
         // Creates a tile that is the Spitfire MK2
@@ -35,6 +37,7 @@ namespace CS_GridGame_Team5
             this.AmmoType = AmmoType.Light;
             this.Type = ObjectType.Fighter;
             this.rotation = 0;
+            this.team = Team.RAF;
             this.btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_R0;
         }
 
@@ -48,7 +51,8 @@ namespace CS_GridGame_Team5
             this.AmmoType = AmmoType.Light;
             this.Type = ObjectType.Bomber;
             this.rotation = 0;
-            this.btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_R180;
+            this.team = Team.RAF;
+            this.btnTile.BackgroundImage = Properties.Resources.LancasterBomber_R0;
         }
 
         // Creates a tile that is the Messerschmitt BF 109
@@ -61,7 +65,21 @@ namespace CS_GridGame_Team5
             this.AmmoType = AmmoType.Light;
             this.Type = ObjectType.Fighter;
             this.rotation = 0;
+            this.team = Team.Luftwaffe;
             this.btnTile.BackgroundImage = Properties.Resources.MeBF109_R0;
+        }
+
+        public void createDam()
+        {
+            this.Name = "Dam";
+            this.Health = 50;
+            this.Moves = 0;
+            this.Altitude = 0;
+            this.AmmoType = AmmoType.None;
+            this.Type = ObjectType.Dam;
+            this.rotation = 0;
+            this.team = Team.None;
+            this.btnTile.BackgroundImage = Properties.Resources.crosshair;
         }
 
         // Transfers data to another Tile object
@@ -76,7 +94,9 @@ namespace CS_GridGame_Team5
             temp.AmmoType = this.AmmoType;
             temp.Type = this.Type;
             temp.Rotation = this.Rotation;
+            temp.Team = this.Team;
             temp.btnTile.BackgroundImage = this.btnTile.BackgroundImage;
+            
             
             this.Name = tile.Name;
             this.Health = tile.Health;
@@ -85,6 +105,7 @@ namespace CS_GridGame_Team5
             this.AmmoType = tile.AmmoType;
             this.Type = tile.Type;
             this.Rotation = tile.Rotation;
+            this.Team = tile.Team;
             this.btnTile.BackgroundImage = tile.btnTile.BackgroundImage;
 
             tile.Name = temp.Name;
@@ -94,16 +115,30 @@ namespace CS_GridGame_Team5
             tile.AmmoType = temp.AmmoType;
             tile.Type = temp.Type;
             tile.Rotation = temp.Rotation;
+            tile.Team = temp.Team;
             tile.btnTile.BackgroundImage = temp.btnTile.BackgroundImage;
         }
 
         public int Rotation { get => rotation; set => rotation = value; }
-        
+        public Team Team { get => team; set => team = value; }
+
+        public void ResetMoves()
+        {
+            if (this.Type == ObjectType.Fighter)
+            {
+                this.Moves = 3;
+            }
+            else if (this.Type == ObjectType.Bomber)
+            {
+                this.Moves = 2;
+            }
+        }
+
         // Rotates the tile appropriately to the rotation parameter of the tile
         public void rotateTile()
         {
             // Brittish Planes
-            if (this.Name == "Spitfire MK2" || this.Name == "Avro Lancaster / Dam Buster")
+            if (this.Name == "Spitfire MK2")
             {
                 if (this.Rotation == 0)
                 {
@@ -122,6 +157,27 @@ namespace CS_GridGame_Team5
                     this.btnTile.BackgroundImage = Properties.Resources.SpitfireMK2_R270;
                 }
             }
+
+            if (this.Name == "Avro Lancaster / Dam Buster")
+            {
+                if (this.Rotation == 0)
+                {
+                    this.btnTile.BackgroundImage = Properties.Resources.LancasterBomber_R0;
+                }
+                else if (this.Rotation == 90)
+                {
+                    this.btnTile.BackgroundImage = Properties.Resources.LancasterBomber_R90;
+                }
+                else if (this.Rotation == 180)
+                {
+                    this.btnTile.BackgroundImage = Properties.Resources.LancasterBomber_R180;
+                }
+                else if (this.Rotation == 270)
+                {
+                    this.btnTile.BackgroundImage = Properties.Resources.LancasterBomber_R270;
+                }
+            }
+
             // German Planes
             else if (this.Name == "Messerschmitt Bf 109")
             {

@@ -92,6 +92,8 @@
   <ItemGroup>
     <Compile Include="E_ammoType.cs" />
     <Compile Include="E_ObjectType.cs" />
+    <Compile Include="E_Team.cs" />
+    <Compile Include="E_WinCondition.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +183,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\highScores.txt" />
+    <None Include="Assets\Textures\LancasterBomber_R90.png" />
+    <None Include="Assets\Textures\LancasterBomber_R0.png" />
+    <None Include="Assets\Textures\LancasterBomber_R270.png" />
+    <None Include="Assets\Textures\LancasterBomber_R180.png" />
     <None Include="Assets\Textures\SpitfireMK2_R270.png" />
     <None Include="Assets\Textures\SpitfireMK2_R180.png" />
     <None Include="Assets\Textures\SpitfireMK2_R90.png" />
