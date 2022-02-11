@@ -69,6 +69,19 @@ namespace CS_GridGame_Team5
             this.btnTile.BackgroundImage = Properties.Resources.MeBF109_R0;
         }
 
+        public void createDam()
+        {
+            this.Name = "Dam";
+            this.Health = 50;
+            this.Moves = 0;
+            this.Altitude = 0;
+            this.AmmoType = AmmoType.None;
+            this.Type = ObjectType.Dam;
+            this.rotation = 0;
+            this.team = Team.None;
+            this.btnTile.BackgroundImage = Properties.Resources.NightClouds_2048x2048;
+        }
+
         // Transfers data to another Tile object
         // Pass in by reference - https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/ref - 05/02/2022
         public void SwapTiles(ref Tile tile)

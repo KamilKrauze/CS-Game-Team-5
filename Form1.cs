@@ -66,23 +66,6 @@ namespace CS_GridGame_Team5
                     tiles[x, y] = new Tile();
                     tiles[x, y].btnTile.SetBounds(x + (x * i), y + (y * i), i, i);
 
-                    //Sets up British planes position
-                    if (x == 0 && y == 0 || x == 1 && y == 1 || x == 0 && y == 2)
-                    {
-                        tiles[x, y].createSpitFire();
-                    }
-
-                    else if (x == 0 && y == 1)
-                    {
-                        tiles[x, y].createDamBuster();
-                    }
-
-                    //8,7 ; 8,8 ; 8.9 ; heavy - 7,8
-                    else if (x == 8 && y == 8 || x == 7 && y == 7 || x == 9 && y == 9 || x == 6 && y == 8 || x == 5 && y == 9)
-                    {
-                        tiles[x, y].createMeBF109();
-                    }
-
                     //7,6 ; 8,7 ; 9,8 ; 6,7 ; 5,8
                     //tiles[x, y].btnTile.BackColor = Color.Transparent;
 
@@ -94,10 +77,34 @@ namespace CS_GridGame_Team5
                     container.Controls.Add(tiles[x, y].btnTile);
                 }
             }
+
+            setupGameBoard();
+
             container.AutoSize = true;
             this.Controls.Add(container);
             infoPanel_setup();
             controlsUI();
+        }
+
+        private void setupGameBoard()
+        {
+            // Brittish plane setup
+            tiles[0, 0].createSpitFire();
+            tiles[0, 0].Rotation = 90;
+            tiles[1, 1].createSpitFire();
+            tiles[1, 1].Rotation = 90;
+            tiles[0, 2].createSpitFire();
+            tiles[0, 2].Rotation = 90;
+            tiles[0, 1].createDamBuster();
+            tiles[0, 1].Rotation = 90;
+
+            tiles[5, 9].createMeBF109();
+            tiles[6, 8].createMeBF109();
+            tiles[9, 9].createMeBF109();
+            tiles[7, 7].createMeBF109();
+            tiles[8, 8].createMeBF109();
+
+            tiles[9, 2].createDam();
         }
 
         /**
@@ -353,7 +360,6 @@ namespace CS_GridGame_Team5
         /**
          * Event handlers for movement
          */
-
         private void confirmClick(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("Turn is " + Turn);
@@ -387,7 +393,7 @@ namespace CS_GridGame_Team5
                 
                 if(checkForWinCondition() != WinCondition.None)
                 {
-                    // Do something
+                    Console.WriteLine("Win Condition: " + checkForWinCondition());
                 }
             }
 
@@ -400,6 +406,7 @@ namespace CS_GridGame_Team5
                 TeamTurnNotifier.Text = "Luftwaffe";
             }
         }
+        
         private void rotateLClick(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine(SelectedTileX + ", " + SelectedTileY);
