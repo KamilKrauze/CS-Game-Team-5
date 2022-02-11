@@ -29,6 +29,7 @@ namespace CS_GridGame_Team5
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(gameOver));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.mainMenuButton = new System.Windows.Forms.Button();
             this.replayButton = new System.Windows.Forms.Button();
@@ -114,6 +115,7 @@ namespace CS_GridGame_Team5
             this.Controls.Add(this.replayButton);
             this.Controls.Add(this.mainMenuButton);
             this.Controls.Add(this.textBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "gameOver";
             this.Text = "Dambuster - Game Over";
             this.ResumeLayout(false);

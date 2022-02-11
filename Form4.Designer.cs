@@ -87,6 +87,7 @@ namespace CS_GridGame_Team5
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.backButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form4";
             this.Text = "Dambuster - Rules";
             this.ResumeLayout(false);
