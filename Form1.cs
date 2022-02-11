@@ -19,10 +19,11 @@ namespace CS_GridGame_Team5
 
         private int selectedTileX;
         private int selectedTileY;
-        
 
-
-        PlaneList planeList = new PlaneList();
+        public List<int> sourceX = new List<int>();
+        public List<int> sourceY = new List<int>();
+        public List<int> targetX = new List<int>();
+        public List<int> targetY = new List<int>();
 
         Tile[,] tiles = new Tile[10, 10]; //2D array to hold tile.
         Panel container = new Panel(); //container panel for tiles
@@ -427,24 +428,24 @@ namespace CS_GridGame_Team5
             {
                 if (checkBoard() == true) // Do damage calculation step
                 {
-                    for (int i = 0; i < planeList.sourceX.Count(); i++)
+                    for (int i = 0; i < sourceX.Count(); i++)
                     {
                         int damage = Compute.damageOutput
                         (
-                            tiles[planeList.sourceX[i], planeList.sourceY[i]].Altitude, // Self altitude
-                            (byte)tiles[planeList.sourceX[i], planeList.sourceY[i]].Type, // Self object type
-                            (byte)tiles[planeList.sourceX[i], planeList.sourceY[i]].AmmoType, // Self ammo type
-                            Compute.getDistance(planeList.sourceX[i], planeList.sourceY[i], planeList.targetX[i], planeList.targetY[i]), // distance between the two tiles
-                            tiles[planeList.targetX[i], planeList.targetY[i]].Altitude, // Target altitude
-                            (byte)tiles[planeList.targetX[i], planeList.targetY[i]].Type // Target object type
+                            tiles[sourceX[i], sourceY[i]].Altitude, // Self altitude
+                            (byte)tiles[sourceX[i], sourceY[i]].Type, // Self object type
+                            (byte)tiles[sourceX[i], sourceY[i]].AmmoType, // Self ammo type
+                            Compute.getDistance(sourceX[i], sourceY[i], targetX[i], targetY[i]), // distance between the two tiles
+                            tiles[targetX[i], targetY[i]].Altitude, // Target altitude
+                            (byte)tiles[targetX[i], targetY[i]].Type // Target object type
                         );
 
-                        tiles[planeList.targetX[i], planeList.targetY[i]].Health -= damage; // DAMAGE
+                        tiles[targetX[i], targetY[i]].Health -= damage; // DAMAGE
                         
-                        if (tiles[planeList.targetX[i], planeList.targetY[i]].Health <= 0) // Destroy target if health reaches 0 or less
+                        if (tiles[targetX[i], targetY[i]].Health <= 0) // Destroy target if health reaches 0 or less
                         {
                             Tile emptyTile = new Tile();
-                            tiles[planeList.targetX[i], planeList.targetY[i]] = emptyTile;
+                            tiles[targetX[i], targetY[i]] = emptyTile;
                         }
                     }
                 }
@@ -751,9 +752,9 @@ namespace CS_GridGame_Team5
         private bool checkBoard()
         {
             int possibleAttacks = 0;
-            for (int x = 0; x < tiles.GetLength(1); x++)
+            for (int x = 0; x < 10; x++)
             {
-                for (int y = 0; y < tiles.GetLength(1); y++)
+                for (int y = 0; y < 10; y++)
                 {
                     if (tiles[x,y].Type != ObjectType.Empty)
                     {
@@ -865,10 +866,10 @@ namespace CS_GridGame_Team5
                 {
                     if (tiles[x, yUp1].Team != tiles[x, y].Team)
                     {
-                        planeList.sourceX.Add(x);
-                        planeList.sourceY.Add(y);
-                        planeList.targetX.Add(x);
-                        planeList.targetY.Add(yUp1);
+                        sourceX.Add(x);
+                        sourceY.Add(y);
+                        targetX.Add(x);
+                        targetY.Add(yUp1);
 
                         return true;
                     }
@@ -881,10 +882,10 @@ namespace CS_GridGame_Team5
                 {
                     if (tiles[x, yUp3].Team != tiles[x, y].Team)
                     {
-                        planeList.sourceX.Add(x);
-                        planeList.sourceY.Add(y);
-                        planeList.targetX.Add(x);
-                        planeList.targetY.Add(yUp3);
+                        sourceX.Add(x);
+                        sourceY.Add(y);
+                        targetX.Add(x);
+                        targetY.Add(yUp3);
 
                         return true;
                     }
@@ -899,10 +900,10 @@ namespace CS_GridGame_Team5
                     {
                         if (tiles[x, yUp3].Team != tiles[x, y].Team)
                         {
-                            planeList.sourceX.Add(x);
-                            planeList.sourceY.Add(y);
-                            planeList.targetX.Add(x);
-                            planeList.targetY.Add(yUp3);
+                            sourceX.Add(x);
+                            sourceY.Add(y);
+                            targetX.Add(x);
+                            targetY.Add(yUp3);
 
                             return true;
                         }
@@ -925,10 +926,10 @@ namespace CS_GridGame_Team5
                 {
                     if (tiles[x, yDown1].Team != tiles[x, y].Team)
                     {
-                        planeList.sourceX.Add(x);
-                        planeList.sourceY.Add(y);
-                        planeList.targetX.Add(x);
-                        planeList.targetY.Add(yDown1);
+                        sourceX.Add(x);
+                        sourceY.Add(y);
+                        targetX.Add(x);
+                        targetY.Add(yDown1);
 
                         return true;
                     }
@@ -941,10 +942,10 @@ namespace CS_GridGame_Team5
                 {
                     if (tiles[x, yDown2].Team != tiles[x, y].Team)
                     {
-                        planeList.sourceX.Add(x);
-                        planeList.sourceY.Add(y);
-                        planeList.targetX.Add(x);
-                        planeList.targetY.Add(yDown2);
+                        sourceX.Add(x);
+                        sourceY.Add(y);
+                        targetX.Add(x);
+                        targetY.Add(yDown2);
 
                         return true;
                     }
@@ -959,10 +960,10 @@ namespace CS_GridGame_Team5
                     {
                         if (tiles[x, yDown3].Team != tiles[x, y].Team)
                         {
-                            planeList.sourceX.Add(x);
-                            planeList.sourceY.Add(y);
-                            planeList.targetX.Add(x);
-                            planeList.targetY.Add(yDown3);
+                            sourceX.Add(x);
+                            sourceY.Add(y);
+                            targetX.Add(x);
+                            targetY.Add(yDown3);
 
                             return true;
                         }
@@ -984,10 +985,10 @@ namespace CS_GridGame_Team5
                 {
                     if (tiles[xRight1, y].Team != tiles[x, y].Team)
                     {
-                        planeList.sourceX.Add(x);
-                        planeList.sourceY.Add(y);
-                        planeList.targetX.Add(xRight1);
-                        planeList.targetY.Add(y);
+                        sourceX.Add(x);
+                        sourceY.Add(y);
+                        targetX.Add(xRight1);
+                        targetY.Add(y);
 
                         return true;
                     }
@@ -1000,10 +1001,10 @@ namespace CS_GridGame_Team5
                 {
                     if (tiles[xRight2, y].Team != tiles[x, y].Team)
                     {
-                        planeList.sourceX.Add(x);
-                        planeList.sourceY.Add(y);
-                        planeList.targetX.Add(xRight2);
-                        planeList.targetY.Add(y);
+                        sourceX.Add(x);
+                        sourceY.Add(y);
+                        targetX.Add(xRight2);
+                        targetY.Add(y);
 
                         return true;
                     }
@@ -1018,10 +1019,10 @@ namespace CS_GridGame_Team5
                     {
                         if (tiles[xRight3, y].Team != tiles[x, y].Team)
                         {
-                            planeList.sourceX.Add(x);
-                            planeList.sourceY.Add(y);
-                            planeList.targetX.Add(xRight3);
-                            planeList.targetY.Add(y);
+                            sourceX.Add(x);
+                            sourceY.Add(y);
+                            targetX.Add(xRight3);
+                            targetY.Add(y);
 
                             return true;
                         }
@@ -1043,10 +1044,10 @@ namespace CS_GridGame_Team5
                 {
                     if (tiles[xLeft1, y].Team != tiles[x, y].Team)
                     {
-                        planeList.sourceX.Add(x);
-                        planeList.sourceY.Add(y);
-                        planeList.targetX.Add(xLeft1);
-                        planeList.targetY.Add(y);
+                        sourceX.Add(x);
+                        sourceY.Add(y);
+                        targetX.Add(xLeft1);
+                        targetY.Add(y);
 
                         return true;
                     }
@@ -1059,10 +1060,10 @@ namespace CS_GridGame_Team5
                 {
                     if (tiles[xLeft2, y].Team != tiles[x, y].Team)
                     {
-                        planeList.sourceX.Add(x);
-                        planeList.sourceY.Add(y);
-                        planeList.targetX.Add(xLeft2);
-                        planeList.targetY.Add(y);
+                        sourceX.Add(x);
+                        sourceY.Add(y);
+                        targetX.Add(xLeft2);
+                        targetY.Add(y);
 
                         return true;
                     }
@@ -1077,10 +1078,10 @@ namespace CS_GridGame_Team5
                     {
                         if (tiles[xLeft3, y].Team != tiles[x, y].Team)
                         {
-                            planeList.sourceX.Add(x);
-                            planeList.sourceY.Add(y);
-                            planeList.targetX.Add(xLeft3);
-                            planeList.targetY.Add(y);
+                            sourceX.Add(x);
+                            sourceY.Add(y);
+                            targetX.Add(xLeft3);
+                            targetY.Add(y);
 
                             return true;
                         }

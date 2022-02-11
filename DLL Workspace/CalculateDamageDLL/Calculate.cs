@@ -68,6 +68,11 @@ namespace Calculate
             // Round number to nearest integer - https://stackoverflow.com/questions/8844674/how-to-round-to-the-nearest-whole-number-in-c-sharp - 10/02/2022
             int damagePotential = (int)Math.Round((altitudeModifier + rangeModifier) * (1/(Math.Pow(ammoModifier, objectDamageModifier))));
 
+            if (damagePotential <= 0)
+            {
+                return 0;
+            }
+
             // Randomise number in range - https://stackoverflow.com/questions/3975290/produce-a-random-number-in-a-range-using-c-sharp - 10/02/2022
             Random random = new Random();
             int damageOutput = random.Next(0, damagePotential);

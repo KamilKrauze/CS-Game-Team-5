@@ -125,7 +125,6 @@
       <DependentUpon>gameOver.cs</DependentUpon>
     </Compile>
     <Compile Include="Object.cs" />
-    <Compile Include="PlaneList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tile.cs" />
