@@ -27,6 +27,19 @@ namespace CS_GridGame_Team5
             this.team = Team.None;
         }
 
+        public void createEmptyTile()
+        {
+            this.Name = "Empty";
+            this.Health = 0;
+            this.Moves = 0;
+            this.Altitude = 0;
+            this.AmmoType = AmmoType.None;
+            this.Type = ObjectType.Empty;
+            this.rotation = 0;
+            this.team = Team.None;
+            this.btnTile.BackgroundImage = null;
+        }
+
         // Creates a tile that is the Spitfire MK2
         public void createSpitFire()
         {
@@ -117,6 +130,22 @@ namespace CS_GridGame_Team5
             tile.Rotation = temp.Rotation;
             tile.Team = temp.Team;
             tile.btnTile.BackgroundImage = temp.btnTile.BackgroundImage;
+        }
+
+
+        public void PutBomberPlaneOnTarget (ref Tile tile)
+        {
+            this.Name = tile.Name;
+            this.Health = tile.Health;
+            this.Moves = tile.Moves;
+            this.Altitude = tile.Altitude;
+            this.AmmoType = tile.AmmoType;
+            this.Type = tile.Type;
+            this.Rotation = tile.Rotation;
+            this.Team = tile.Team;
+            this.btnTile.BackgroundImage = tile.btnTile.BackgroundImage;
+
+            tile.createEmptyTile();
         }
 
         public int Rotation { get => rotation; set => rotation = value; }

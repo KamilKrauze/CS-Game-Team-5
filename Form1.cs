@@ -444,8 +444,7 @@ namespace CS_GridGame_Team5
                         
                         if (tiles[targetX[i], targetY[i]].Health <= 0) // Destroy target if health reaches 0 or less
                         {
-                            Tile emptyTile = new Tile();
-                            tiles[targetX[i], targetY[i]] = emptyTile;
+                            tiles[targetX[i], targetY[i]].createEmptyTile();
                         }
                     }
                 }
@@ -645,8 +644,17 @@ namespace CS_GridGame_Team5
                 //New tile is set to current tile minus one (so going up)
                 newTile = tiles[(SelectedTileX + 1), SelectedTileY];
 
+                if (newTile.Type == ObjectType.Dam && tiles[selectedTileX, selectedTileY].Type == ObjectType.Bomber)
+                {
+                        tiles[SelectedTileX, SelectedTileY].Moves -= 1;
+                        updateMoveCount_txtBox();
+
+                        tiles[SelectedTileX, SelectedTileY].PutBomberPlaneOnTarget(ref newTile);
+                        SelectedTileX++;
+                }
+
                 //Decrement move from tile. Clamp to 0
-                if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileX != 9 && tiles[SelectedTileX, SelectedTileY].Rotation == 90 && (newTile.Type == ObjectType.Empty || newTile.Type == ObjectType.Dam))
+                if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileX != 9 && tiles[SelectedTileX, SelectedTileY].Rotation == 90 && newTile.Type == ObjectType.Empty)
                 {
                     //Decrement moves
                     tiles[SelectedTileX, SelectedTileY].Moves -= 1;
@@ -684,7 +692,7 @@ namespace CS_GridGame_Team5
             //Checks if the team matches the plane selection.
             if ((tiles[SelectedTileX, SelectedTileY].Team == Team.RAF && gameLoop() == true) || (gameLoop() == false && tiles[SelectedTileX, SelectedTileY].Team == Team.Luftwaffe)) { 
                 //Decrement move from tile. Clamp to 0
-                if (tiles[SelectedTileX, SelectedTileY].Altitude != 5  && tiles[SelectedTileX, SelectedTileY].Moves != 0)
+                if (tiles[SelectedTileX, SelectedTileY].Altitude != 1  && tiles[SelectedTileX, SelectedTileY].Moves != 0)
                 {
                     //Decrement moves
                     tiles[SelectedTileX, SelectedTileY].Moves -= 1;
