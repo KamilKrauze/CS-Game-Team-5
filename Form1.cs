@@ -332,6 +332,8 @@ namespace CS_GridGame_Team5
             deviateButton.Click += new EventHandler(deviateButtonClick);
             confirmButton.Click += new EventHandler(confirmClick);
 
+            upButton.BackgroundImage = Properties.Resources.upArrow;
+
             //Adds button to panel
             controlPanel.Controls.Add(rotateL);
             controlPanel.Controls.Add(upButton);
