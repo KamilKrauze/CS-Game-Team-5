@@ -15,7 +15,7 @@ namespace CS_GridGame_Team5
     {
         // Some Variables
         public string winner = "???";
-        public int score = 0;
+        public int score = 500;
         public gameOver()
         {
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace CS_GridGame_Team5
 
         private void gameOver_Load(object sender, EventArgs e)
         {
-            textBox2.Text = winner + "wins!!!\n\rScore : " + score.ToString() + "\n\rEnter your name below and click Menu or Replay to save your score.";
+            textBox2.Text = winner + " wins!!!\r\nScore : " + score.ToString() + "\r\nEnter your name below and click Menu or Replay to save your score.";
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -46,8 +46,8 @@ namespace CS_GridGame_Team5
         private void saveScore()
         {
             FileInfo f = new FileInfo("../../Assets/highScores.txt"); // Set file name
-            StreamWriter w = f.CreateText(); // Create file
-            w.WriteLine(playerName.Text + "," + score);
+            StreamWriter w = f.AppendText(); // To add new line for new score
+            w.Write("\n"+playerName.Text + "," + score);
             w.Close();
         }
 
