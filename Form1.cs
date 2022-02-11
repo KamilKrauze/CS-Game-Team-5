@@ -379,7 +379,14 @@ namespace CS_GridGame_Team5
         private void confirmClick(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("Turn is " + Turn);
-            Turn = !turn;
+            if (haveAllPlanesHaveMoved())
+            {
+                Turn = !turn;
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Not all planes have moved!");
+            }
 
             if (Turn == true)
             {
@@ -727,6 +734,51 @@ namespace CS_GridGame_Team5
             {
                 return true;
             }
+            return false;
+        }
+
+        private bool haveAllPlanesHaveMoved()
+        {
+            int notMoved = 0;
+            // True - Check for all RAF planes have moved
+            if (Turn == true)
+            {
+                for (int x = 0; x < tiles.GetLength(1); x++)
+                {
+                    for (int y = 0; y < tiles.GetLength(1); y++)
+                    {
+                        if (tiles[x,y].Team == Team.RAF)
+                        {
+                            if (tiles[x,y].Moves != 0)
+                            {
+                                notMoved++;
+                            }
+                        }
+                    }
+                }
+            }
+            else // False - Check for all luftwaffe planes have moved
+            {
+                for (int x = 0; x < tiles.GetLength(1); x++)
+                {
+                    for (int y = 0; y < tiles.GetLength(1); y++)
+                    {
+                        if (tiles[x, y].Team == Team.Luftwaffe)
+                        {
+                            if (tiles[x, y].Moves != 0)
+                            {
+                                notMoved++;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (notMoved == 0)
+            {
+                return true;
+            }
+
             return false;
         }
 
