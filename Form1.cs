@@ -372,7 +372,7 @@ namespace CS_GridGame_Team5
             controlPanel.Controls.Add(confirmButton);
 
             //Sets controlPanel
-            controlPanel.SetBounds(845, 500, 365, 410);
+            controlPanel.SetBounds(845, 400, 365, 400);
             controlPanel.BackColor = Color.FromArgb(100, 55, 98, 72);
 
 
