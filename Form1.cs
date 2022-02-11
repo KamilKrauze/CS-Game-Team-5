@@ -345,8 +345,19 @@ namespace CS_GridGame_Team5
             deviateButton.Click += new EventHandler(deviateButtonClick);
             confirmButton.Click += new EventHandler(confirmClick);
 
+            //Directional Keys Arrow Images
             upButton.BackgroundImage = Properties.Resources.upArrow;
             upButton.BackgroundImageLayout = ImageLayout.Stretch;
+            
+            downButton.BackgroundImage = Properties.Resources.downArrow;
+            downButton.BackgroundImageLayout = ImageLayout.Stretch;
+
+             leftButton.BackgroundImage = Properties.Resources.leftArrow;
+             leftButton.BackgroundImageLayout = ImageLayout.Stretch;
+
+             rightButton.BackgroundImage = Properties.Resources.rightArrow;
+             rightButton.BackgroundImageLayout = ImageLayout.Stretch;
+
 
             //Adds button to panel
             controlPanel.Controls.Add(rotateL);
