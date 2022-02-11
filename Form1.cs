@@ -346,6 +346,7 @@ namespace CS_GridGame_Team5
             confirmButton.Click += new EventHandler(confirmClick);
 
             upButton.BackgroundImage = Properties.Resources.upArrow;
+            upButton.BackgroundImageLayout = ImageLayout.Stretch;
 
             //Adds button to panel
             controlPanel.Controls.Add(rotateL);
