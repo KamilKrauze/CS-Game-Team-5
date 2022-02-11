@@ -550,7 +550,7 @@ namespace CS_GridGame_Team5
                 newTile = tiles[SelectedTileX, (SelectedTileY - 1)];
 
                 //Decrement move from tile. Clamp to 0
-                if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileY != 0 && tiles[SelectedTileX, SelectedTileY].Rotation == 0 && newTile.Type == ObjectType.Empty)
+                if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileY != 0 && tiles[SelectedTileX, SelectedTileY].Rotation == 0 && (newTile.Type == ObjectType.Empty || newTile.Type == ObjectType.Dam))
                 {
                     //Decrement moves
                     tiles[SelectedTileX, SelectedTileY].Moves -= 1;
@@ -577,7 +577,7 @@ namespace CS_GridGame_Team5
                 newTile = tiles[SelectedTileX, (SelectedTileY + 1)];
 
                 //Decrement move from tile. Clamp to 0
-                if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileY != 9 && tiles[SelectedTileX, SelectedTileY].Rotation == 180 && newTile.Type == ObjectType.Empty)
+                if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileY != 9 && tiles[SelectedTileX, SelectedTileY].Rotation == 180 && (newTile.Type == ObjectType.Empty || newTile.Type == ObjectType.Dam))
                 {
 
                     //Decrement moves
@@ -610,7 +610,7 @@ namespace CS_GridGame_Team5
 
 
                 //Decrement move from tile. Clamp to 0
-                if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileX != 0 && tiles[SelectedTileX, SelectedTileY].Rotation == 270 && newTile.Type == ObjectType.Empty)
+                if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileX != 0 && tiles[SelectedTileX, SelectedTileY].Rotation == 270 && (newTile.Type == ObjectType.Empty || newTile.Type == ObjectType.Dam))
                 {
 
                     //Decrement moves
@@ -646,7 +646,7 @@ namespace CS_GridGame_Team5
                 newTile = tiles[(SelectedTileX + 1), SelectedTileY];
 
                 //Decrement move from tile. Clamp to 0
-                if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileX != 9 && tiles[SelectedTileX, SelectedTileY].Rotation == 90 && newTile.Type == ObjectType.Empty)
+                if (tiles[SelectedTileX, SelectedTileY].Moves != 0 && SelectedTileX != 9 && tiles[SelectedTileX, SelectedTileY].Rotation == 90 && (newTile.Type == ObjectType.Empty || (newTile.Type == ObjectType.Dam))
                 {
                     //Decrement moves
                     tiles[SelectedTileX, SelectedTileY].Moves -= 1;
