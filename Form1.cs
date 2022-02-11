@@ -455,7 +455,14 @@ namespace CS_GridGame_Team5
                 {
                     Console.WriteLine("Win Condition: " + checkForWinCondition());
                     gameOver gameOverScreen = new gameOver();
-                    gameOverScreen.winner
+                    if (checkForWinCondition() == WinCondition.RAF)
+                    {
+                        gameOverScreen.gameWon(checkForWinCondition(), RAFScore);
+                    }
+                    else
+                    {
+                        gameOverScreen.gameWon(checkForWinCondition(), LuftwaffeScore);
+                    }
                 }
             }
 
